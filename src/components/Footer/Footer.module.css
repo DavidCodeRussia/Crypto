@@ -1,0 +1,15 @@
+.footer {
+  margin: 0;
+  padding: 0;
+  background-color: gray;
+}
+
+.developer {
+  display: inline-block;
+  width: 250px;
+  margin: 0;
+  padding: 20px 0;
+  margin-left: 1200px;
+  background-color: gray;
+  color: #ffffff;
+}

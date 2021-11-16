@@ -1,0 +1,11 @@
+.app-wrapper {
+  margin: 0 auto;
+  padding: 0;
+  background-color: #000000;
+}
+
+.app-wrapper-content {
+  width: 1000px;
+  margin: 0 auto;
+}
+

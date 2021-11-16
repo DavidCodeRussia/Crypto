@@ -1,0 +1,31 @@
+.dialogs {
+    display: inline-block;
+    background-color: #db8e00;
+    margin-left: 10px;
+}
+
+.dialogsItems {
+    display: inline-block;
+    width: 150px;
+    margin-left: 10px;
+}
+
+.dialogs .dialog a {
+    display: flex;
+    color: #ffffff;
+    padding: 10px 0;
+    border-radius: 10px;
+    text-decoration: none;
+    justify-content: center;
+}
+
+.dialogs .dialog a:hover {
+    background-color: #000000;
+}
+
+.messages {
+    display: inline-block;
+    padding: 20px;
+    color: white;
+    margin-left: 20px;
+}
