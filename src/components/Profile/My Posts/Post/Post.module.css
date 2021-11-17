@@ -1,0 +1,17 @@
+.item .imgMini {
+    display: inline-block;
+}
+
+.item .imgMini img {
+    width: 40px;
+}
+
+.item .post {
+    display: inline-block;
+    margin-left: 5px;
+}
+
+.item .likes {
+    display: inline-block;
+    margin-left: 5px;
+}

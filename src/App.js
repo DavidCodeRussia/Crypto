@@ -19,13 +19,15 @@ const App = () => {
                 <Header/>
                 <div className="app-wrapper-content">
                     <Nav />
+                    <div className="forBackColor">
                     <Routes>
-                        <Route path="/Profile" render={ () => <Profile />} />
-                        <Route path="/Dialogs/*" render={ () => <Dialogs /> } />
+                        <Route path="/Profile" element={<Profile />} />
+                        <Route path="/Dialogs/*" element={ <Dialogs /> } />
                         <Route path='/News' element={<News />} />
                         <Route path='/Music' element={<Music />} />
                         <Route path='/Settings' element={<Settings />} />
                     </Routes>
+                    </div>
                 </div>
 
                 <Footer/>

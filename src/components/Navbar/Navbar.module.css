@@ -1,9 +1,10 @@
 .nav {
-  margin: 0;
   width: 150px;
-  display: inline-block;
   vertical-align: top;
   color: #ffa500;
+  background-color: gray;
+  margin: 10px 0;
+  border-radius: 10px;
 }
 
 .item {
@@ -23,5 +24,5 @@
 }
 
 .item a.active {
-  color: #66FF00;
+  color: gold;
 }

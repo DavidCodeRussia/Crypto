@@ -1,11 +1,22 @@
 .app-wrapper {
   margin: 0 auto;
   padding: 0;
-  background-color: #000000;
 }
 
 .app-wrapper-content {
+  display: grid;
+  grid-template-columns: 2fr 10fr;
+  grid-template-rows: 1fr;
+  grid-template-areas:
+  "n p";
+  grid-gap: 10px;
   width: 1000px;
   margin: 0 auto;
+}
+
+.forBackColor {
+  background-color: #db8e00;
+  margin: 10px 0px 10px -10px;
+  border-radius: 10px;
 }
 
