@@ -1,0 +1,27 @@
+.profile {
+    grid-area: p;
+    margin: 0;
+    border-radius: 10px;
+}
+
+.avatar {
+    display: inline-block;
+    margin: 0;
+    padding: 0;
+}
+
+.avatar img {
+    margin: 10px 0 10px 10px;
+    padding: 0;
+    width: 230px;
+}
+
+.description {
+    display: inline-block;
+    margin: 10px 10px 10px 50px;
+    vertical-align: top;
+}
+
+.descriptionItem {
+    margin-bottom: 15px;
+}

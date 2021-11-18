@@ -12,12 +12,23 @@
 .container .dialog {
     padding-bottom: 10px;
     text-align: center;
+    color: white;
+}
+
+.container .dialog .linka {
+    text-decoration: none;
+    color: #ffffff;
+}
+
+.container .dialog .linka:hover {
+    color: #000000;
 }
 
 .filesWithMessage {
     display: inline-block;
     margin-left: 10px;
     vertical-align: top;
+    color: #ffffff;
 }
 
 

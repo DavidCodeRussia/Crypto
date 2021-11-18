@@ -9,7 +9,6 @@ import {BrowserRouter, Route, Routes} from "react-router-dom";
 import News from "./components/Navbar/News/News";
 import Music from "./components/Navbar/Music/Music";
 import Settings from "./components/Navbar/Settings/Settings";
-import s from "./components/Dialogs/Dialogs.module.css";
 
 const App = () => {
 
