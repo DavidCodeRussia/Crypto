@@ -4,6 +4,7 @@ import Message from "./Message/Message";
 
 const Dialogs = () => {
 
+
     let dialogsData = [
         {id: 1, name: 'Misha'},
         {id: 2, name: 'Katya'},
@@ -20,6 +21,7 @@ const Dialogs = () => {
         {id: 3, message: 'How is it going?'},
         {id: 4, message: 'Nice and you?'}
     ]
+
 
     let dialogsElements = dialogsData.map( d => <DialogItem name={d.name} id={d.id}/>)
 
