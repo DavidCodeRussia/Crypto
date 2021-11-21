@@ -3,10 +3,11 @@ import ProfileInfo from "./ProfileInfo/ProfileInfo";
 
 
 const Profile = (props) => {
+
     return (
         <div>
-            <ProfileInfo/>
-            <MyPosts/>
+            <ProfileInfo descrription={props.descrription}/>
+            <MyPosts posts={props.posts} />
         </div>
     )
 }

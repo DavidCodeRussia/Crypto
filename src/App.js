@@ -10,8 +10,8 @@ import News from "./components/Navbar/News/News";
 import Music from "./components/Navbar/Music/Music";
 import Settings from "./components/Navbar/Settings/Settings";
 
-const App = () => {
-
+const App = (props) => {
+debugger
     return (
         <BrowserRouter>
             <div className="app-wrapper">
@@ -20,8 +20,8 @@ const App = () => {
                     <Nav />
                     <div className="forBackColor">
                     <Routes>
-                        <Route path="/Profile" element={<Profile />} />
-                        <Route path="/Dialogs/*" element={<Dialogs />} />
+                        <Route path="/Profile" element={<Profile posts={props.state.profilePage.posts} descrription={props.state.profilePage.descrription} />} />
+                        <Route path="/Dialogs/*" element={<Dialogs dialogsData={props.state.messagesPage.dialogsData} messages={props.state.messagesPage.messages} />} />
                         <Route path='/News' element={<News />} />
                         <Route path='/Music' element={<Music />} />
                         <Route path='/Settings' element={<Settings />} />
