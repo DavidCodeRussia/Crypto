@@ -5,34 +5,34 @@ import Nav from './components/Navbar/Navbar';
 import Profile from './components/Profile/Profile';
 import Dialogs from "./components/Dialogs/Dialogs";
 import Footer from './components/Footer/Footer';
-import {BrowserRouter, Route, Routes} from "react-router-dom";
+import {Route, Routes} from "react-router-dom";
 import News from "./components/Navbar/News/News";
 import Music from "./components/Navbar/Music/Music";
 import Settings from "./components/Navbar/Settings/Settings";
+import Friends from "./components/Navbar/Fiends/Friends";
 
 const App = (props) => {
-debugger
-    return (
-        <BrowserRouter>
-            <div className="app-wrapper">
-                <Header/>
-                <div className="app-wrapper-content">
-                    <Nav />
-                    <div className="forBackColor">
-                    <Routes>
-                        <Route path="/Profile" element={<Profile posts={props.state.profilePage.posts} descrription={props.state.profilePage.descrription} />} />
-                        <Route path="/Dialogs/*" element={<Dialogs dialogsData={props.state.messagesPage.dialogsData} messages={props.state.messagesPage.messages} />} />
-                        <Route path='/News' element={<News />} />
-                        <Route path='/Music' element={<Music />} />
-                        <Route path='/Settings' element={<Settings />} />
-                    </Routes>
-                    </div>
-                </div>
 
-                <Footer/>
+    return (
+        <div className="app-wrapper">
+            <Header/>
+            <div className="app-wrapper-content">
+                <Nav/>
+                <div className="forBackColor">
+                    <Routes>
+                        <Route path="/Profile" element={<Profile state={props.state.profilePage}/>}/>
+                        <Route path="/Dialogs/*" element={<Dialogs state={props.state.dialogsPage}/>}/>
+                        <Route path='/News' element={<News/>}/>
+                        <Route path='/Music' element={<Music/>}/>
+                        <Route path='/Settings' element={<Settings/>}/>
+                        <Route path='/Friends' element={<Friends state={props.state.dialogsPage}/>}/>
+                    </Routes>
+                </div>
             </div>
-        </BrowserRouter>
-)
+
+            <Footer/>
+        </div>
+    )
 }
 
 export default App;

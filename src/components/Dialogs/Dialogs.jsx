@@ -4,9 +4,9 @@ import Message from "./Message/Message";
 
 const Dialogs = (props) => {
 
-    let dialogsElements = props.dialogsData.map( d => <DialogItem name={d.name} id={d.id}/>)
+    let dialogsElements = props.state.dialogsData.map(d => <DialogItem name={d.name} id={d.id}/>)
 
-    let messagesElements = props.messages.map ( m => <Message message={m.message}/>)
+    let messagesElements = props.state.messages.map(m => <Message message={m.message}/>)
 
     return (
         <div className={s.dialogs}>
@@ -15,7 +15,11 @@ const Dialogs = (props) => {
             </div>
 
             <div className={s.filesWithMessage}>
-                {messagesElements}
+                    {messagesElements}
+                <div className={s.forDisplayTable}>
+                        <textarea></textarea>
+                        <button>Add post</button>
+                </div>
             </div>
         </div>
     )

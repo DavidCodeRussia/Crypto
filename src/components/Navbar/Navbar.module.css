@@ -26,3 +26,12 @@
 .item a.active {
   color: gold;
 }
+
+.containerImg {
+  margin-top: 10px;
+}
+
+.containerImg img{
+  width: 50px;
+  border-radius: 50%;
+}
