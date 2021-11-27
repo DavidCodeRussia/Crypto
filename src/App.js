@@ -1,4 +1,3 @@
-import logo from './logo.svg';
 import './App.css';
 import Header from './components/Header/Header';
 import Nav from './components/Navbar/Navbar';
@@ -10,6 +9,7 @@ import News from "./components/Navbar/News/News";
 import Music from "./components/Navbar/Music/Music";
 import Settings from "./components/Navbar/Settings/Settings";
 import Friends from "./components/Navbar/Fiends/Friends";
+import {addMessage, updateNewMessageText} from "./components/redux/state";
 
 const App = (props) => {
 
@@ -20,8 +20,17 @@ const App = (props) => {
                 <Nav/>
                 <div className="forBackColor">
                     <Routes>
-                        <Route path="/Profile" element={<Profile state={props.state.profilePage}/>}/>
-                        <Route path="/Dialogs/*" element={<Dialogs state={props.state.dialogsPage}/>}/>
+                        <Route path="/Profile" element={<Profile
+                            profilePage={props.state.profilePage}
+                            addPost={props.addPost}
+                            updateNewPostText={props.updateNewPostText}
+                        />}/>
+                        <Route path="/Dialogs/*" element={<Dialogs
+                            dialogsPage={props.state.dialogsPage}
+                            newPostMessage={props.state.dialogsPage.newPostMessage}
+                            addMessage={props.addMessage}
+                            updateNewMessageText={props.updateNewMessageText}
+                        />}/>
                         <Route path='/News' element={<News/>}/>
                         <Route path='/Music' element={<Music/>}/>
                         <Route path='/Settings' element={<Settings/>}/>
