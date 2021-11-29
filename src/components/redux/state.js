@@ -1,4 +1,6 @@
-import {rerenderEntireThree} from "../../render";
+let rerenderEntireThree = () => {
+    console.log('State changed')
+}
 
 let state = {
     profilePage: {
@@ -37,7 +39,9 @@ let state = {
     }
 }
 
-export let addPost = () => {
+window.state = state
+
+export const addPost = () => {
 
     let newPost = {
         id: 5,
@@ -49,12 +53,12 @@ export let addPost = () => {
     rerenderEntireThree(state)
 }
 
-export let updateNewPostText = (text) => {
+export const updateNewPostText = (text) => {
     state.profilePage.newPostText = text
     rerenderEntireThree(state)
 }
 
-export let addMessage = () => {
+export const addMessage = () => {
 
     let newMessage = {
         id: 5,
@@ -65,10 +69,13 @@ export let addMessage = () => {
     rerenderEntireThree(state)
 }
 
-export let updateNewMessageText = (text) => {
+export const updateNewMessageText = (text) => {
     state.dialogsPage.newPostMessage = text;
     rerenderEntireThree(state)
 }
 
+export const subscribe = (observer) => {
+    rerenderEntireThree =  observer
+}
 
 export default state;

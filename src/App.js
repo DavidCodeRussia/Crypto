@@ -9,7 +9,6 @@ import News from "./components/Navbar/News/News";
 import Music from "./components/Navbar/Music/Music";
 import Settings from "./components/Navbar/Settings/Settings";
 import Friends from "./components/Navbar/Fiends/Friends";
-import {addMessage, updateNewMessageText} from "./components/redux/state";
 
 const App = (props) => {
 
