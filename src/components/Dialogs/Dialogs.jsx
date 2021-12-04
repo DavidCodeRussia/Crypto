@@ -2,6 +2,7 @@ import React from 'react';
 import s from './Dialogs.module.css';
 import DialogItem from "./DialogItem/DialogItem";
 import Message from "./Message/Message";
+import {addMessageActionCreator, updateNewMessageActionCreator} from "../redux/state";
 
 const Dialogs = (props) => {
 
@@ -12,16 +13,15 @@ const Dialogs = (props) => {
     let newMessageElement = React.createRef()
 
     let addMessage = () => {
-        props.dispatch( {type: 'ADD-MESSAGE'} )
+        props.dispatch(addMessageActionCreator())
     }
 
     let onMessageChange = () => {
-        debugger
         let text = newMessageElement.current.value
-        let action = {type: 'UPDATE-NEW-MESSAGE-TEXT', text: text}
+        // let action = {type: 'UPDATE-NEW-MESSAGE-TEXT', text: text}
+        let action = updateNewMessageActionCreator(text)
         props.dispatch(action)
     }
-    debugger
     return (
         <div className={s.dialogs}>
             <div className={s.container}>
@@ -31,7 +31,10 @@ const Dialogs = (props) => {
             <div className={s.filesWithMessage}>
                     {messagesElements}
                 <div className={s.forDisplayTable}>
-                        <textarea onChange={onMessageChange} ref={newMessageElement} value={props.dialogsPage.newPostMessage} style={{width: 550 + 'px'}} />
+                        <textarea onChange={onMessageChange}
+                                  ref={newMessageElement}
+                                  value={props.dialogsPage.newPostMessage}
+                                  style={{width: 550 + 'px'}} />
                         <button onClick={addMessage}>Add post</button>
                 </div>
             </div>
