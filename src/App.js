@@ -11,7 +11,6 @@ import Settings from "./components/Navbar/Settings/Settings";
 import Friends from "./components/Navbar/Fiends/Friends";
 
 const App = (props) => {
-
     return (
         <div className="app-wrapper">
             <Header/>
@@ -20,12 +19,12 @@ const App = (props) => {
                 <div className="forBackColor">
                     <Routes>
                         <Route path="/Profile" element={<Profile
-                            profilePage={props.state.profilePage}
-                            dispatch = {props.dispatch}
+                            store={props.store}
                         />}/>
                         <Route path="/Dialogs/*" element={<Dialogs
                             dialogsPage={props.state.dialogsPage}
                             dispatch = {props.dispatch}
+                            store={props.store}
                         />}/>
                         <Route path='/News' element={<News/>}/>
                         <Route path='/Music' element={<Music/>}/>

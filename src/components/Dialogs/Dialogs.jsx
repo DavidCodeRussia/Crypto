@@ -2,13 +2,17 @@ import React from 'react';
 import s from './Dialogs.module.css';
 import DialogItem from "./DialogItem/DialogItem";
 import Message from "./Message/Message";
-import {addMessageActionCreator, updateNewMessageActionCreator} from "../redux/state";
+import {addMessageActionCreator, updateNewMessageActionCreator} from "../redux/dialogs-reducer";
 
 const Dialogs = (props) => {
 
-    let dialogsElements = props.dialogsPage.dialogsData.map(d => <DialogItem name={d.name} id={d.id}/>)
+    let dialogsPage = props.dialogsPage
 
-    let messagesElements = props.dialogsPage.messages.map(m => <Message message={m.message}/>)
+    let dialogsElements = dialogsPage.dialogsData.map(d => <DialogItem name={d.name} id={d.id}/>)
+
+    let messagesElements = dialogsPage.messages.map(m => <Message message={m.message}/>)
+
+    let newMessageBody = dialogsPage.newMessageBody
 
     let newMessageElement = React.createRef()
 
@@ -16,11 +20,9 @@ const Dialogs = (props) => {
         props.dispatch(addMessageActionCreator())
     }
 
-    let onMessageChange = () => {
+    let onSendMessageClick = () => {
         let text = newMessageElement.current.value
-        // let action = {type: 'UPDATE-NEW-MESSAGE-TEXT', text: text}
-        let action = updateNewMessageActionCreator(text)
-        props.dispatch(action)
+        props.dispatch(updateNewMessageActionCreator(text))
     }
     return (
         <div className={s.dialogs}>
@@ -31,9 +33,10 @@ const Dialogs = (props) => {
             <div className={s.filesWithMessage}>
                     {messagesElements}
                 <div className={s.forDisplayTable}>
-                        <textarea onChange={onMessageChange}
+                        <textarea
                                   ref={newMessageElement}
-                                  value={props.dialogsPage.newPostMessage}
+                                  value={newMessageBody}
+                                  onChange={onSendMessageClick}
                                   style={{width: 550 + 'px'}} />
                         <button onClick={addMessage}>Add post</button>
                 </div>
