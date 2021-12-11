@@ -37,7 +37,6 @@ const dialogsReducer = (state = initialState, action) => {
         default:
             return state
     }
-    return state
 }
 
 export const addMessageActionCreator = () => ({type: ADD_MESSAGE})
