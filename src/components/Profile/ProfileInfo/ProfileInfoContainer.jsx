@@ -1,5 +1,6 @@
 import ProfileInfo from "./ProfileInfo";
-import StoreContext from "../../redux/StoreContext";
+import {connect} from "react-redux";
+/*
 
 const ProfileInfoContainer = () => {
 
@@ -16,5 +17,21 @@ const ProfileInfoContainer = () => {
         </StoreContext.Consumer>
     )
 }
+*/
+// это так, на память
+
+let mapStateToProps = (state) => {
+    return {
+        descrription:  state.profilePage.descrription
+    }
+}
+
+let mapDispatchToProps = () => {
+    return {
+
+    }
+}
+
+const ProfileInfoContainer = connect(mapStateToProps, mapDispatchToProps)(ProfileInfo)
 
 export default ProfileInfoContainer;
