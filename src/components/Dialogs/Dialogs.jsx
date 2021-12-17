@@ -5,8 +5,8 @@ import Message from "./Message/Message";
 
 const Dialogs = (props) => {
 
-    let dialogsElements = props.dialogsPage.dialogsData.map(d => <DialogItem name={d.name} id={d.id}/>)
-    let messagesElements = props.dialogsPage.messages.map(m => <Message message={m.message}/>)
+    let dialogsElements = props.dialogsPage.dialogsData.map(d => <DialogItem key={d.id} name={d.name} id={d.id}/>)
+    let messagesElements = props.dialogsPage.messages.map(m => <Message key={m.id} message={m.message}/>)
     let newMessageBody = props.dialogsPage.newMessageBody
 
     let newMessageElement = React.createRef()
