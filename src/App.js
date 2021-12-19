@@ -4,10 +4,11 @@ import Nav from './components/Navbar/Navbar';
 import Profile from './components/Profile/Profile';
 import Footer from './components/Footer/Footer';
 import {Route, Routes} from "react-router-dom";
-import News from "./components/Navbar/News/News";
-import Settings from "./components/Navbar/Settings/Settings";
-import Friends from "./components/Navbar/Fiends/Friends";
+import News from "./components/News/News";
+import Settings from "./components/Settings/Settings";
 import DialogsContainer from "./components/Dialogs/DialogsContainer";
+import Users from "./components/Users/Users";
+import Friends from "./components/Fiends/Friends";
 
 const App = () => {
     return (
@@ -20,8 +21,9 @@ const App = () => {
                         <Route path="/Profile" element={<Profile />}/>
                         <Route path="/Dialogs/*" element={<DialogsContainer />}/>
                         <Route path='/Friends' element={<Friends />}/>
-                        <Route path='/News' element={<News/>}/>
-                        <Route path='/Settings' element={<Settings/>}/>
+                        <Route path='/Users' element={<Users />}/>
+                        <Route path='/News' element={<News />}/>
+                        <Route path='/Settings' element={<Settings />}/>
                     </Routes>
                 </div>
             </div>
