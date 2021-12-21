@@ -7,8 +7,8 @@ import {Route, Routes} from "react-router-dom";
 import News from "./components/News/News";
 import Settings from "./components/Settings/Settings";
 import DialogsContainer from "./components/Dialogs/DialogsContainer";
-import Users from "./components/Users/Users";
 import Friends from "./components/Fiends/Friends";
+import UsersContainer from "./components/Users/UsersContainer";
 
 const App = () => {
     return (
@@ -21,7 +21,7 @@ const App = () => {
                         <Route path="/Profile" element={<Profile />}/>
                         <Route path="/Dialogs/*" element={<DialogsContainer />}/>
                         <Route path='/Friends' element={<Friends />}/>
-                        <Route path='/Users' element={<Users />}/>
+                        <Route path='/Users' element={<UsersContainer />}/>
                         <Route path='/News' element={<News />}/>
                         <Route path='/Settings' element={<Settings />}/>
                     </Routes>

@@ -2,7 +2,7 @@ import s from './ProfileInfo.module.css';
 
 const ProfileInfo = (props) => {
 
-    let description = props.descrription.map( d => <div className={s.descriptionItem} key={d.id}>{d.question}</div> )
+    let description = props.description.map( d => <div className={s.descriptionItem} key={d.id}>{d.question}</div> )
 
     return (
         <div className={s.profile}>
