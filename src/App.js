@@ -3,12 +3,12 @@ import Header from './components/Header/Header';
 import Nav from './components/Navbar/Navbar';
 import Profile from './components/Profile/Profile';
 import Footer from './components/Footer/Footer';
-import {Route, Routes} from "react-router-dom";
-import News from "./components/News/News";
-import Settings from "./components/Settings/Settings";
-import DialogsContainer from "./components/Dialogs/DialogsContainer";
-import Friends from "./components/Fiends/Friends";
-import UsersContainer from "./components/Users/UsersContainer";
+import {Route, Routes} from 'react-router-dom';
+import News from './components/News/News';
+import Settings from './components/Settings/Settings';
+import DialogsContainer from './components/Dialogs/DialogsContainer';
+import Friends from './components/Fiends/Friends';
+import UsersContainer from './components/Users/UsersContainer';
 
 const App = () => {
     return (
