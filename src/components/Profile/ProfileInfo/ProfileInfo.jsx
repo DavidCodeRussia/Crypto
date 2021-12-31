@@ -1,13 +1,18 @@
 import s from './ProfileInfo.module.css';
+import Preloader from "../../common/preloader/Preloader";
 
 const ProfileInfo = (props) => {
 
     let description = props.description.map( d => <div className={s.descriptionItem} key={d.id}>{d.question}</div> )
 
+    if  (!props.profile) {
+        return <Preloader />
+    }
+
     return (
         <div className={s.profile}>
             <div className={s.avatar}>
-                <img src="https://www.pngitem.com/pimgs/m/78-786293_1240-x-1240-0-avatar-profile-icon-png.png"/>
+                <img src={props.profile.photos.large}/>
             </div>
             <div className={s.description}>
                 {description}

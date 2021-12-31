@@ -8,7 +8,7 @@ let store = {
                 {id: 1, message: 'Hi brosky, how\'s it going?', likes: 2},
                 {id: 2, message: 'It\'s my first post', likes: 5}
             ],
-            descrription: [
+            description: [
                 {id: 1, question: 'Name: David'},
                 {id: 2, question: 'Surname: Omzzzanyan'},
                 {id: 3, question: 'Owner: Bitcoin, ETH, Dogecoin ...'},
