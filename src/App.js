@@ -18,12 +18,12 @@ const App = () => {
                 <Nav />
                 <div className="forBackColor">
                     <Routes>
-                        <Route path="/Profile/*" element={<ProfileContainer />}/>
+                        <Route path="/Profile/*" element={<ProfileContainer />} />
                         <Route path="/Dialogs/*" element={<DialogsContainer />}/>
-                        <Route path='/Friends' element={<Friends />}/>
-                        <Route path='/Users' element={<UsersContainer />}/>
-                        <Route path='/News' element={<News />}/>
-                        <Route path='/Settings' element={<Settings />}/>
+                        <Route path='/Friends/*' element={<Friends />}/>
+                        <Route path='/Users/*' element={<UsersContainer />}/>
+                        <Route path='/News/*' element={<News />}/>
+                        <Route path='/Settings/*' element={<Settings />} />
                     </Routes>
                 </div>
             </div>
