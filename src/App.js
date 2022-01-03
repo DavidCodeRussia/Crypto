@@ -1,5 +1,5 @@
 import './App.css';
-import Header from './components/Header/Header';
+import HeaderContainer from './components/Header/HeaderContainer';
 import Nav from './components/Navbar/Navbar';
 import Footer from './components/Footer/Footer';
 import {Route, Routes} from 'react-router-dom';
@@ -13,7 +13,7 @@ import ProfileContainer from "./components/Profile/ProfileContainer";
 const App = () => {
     return (
         <div className="app-wrapper">
-            <Header />
+            <HeaderContainer />
             <div className="app-wrapper-content">
                 <Nav />
                 <div className="forBackColor">
