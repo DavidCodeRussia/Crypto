@@ -9,6 +9,7 @@ import DialogsContainer from './components/Dialogs/DialogsContainer';
 import Friends from './components/Fiends/Friends';
 import UsersContainer from './components/Users/UsersContainer';
 import ProfileContainer from "./components/Profile/ProfileContainer";
+import LoginPage from "./components/Login/Login";
 
 const App = () => {
     return (
@@ -24,6 +25,7 @@ const App = () => {
                         <Route path='/Users/*' element={<UsersContainer />}/>
                         <Route path='/News/*' element={<News />}/>
                         <Route path='/Settings/*' element={<Settings />} />
+                        <Route path='/Login/*' element={<LoginPage />} />
                     </Routes>
                 </div>
             </div>
