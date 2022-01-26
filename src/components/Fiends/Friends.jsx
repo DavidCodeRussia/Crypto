@@ -1,4 +1,5 @@
 import React from 'react'
+import {withAuthNavigate} from "../../hoc/withAuthRedirect";
 
 const Friends = (props) => {
 
@@ -7,4 +8,4 @@ const Friends = (props) => {
     )
 
 }
-export default Friends
+export default withAuthNavigate(Friends)
