@@ -1,0 +1,21 @@
+.header {
+    margin: 0;
+    padding: 0;
+    width: 1440px;
+    background-color: gray;
+}
+
+.firstSrc {
+    margin: 0;
+    padding: 0;
+    height: 60px;
+    margin-left: 270px;
+}
+
+.loginBlock {
+    float: right;
+}
+
+.loginBlock a {
+    color: white;
+}

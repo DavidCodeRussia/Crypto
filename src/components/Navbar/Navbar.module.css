@@ -1,0 +1,37 @@
+.nav {
+  width: 150px;
+  vertical-align: top;
+  color: #ffa500;
+  background-color: gray;
+  margin: 10px 0;
+  border-radius: 10px;
+}
+
+.item {
+  padding: 10px 0;
+  border-radius: 10px;
+}
+
+.item:hover {
+  background-color: #db8e00;
+}
+
+.item a {
+  display: flex;
+  color: #ffffff;
+  text-decoration: none;
+  justify-content: center;
+}
+
+.item a.active {
+  color: gold;
+}
+
+.containerImg {
+  margin-top: 10px;
+}
+
+.containerImg img{
+  width: 50px;
+  border-radius: 50%;
+}

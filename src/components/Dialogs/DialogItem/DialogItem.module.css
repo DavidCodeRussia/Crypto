@@ -1,0 +1,21 @@
+.avatar {
+    display: inline-block;
+    margin: 0;
+    padding: 0;
+}
+
+.dialog {
+    display: inline-block;
+}
+
+.avatar img {
+    margin: 10px;
+    padding: 0;
+    width: 50px;
+    border-radius: 50%;
+    vertical-align: middle;
+}
+
+
+
+
