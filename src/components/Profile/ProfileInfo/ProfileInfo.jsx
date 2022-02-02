@@ -5,7 +5,7 @@ import ProfileStatus from "../ProfileStatus/ProfileStatus";
 
 const ProfileInfo = (props) => {
 
-    if  (!props.profile) {
+    if (!props.profile) {
         return <Preloader />
     }
 
@@ -18,7 +18,7 @@ const ProfileInfo = (props) => {
             </div>
         )
     }
-
+    
     return (
             <div className={s.profile}>
                 <div className={s.avatar}>

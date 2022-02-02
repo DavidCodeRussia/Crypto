@@ -17,6 +17,7 @@ class ProfileContainer extends React.Component {
     }
 
     render() {
+
         return (
             <Profile {...this.props} profile={this.props.profile} state={this.props.state}
                      status={this.props.status} updateStatus={this.props.updateStatus} />
@@ -25,6 +26,7 @@ class ProfileContainer extends React.Component {
 }
 
 const ProfileURLMath = (props) => {
+
     const match = useMatch('/profile/:userId')
     return <ProfileContainer {...props} match={match} />
 }
