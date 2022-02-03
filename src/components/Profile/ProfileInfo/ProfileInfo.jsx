@@ -10,21 +10,27 @@ const ProfileInfo = (props) => {
     }
 
     if (!props.profile.data.photos.large) {
+
         return (
             <div className={s.profile}>
                 <div className={s.avatar}>
                     <img src={user} />
                 </div>
+                <div className={s.status}>
+                    <ProfileStatus status={props.status} updateStatus={props.updateStatus} />
+                </div>
             </div>
         )
     }
-    
+
     return (
             <div className={s.profile}>
                 <div className={s.avatar}>
-                    <img src={props.profile.data.photos.large}/>
+                    <img src={props.profile.data.photos.large} />
                 </div>
-                <ProfileStatus status={props.status} updateStatus={props.updateStatus} />
+                <div className={s.status}>
+                    <ProfileStatus status={props.status} updateStatus={props.updateStatus} />
+                </div>
             </div>
     )
 }

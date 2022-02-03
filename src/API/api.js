@@ -28,13 +28,13 @@ export const usersAPI = {
             return response.data
         });
     },
-    unfollow(id) {
-        return instance.delete(`follow/${id}`).then(response => {
+    unfollow(userId) {
+        return instance.delete(`follow/${userId}`).then(response => {
             return response.data
         });
     },
-    follow(id) {
-        return instance.post(`follow/${id}`).then(response => {
+    follow(userId) {
+        return instance.post(`follow/${userId}`).then(response => {
             return response.data
         });
     },
