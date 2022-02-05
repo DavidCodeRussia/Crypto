@@ -1,11 +1,11 @@
 import React from 'react'
 import {withAuthNavigate} from "../../hoc/withAuthRedirect";
 
-const Friends = (props) => {
+const FriendsContainer = (props) => {
 
     return (
         <div>friends</div>
     )
 
 }
-export default withAuthNavigate(Friends)
+export default withAuthNavigate(FriendsContainer)

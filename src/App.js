@@ -5,7 +5,6 @@ import Nav from './components/Navbar/Navbar';
 import Footer from './components/Footer/Footer';
 import {Route, Routes} from 'react-router-dom';
 import DialogsContainer from './components/Dialogs/DialogsContainer';
-import Friends from './components/Fiends/Friends';
 import UsersContainer from './components/Users/UsersContainer';
 import ProfileContainer from "./components/Profile/ProfileContainer";
 import LoginPage from "./components/Login/Login";
@@ -14,6 +13,7 @@ import {initializeApp} from "./components/redux/app-reducer";
 import Preloader from "./components/common/preloader/Preloader";
 import NewsContainer from "./components/News/News";
 import SettingsContainer from "./components/Settings/Settings";
+import FriendsContainer from "./components/Fiends/Friends";
 
 class App extends Component {
 
@@ -36,7 +36,7 @@ class App extends Component {
                         <Routes>
                             <Route path="/Profile/*" element={<ProfileContainer/>}/>
                             <Route path="/Dialogs/*" element={<DialogsContainer/>}/>
-                            <Route path='/Friends/*' element={<Friends/>}/>
+                            <Route path='/Friends/*' element={<FriendsContainer />}/>
                             <Route path='/Users/*' element={<UsersContainer/>}/>
                             <Route path='/News/*' element={<NewsContainer/>}/>
                             <Route path='/Settings/*' element={<SettingsContainer/>}/>
