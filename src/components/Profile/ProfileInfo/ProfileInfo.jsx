@@ -9,7 +9,7 @@ const ProfileInfo = (props) => {
         return <Preloader />
     }
 
-    if (!props.profile.data.photos.large) {
+    if (!props.profile.photos.large) {
 
         return (
             <div className={s.profile}>
@@ -26,13 +26,14 @@ const ProfileInfo = (props) => {
     return (
             <div className={s.profile}>
                 <div className={s.avatar}>
-                    <img src={props.profile.data.photos.large} />
+                    <img src={props.profile.photos.large} />
                 </div>
                 <div className={s.status}>
                     <ProfileStatusWithHooks status={props.status} updateStatus={props.updateStatus} />
                 </div>
             </div>
     )
+
 }
 
 export default ProfileInfo;
