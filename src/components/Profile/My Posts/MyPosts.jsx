@@ -13,10 +13,8 @@ const MyPosts = props => {
         }
     */
 
-        console.log("RENDER")
-
         let postsElements =
-            props.posts.map(p => <Post message={p.message} key={p.id} likes={p.likes}/>)
+            [...props.posts].reverse().map(p => <Post message={p.message} key={p.id} likes={p.likes}/>)
 
         let onAddPost = (values) => {
             props.addPost(values.NewPostBody)
