@@ -11,7 +11,7 @@ let ProfileContainer = (props) => {
 
     useEffect(() => {
         let userId = props.match ? props.match.params.userId : props.authorizedUserId;
-        debugger
+
         props.getUserProfile(userId)
         props.getStatus(userId)
     })
