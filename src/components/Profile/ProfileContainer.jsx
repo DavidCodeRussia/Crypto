@@ -1,4 +1,4 @@
-import React from 'react'
+import React, {useEffect} from 'react'
 import Profile from "./Profile";
 import {connect} from "react-redux";
 import {getStatus, getUserProfile, updateStatus} from "../redux/profile-reducer";
@@ -7,22 +7,19 @@ import {compose} from "redux";
 import {withAuthNavigate} from "../../hoc/withAuthRedirect";
 
 
-class ProfileContainer extends React.Component {
+let ProfileContainer = (props) => {
 
-    componentDidMount() {
-        let userId = this.props.match ? this.props.match.params.userId : this.props.authorizedUserId;
-
-        this.props.getUserProfile(userId)
-        this.props.getStatus(userId)
-    }
-
-    render() {
+    useEffect(() => {
+        let userId = props.match ? props.match.params.userId : props.authorizedUserId;
+        debugger
+        props.getUserProfile(userId)
+        props.getStatus(userId)
+    })
 
         return (
-            <Profile {...this.props} profile={this.props.profile} state={this.props.state}
-                     status={this.props.status} updateStatus={this.props.updateStatus} />
+            <Profile {...props} profile={props.profile} state={props.state}
+                     status={props.status} updateStatus={props.updateStatus} />
         )
-    }
 }
 
 const ProfileURLMath = (props) => {
