@@ -6,7 +6,18 @@ let state = {
         {id: 2, message: 'It\'s my first post.', likes: 5}
     ]
 }
-/*
+
+it('new post should be added', () => {
+    let action = addPostActionCreator("Dobbi is free now")
+    let newState = profileReducer(state, action)
+    expect(newState.posts.length).toBe(3)
+})
+
+it( ('message of new post should be correct'), () => {
+    let action = addPostActionCreator("Dobbi is free now")
+    let newState = profileReducer(state, action)
+    expect(newState.posts[2].message).toBe("Dobbi is free now")
+} )
 
 it('length of posted should be incremented', () => {
     // 1. test data (исходные данные)
@@ -32,8 +43,6 @@ it('message of new post should be corrected', () => {
     expect(newState.posts[2].message).toBe("it-kamasutra.com")
 });
 
-*/
-
 it('after deleting message length should be decrement ', () => {
     // 1. test data (исходные данные)
     let action = deletePost(1)
@@ -57,3 +66,4 @@ it(`after deleting length shouldn't be decrement if id is incorrect`, () => {
 
     expect(newState.posts.length).toBe(2)
 });
+

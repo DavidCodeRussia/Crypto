@@ -1,4 +1,4 @@
-import React, {Component} from 'react'
+import React, {Component, useEffect} from 'react'
 import './App.css';
 import HeaderContainer from './components/Header/HeaderContainer';
 import Nav from './components/Navbar/Navbar';
@@ -15,17 +15,15 @@ import NewsContainer from "./components/News/News";
 import SettingsContainer from "./components/Settings/Settings";
 import FriendsContainer from "./components/Fiends/Friends";
 
-class App extends Component {
+let App = (props) => {
 
-    componentDidMount(){
-        this.props.initializeApp()
+    useEffect(() => {
+        props.initializeApp()
+    })
+
+    if (!props.initialized) {
+        return <Preloader/>
     }
-
-    render () {
-
-        if(!this.props.initialized) {
-            return <Preloader />
-        }
 
         return (
             <div className="app-wrapper">
@@ -48,7 +46,7 @@ class App extends Component {
                 <Footer/>
             </div>
         )
-    }
+
 }
 
 const mapStateToProps = (state) => ({
