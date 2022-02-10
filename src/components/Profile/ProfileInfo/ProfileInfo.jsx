@@ -1,6 +1,5 @@
 import s from './ProfileInfo.module.css';
 import Preloader from "../../common/preloader/Preloader";
-import user from "../../../assets/images/user.png"
 import ProfileStatusWithHooks from ".././ProfileStatus/ProfileStatusWithHooks"
 
 const ProfileInfo = (props) => {
