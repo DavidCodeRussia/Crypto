@@ -9,7 +9,7 @@ import Users from './Users';
 import Preloader from "../common/preloader/Preloader";
 import {
     getCurrentPage, getFollowingInProgress, getIsFetching,
-    getPageSize,
+    getPageSize, getTotalItemsCount,
     getTotalUsersCount, getUsers
 } from "../redux/users-selectors";
 import {compose} from "redux";
@@ -29,7 +29,7 @@ let UsersContainer = (props) => {
         return (
             <>
                 { props.isFetching ? <Preloader />  : null}
-                <Users totalUsersCount={props.totalUsersCount}
+                <Users totalItemsCount={props.totalItemsCount}
                        pageSize={props.pageSize}
                        currentPage={props.currentPage}
                        onPageChanged={onPageChanged}
@@ -48,7 +48,7 @@ let mapStateToProps = (state) => {
     return {
         users: getUsers(state),
         pageSize: getPageSize(state),
-        totalUsersCount: getTotalUsersCount(state),
+        totalItemsCount: getTotalItemsCount(state),
         currentPage: getCurrentPage(state),
         isFetching: getIsFetching(state),
         followingInProgress: getFollowingInProgress(state)

@@ -4,15 +4,15 @@ const FOLLOW = 'FOLLOW';
 const UNFOLLOW = 'UNFOLLOW';
 const SET_USERS = 'SET_USERS';
 const SET_CURRENT_PAGE = 'SET_CURRENT_PAGE';
-const SET_TOTAL_USERS_COUNT = 'SET_TOTAL_USERS_COUNT';
+const SET_TOTAL_ITEMS_COUNT = 'SET_TOTAL_ITEMS_COUNT';
 const TOGGLE_IS_FETCHING = 'TOGGLE_IS_FETCHING';
 const TOGGLE_IS_FOLLOWING_PROGRESS = 'TOGGLE_IS_FOLLOWING_PROGRESS';
 
 let initialState = {
     users: [ ],
     // users: [{...}, { id: 1, followed: true, ... }, {...}] - это state который не видно ( для понятности написал )
-    pageSize: 5,
-    totalUsersCount: 0,
+    pageSize: 10,
+    totalItemsCount: 0,
     currentPage: 1,
     isFetching: false,
     followingInProgress: []
@@ -52,9 +52,9 @@ const usersReducer = (state = initialState, action) => {
             return {
                 ...state, currentPage: action.currentPage
             }
-        case SET_TOTAL_USERS_COUNT:
+        case SET_TOTAL_ITEMS_COUNT:
             return {
-                ...state, totalUsersCount: action.count
+                ...state, totalItemsCount: action.totalItemsCount
             }
         case TOGGLE_IS_FETCHING:
             return {
@@ -77,17 +77,18 @@ export const followSuccess = (userId) => ({type: FOLLOW, userId})
 export const unfollowSuccess = (userId) => ({type: UNFOLLOW, userId})
 export const setUsers = (users) => ({type: SET_USERS, users: users})
 export const setCurrentPage = (currentPage) => ({type: SET_CURRENT_PAGE, currentPage: currentPage})
-export const setTotalUsersCount = (totalUsersCount) => ({type: SET_TOTAL_USERS_COUNT, count: totalUsersCount})
+export const setTotalItemsCount = (totalItemsCount) => ({type: SET_TOTAL_ITEMS_COUNT, totalItemsCount: totalItemsCount})
 export const toggleIsFetching = (isFetching) => ({type: TOGGLE_IS_FETCHING, isFetching: isFetching})
 export const toggleFollowingProgress = (isFetching, userId) => ({type: TOGGLE_IS_FOLLOWING_PROGRESS, isFetching: isFetching, userId})
 
 export const requestUsers = (page, pageSize) => {
+
     return async (dispatch) => {
         dispatch(toggleIsFetching(true))
         let data = await usersAPI.getUsers(page, pageSize)
         dispatch(toggleIsFetching(false))
         dispatch(setUsers(data.items))
-        dispatch(setTotalUsersCount(data.totalCount))
+        dispatch(setTotalItemsCount(data.totalCount))
     }
 }
 

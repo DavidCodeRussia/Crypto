@@ -1,6 +1,6 @@
 import React, {Component} from 'react'
 
-class ClassComponentForTest extends Component {
+class TestedComponentsClassComponentForTest extends Component {
 
     state = {
         editMode: false,
@@ -52,4 +52,4 @@ class ClassComponentForTest extends Component {
     }
 }
 
-export default ClassComponentForTest;
+export default TestedComponentsClassComponentForTest;
