@@ -18,7 +18,7 @@ let Paginator = ({totalItemsCount, pageSize, currentPage, onPageChanged, portion
     let rightPortionPageNumber = portionNumber * portionSize
 
     return (
-        <div>
+        <div className={styles.pagination}>
             { portionNumber > 1 &&
                 <button onClick={ () => {setPortionNumber(portionNumber - 1)} }>PREVIOUS</button>
             }

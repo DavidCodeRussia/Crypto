@@ -7,11 +7,11 @@ import Paginator from '../common/Paginator/Paginator.jsx'
 let Users = (props) => {
 
     return (
-        <div>
+        <div className={styles.UsersComponent}>
             <Paginator totalItemsCount={props.totalItemsCount} pageSize={props.pageSize}
                        currentPage={props.currentPage} onPageChanged={props.onPageChanged} />
             {
-                props.users.map(u => <div key={u.id}>
+                props.users.map(u => <div key={u.id} className={styles.user}>
                     <span>
                         <div>
                             <NavLink to={'/profile/' + u.id}>
@@ -31,8 +31,8 @@ let Users = (props) => {
                     </span>
                     <span>
                         <span>
-                            <div>{u.name}</div>
-                            <div>{u.status}</div>
+                            <div>Name: {u.name}</div>
+                            <div>Status: {u.status}</div>
                         </span>
                     </span>
                 </div>)

@@ -19,11 +19,6 @@ const Nav = (props) => {
                 <div>
                     <NavLink to="/Friends" className={active}>Friends</NavLink>
                 </div>
-                <div className={s.containerImg}>
-                    <img src="https://png.pngtree.com/png-vector/20191116/ourlarge/pngtree-businessman-avatar-icon-vector-download-vector-user-icon-avatar-silhouette-social-png-image_1991050.jpg"/>
-                    <img src="https://png.pngtree.com/png-vector/20191116/ourlarge/pngtree-businessman-avatar-icon-vector-download-vector-user-icon-avatar-silhouette-social-png-image_1991050.jpg"/>
-                    <img src="https://png.pngtree.com/png-vector/20191116/ourlarge/pngtree-businessman-avatar-icon-vector-download-vector-user-icon-avatar-silhouette-social-png-image_1991050.jpg"/>
-                </div>
             </div>
             <div className={s.item}>
                 <NavLink to="/Users" className={active}>Users</NavLink>

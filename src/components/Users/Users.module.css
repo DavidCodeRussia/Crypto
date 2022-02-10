@@ -1,8 +1,17 @@
 .userPhoto {
     width: 100px;
     height: 100px;
+    border-radius: 50%;
 }
 
 .selectedPage {
     font-weight: bold;
+}
+
+.UsersComponent {
+    margin: 20px 0 20px 20px;
+}
+
+.user {
+    margin-bottom: 10px;
 }

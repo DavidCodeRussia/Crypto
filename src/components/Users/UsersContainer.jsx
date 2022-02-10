@@ -10,7 +10,7 @@ import Preloader from "../common/preloader/Preloader";
 import {
     getCurrentPage, getFollowingInProgress, getIsFetching,
     getPageSize, getTotalItemsCount,
-    getTotalUsersCount, getUsers
+    getUsers
 } from "../redux/users-selectors";
 import {compose} from "redux";
 import {withAuthNavigate} from "../../hoc/withAuthRedirect";

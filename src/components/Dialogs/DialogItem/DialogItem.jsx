@@ -1,5 +1,6 @@
 import s from './DialogItem.module.css';
 import {NavLink} from "react-router-dom";
+import user from "../../../assets/images/user.png";
 
 const DialogItem = (props) => {
 
@@ -7,7 +8,7 @@ const DialogItem = (props) => {
     return (
         <div className="general_div">
             <div className={s.avatar}>
-                <img src="https://png.pngtree.com/png-vector/20191116/ourlarge/pngtree-businessman-avatar-icon-vector-download-vector-user-icon-avatar-silhouette-social-png-image_1991050.jpg" />
+                <img src={user} />
             </div>
             <div className={s.dialog}>
                 <NavLink to={path} className={s.linka}>{props.name}</NavLink>
