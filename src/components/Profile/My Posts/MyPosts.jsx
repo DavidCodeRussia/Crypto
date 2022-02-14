@@ -7,12 +7,6 @@ import {Textarea} from "../../common/FormsControls/FormsControls";
 
 const MyPosts = props => {
 
-    /*
-        shouldComponentUpdate(nextProps, nextState, nextContext) {
-            return nextProps !== this.props || nextState !== this.state
-        }
-    */
-
         let postsElements =
             [...props.posts].reverse().map(p => <Post message={p.message} key={p.id} likes={p.likes}/>)
 

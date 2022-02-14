@@ -1,7 +1,7 @@
 import React, {useEffect} from 'react'
 import Profile from "./Profile";
 import {connect} from "react-redux";
-import {getStatus, getUserProfile, updateStatus} from "../redux/profile-reducer";
+import {getPhoto, getStatus, getUserProfile, updateStatus} from "../redux/profile-reducer";
 import {useMatch} from "react-router-dom";
 import {compose} from "redux";
 import {withAuthNavigate} from "../../hoc/withAuthRedirect";
@@ -17,8 +17,9 @@ let ProfileContainer = (props) => {
     })
 
         return (
-            <Profile {...props} profile={props.profile} state={props.state}
-                     status={props.status} updateStatus={props.updateStatus} />
+            <Profile profile={props.profile} status={props.status}
+                     updateStatus={props.updateStatus} authorizedUserId={props.authorizedUserId}
+                     match={props.match} getPhoto={props.getPhoto} />
         )
 }
 
@@ -36,6 +37,6 @@ let mapStateToProps = (state) => ({
 })
 
 export default compose(
-    connect(mapStateToProps, {getUserProfile, getStatus, updateStatus}),
+    connect(mapStateToProps, {getUserProfile, getStatus, updateStatus, getPhoto}),
     withAuthNavigate
     )(ProfileURLMath)

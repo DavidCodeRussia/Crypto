@@ -4,6 +4,7 @@ const ADD_POST = 'profile-reducer/ADD-POST';
 const SET_USER_PROFILE = 'profile-reducer/SET_USER_PROFILE';
 const SET_STATUS = 'profile-reducer/SET_STATUS';
 const DELETE_POST = 'profile-reducer/DELETE_POST';
+const GETTING_PHOTO = 'profile-reducer/GETTING_PHOTO';
 
 let initialState = {
     posts: [
@@ -47,6 +48,11 @@ const profileReducer = (state = initialState, action) => {
                 ...state, posts: state.posts.filter(p => p.id !== action.postId)
             }
         }
+        case GETTING_PHOTO: {
+            return {
+                ...state, profile: {...state.profile, photos: action.photos}
+            }
+        }
         default:
             return state
     }
@@ -56,6 +62,7 @@ export const addPostActionCreator = (NewPostBody) => ({type: ADD_POST, NewPostBo
 export const setUserProfile = (profile) => ({type: SET_USER_PROFILE, profile})
 export const setStatus = (status) => ({type: SET_STATUS, status})
 export const deletePost = (postId) => ({type: DELETE_POST, postId: postId})
+export const setPhotoSuccess = (photos) => ({type: GETTING_PHOTO, photos: photos})
 
 export const getUserProfile = (userId) => async (dispatch) => {
     let response = await usersAPI.getProfile(userId)
@@ -71,6 +78,13 @@ export const updateStatus = (status) => async (dispatch) => {
     let response = await profileAPI.updateStatus(status)
     if (response.data.resultCode === 0) {
         dispatch(setStatus(status))
+    }
+}
+
+export const getPhoto = (file) => async (dispatch) => {
+    let response = await profileAPI.getPhoto(file)
+    if(response.data.resultCode === 0) {
+        dispatch(setPhotoSuccess(response.data.data.photos))
     }
 }
 
