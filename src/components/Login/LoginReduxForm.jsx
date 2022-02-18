@@ -5,6 +5,7 @@ import {required} from "../../utils/validators/validators";
 import s from "../common/FormsControls/FormsControls.module.css"
 
 const LoginForm = (props) => {
+
     return (
         <form onSubmit={props.handleSubmit}>
             <div>
