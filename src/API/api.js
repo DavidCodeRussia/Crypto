@@ -1,5 +1,4 @@
 import * as axios from "axios";
-import {saveDataProfile} from "../components/redux/profile-reducer";
 
 const instance = axios.create({
     withCredentials: true,
@@ -15,8 +14,8 @@ export const authAPI = {
             return response.data
         })
     },
-    login(email, password, rememberMe = false) {
-        return instance.post(`auth/login`, {email, password, rememberMe})
+    login(email, password, rememberMe = false, captcha = "") {
+        return instance.post(`auth/login`, {email, password, rememberMe, captcha})
     },
     logout() {
         return instance.delete(`auth/login`)
@@ -68,6 +67,12 @@ export const profileAPI = {
     },
     saveDataProfile(profile) {
         return instance.put('profile', profile)
+    }
+}
+
+export const captchaAPI = {
+    getCaptcha() {
+        return instance.get(`security/get-captcha-url`)
     }
 }
 

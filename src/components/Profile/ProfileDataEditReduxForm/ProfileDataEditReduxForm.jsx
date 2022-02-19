@@ -3,7 +3,7 @@ import {Field, reduxForm} from "redux-form";
 import {Input, Textarea} from "../../common/FormsControls/FormsControls";
 import React from "react";
 
-let ProfileDataEdit = ({toEditMode, profile, handleSubmit, error}) => {
+let ProfileDataEdit = ({profile, handleSubmit, error}) => {
     return (
         <form className={s.contacts} onSubmit={handleSubmit}>
             <div><button>save</button></div>
