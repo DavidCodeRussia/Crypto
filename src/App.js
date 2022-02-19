@@ -11,6 +11,7 @@ import Preloader from "./components/common/preloader/Preloader";
 import NewsContainer from "./components/News/News";
 import SettingsContainer from "./components/Settings/Settings";
 import FriendsContainer from "./components/Fiends/Friends";
+import Error from './components/error404/error'
 
 const ProfileContainer = React.lazy(() => import('./components/Profile/ProfileContainer.jsx'));
 const DialogsContainer = React.lazy(() => import('./components/Dialogs/DialogsContainer.jsx'));
@@ -18,8 +19,16 @@ const UsersContainer = React.lazy(() => import('./components/Users/UsersContaine
 
 let App = (props) => {
 
+    let catchAllUnhandledErrors = (reason, promiseRejectionEvent) => {
+        alert("Some error occured")
+    }
+
     useEffect(() => {
         props.initializeApp()
+        window.addEventListener("unhandledRejection", catchAllUnhandledErrors)
+        return function cleanUp() {
+            window.removeEventListener("unhandledRejection", catchAllUnhandledErrors)
+        }
     })
 
     if (!props.initialized) {
@@ -34,13 +43,15 @@ let App = (props) => {
                     <div className="forBackColor">
                         <Suspense fallback={<Preloader/>}>
                             <Routes>
-                                <Route path="/Profile/*" element={<ProfileContainer/>}/>
-                                <Route path="/Dialogs/*" element={<DialogsContainer/>}/>
+                                <Route path='/Profile/*' element={<ProfileContainer/>}/>
+                                <Route path='/Dialogs/*' element={<DialogsContainer/>}/>
                                 <Route path='/Friends/*' element={<FriendsContainer/>}/>
                                 <Route path='/Users/*' element={<UsersContainer/>}/>
                                 <Route path='/News/*' element={<NewsContainer/>}/>
                                 <Route path='/Settings/*' element={<SettingsContainer/>}/>
                                 <Route path='/Login/*' element={<LoginPage/>}/>
+                                <Route path='/' element={<ProfileContainer/>} />
+                                <Route path='*' element={<Error />} />
                             </Routes>
                         </Suspense>
                     </div>
