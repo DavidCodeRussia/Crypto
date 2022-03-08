@@ -19,16 +19,8 @@ const UsersContainer = React.lazy(() => import('./components/Users/UsersContaine
 
 let App = (props) => {
 
-    let catchAllUnhandledErrors = (reason, promiseRejectionEvent) => {
-        alert("Some error occured")
-    }
-
     useEffect(() => {
         props.initializeApp()
-        window.addEventListener("unhandledRejection", catchAllUnhandledErrors)
-        return function cleanUp() {
-            window.removeEventListener("unhandledRejection", catchAllUnhandledErrors)
-        }
     })
 
     if (!props.initialized) {

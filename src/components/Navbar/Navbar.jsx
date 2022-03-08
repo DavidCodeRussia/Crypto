@@ -4,7 +4,7 @@ import {NavLink} from "react-router-dom";
 const Nav = (props) => {
 
     let active = ({isActive}) =>
-        `${isActive && `${s.active}`}`
+        isActive ? s.active : ""
 
     return (
         <nav className={s.nav}>

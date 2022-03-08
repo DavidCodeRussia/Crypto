@@ -29,15 +29,15 @@ let UsersContainer = (props) => {
         return (
             <>
                 { props.isFetching ? <Preloader />  : null}
-                <Users totalItemsCount={props.totalItemsCount}
+                <Users users={props.users}
                        pageSize={props.pageSize}
+                       totalItemsCount={props.totalItemsCount}
                        currentPage={props.currentPage}
+                       followingInProgress={props.followingInProgress}
                        onPageChanged={onPageChanged}
-                       users={props.users}
                        follow={props.follow}
                        unfollow={props.unfollow}
                        toggleFollowingProgress={props.toggleFollowingProgress}
-                       followingInProgress={props.followingInProgress}
                 />
             </>
         );
