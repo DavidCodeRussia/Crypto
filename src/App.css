@@ -1,9 +1,15 @@
 .app-wrapper {
-  display: table;
-  width: 1000px;
+  display: flex;
+  flex-direction: column;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
   margin: 0;
   padding: 0;
-  background-color: black;
+  background-color: #87a5d4;
+  overflow: hidden;
 }
 
 .app-wrapper-content {
@@ -13,13 +19,14 @@
   grid-template-areas:
   "n p";
   grid-gap: 10px;
-  width: 1000px;
+  width: 71%;
   margin: 75px auto;
 }
 
-.forBackColor {
+.main_content {
   background-color: #db8e00;
-  margin: 10px 0px 10px -10px;
+  margin: 10px 0 10px -10px;
   border-radius: 10px;
+  grid-area: p;
 }
 

@@ -49,7 +49,7 @@ const Login = (props) => {
         return <Navigate to={"/profile"}/>
     }
 
-    return <div>
+    return <div className={s.form}>
         <h1>Login</h1>
         <LoginReduxForm onSubmit={onSubmit} captcha={props.captcha} />
     </div>

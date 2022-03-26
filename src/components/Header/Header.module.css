@@ -1,19 +1,18 @@
 .header {
     margin: 0;
     padding: 0;
-    width: 1440px;
     background-color: gray;
 }
 
 .firstSrc {
     margin: 0;
-    padding: 0;
+    padding: 0 0 0 260px;
     height: 60px;
-    margin-left: 270px;
 }
 
 .loginBlock {
     float: right;
+    padding: 10px 20px 10px 0;
 }
 
 .loginBlock a {

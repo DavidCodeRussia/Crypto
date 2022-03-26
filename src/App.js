@@ -30,22 +30,24 @@ let App = (props) => {
         return (
             <div className="app-wrapper">
                 <HeaderContainer/>
-                <div className="app-wrapper-content">
-                    <Nav/>
-                    <div className="forBackColor">
-                        <Suspense fallback={<Preloader/>}>
-                            <Routes>
-                                <Route path='/Profile/*' element={<ProfileContainer/>}/>
-                                <Route path='/Dialogs/*' element={<DialogsContainer/>}/>
-                                <Route path='/Friends/*' element={<FriendsContainer/>}/>
-                                <Route path='/Users/*' element={<UsersContainer/>}/>
-                                <Route path='/News/*' element={<NewsContainer/>}/>
-                                <Route path='/Settings/*' element={<SettingsContainer/>}/>
-                                <Route path='/Login/*' element={<LoginPage/>}/>
-                                <Route path='/' element={<ProfileContainer/>} />
-                                <Route path='*' element={<Error />} />
-                            </Routes>
-                        </Suspense>
+                <div className="app-content">
+                    <div className="app-wrapper-content">
+                        <Nav/>
+                        <div className="main_content">
+                            <Suspense fallback={<Preloader/>}>
+                                <Routes>
+                                    <Route path='/Profile/*' element={<ProfileContainer/>}/>
+                                    <Route path='/Dialogs/*' element={<DialogsContainer/>}/>
+                                    <Route path='/Friends/*' element={<FriendsContainer/>}/>
+                                    <Route path='/Users/*' element={<UsersContainer/>}/>
+                                    <Route path='/News/*' element={<NewsContainer/>}/>
+                                    <Route path='/Settings/*' element={<SettingsContainer/>}/>
+                                    <Route path='/Login/*' element={<LoginPage/>}/>
+                                    <Route path='/' element={<ProfileContainer/>} />
+                                    <Route path='*' element={<Error />} />
+                                </Routes>
+                            </Suspense>
+                        </div>
                     </div>
                 </div>
 
