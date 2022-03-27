@@ -6,7 +6,7 @@ import React from "react";
 let ProfileDataEdit = ({profile, handleSubmit, error}) => {
     return (
         <form className={s.contacts} onSubmit={handleSubmit}>
-            <div><button>save</button></div>
+            <div><button className={s.contacts_buttonSave}>save</button></div>
             {error && <div className={s.formSummaryError }>
                 {error}
             </div>}

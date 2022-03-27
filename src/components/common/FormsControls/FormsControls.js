@@ -8,9 +8,8 @@ export const FormControl = ({input, meta, ...props}) => {
     return (
         <div className={s.formControl + " " + ( hasError ? s.error : "")}>
 
-            <div>
-                {props.children}
-            </div>
+            {props.children}
+
             { hasError && <span>{meta.error}</span> }
 
         </div>

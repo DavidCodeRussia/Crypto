@@ -31,7 +31,7 @@ const ProfileInfo = (props) => {
 
         return (
             <div className={s.contacts}>
-                <div><button onClick={() => {toEditMode(true)}}>edit</button></div>
+                <div><button className={s.contacts_buttonEdit} onClick={() => {toEditMode(true)}}>edit</button></div>
                 <div><b>Full name:</b> {props.profile.fullName}</div>
                 <div><b>Looking for a job:</b> {props.profile.lookingForAJob ? "yes" : "no"}</div>
                 <div><b>Description:</b> {props.profile.lookingForAJobDescription}</div>
@@ -42,7 +42,7 @@ const ProfileInfo = (props) => {
             </div>
         )
     }
-
+    
     return (
             <div className={s.profile}>
                 <div className={s.avatar}>

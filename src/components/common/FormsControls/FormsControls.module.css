@@ -1,3 +1,30 @@
+.form_main_login {
+    display: flex;
+    flex-direction: column;
+    width: 235px;
+}
+
+.container_for_buttons {
+    display: flex;
+}
+
+.checkbox_span { /* remember me */
+    margin: 0 0 0 5px;
+}
+
+.button_login { /*сама кнопка login*/
+    padding: 5px 15px;
+    background-color: #87a5d4;
+    border-radius: 5px;
+    border: none;
+    color: #fff;
+    margin: 0 0 0 50px;
+}
+
+.button_login:hover {
+    background-color: #4D6281;
+}
+
 .formControl.error textarea,
 .formControl.error input {
     border: 1px solid red;
@@ -8,6 +35,11 @@
     margin: 0 0 5px 0;
     border-radius: 5px;
     border: 1px solid #658576;
+    width: 220px;
+}
+
+.formControl input[type="checkbox"] {
+    width: 13px;
 }
 
 .formControl span {

@@ -7,3 +7,16 @@
     padding: 5px;
     color: red;
 }
+
+.contacts_buttonSave {
+    padding: 5px 15px;
+    background-color: #87a5d4;
+    border-radius: 5px;
+    border: none;
+    color: #fff;
+    margin: 0 0 0 10px;
+}
+
+.contacts_buttonSave:hover {
+    background-color: #4D6281;
+}
