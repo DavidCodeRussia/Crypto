@@ -30,7 +30,7 @@
 }
 
 .messageBody:nth-child(2) {
-   margin: 0 0 25px 550px;
+   margin: 0 0 25px 500px;
 }
 
 .messageBody:nth-child(3) {
@@ -38,7 +38,7 @@
 }
 
 .messageBody:nth-child(4) {
-    margin: 0 0 0 550px;
+    margin: 0 0 0 500px;
 }
 
 

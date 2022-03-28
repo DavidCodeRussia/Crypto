@@ -8,7 +8,7 @@ import {Textarea} from "../../common/FormsControls/FormsControls";
 const MyPosts = props => {
 
         let postsElements =
-            [...props.posts].reverse().map(p => <Post key={p.id} message={p.message} likes={p.likes}/>)
+            [...props.posts].reverse().map(p => <Post profile={props.profile} key={p.id} message={p.message} likes={p.likes}/>)
 
         let onAddPost = (values) => {
             props.addPost(values.NewPostBody)
