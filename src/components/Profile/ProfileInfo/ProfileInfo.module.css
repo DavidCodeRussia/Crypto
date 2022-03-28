@@ -1,5 +1,13 @@
 .profile {
     grid-area: p;
+    display: grid;
+    grid-template-areas:
+    "a s"
+    "a c"
+    "e c"
+    "e c";
+    grid-template-columns: 2fr 4fr;
+    grid-template-rows: 1fr 5fr;
     margin: 0;
     border-radius: 10px;
 }
@@ -8,6 +16,7 @@
     display: inline-block;
     margin: 0;
     padding: 0;
+    grid-area: a;
 }
 
 .avatar img {
@@ -15,6 +24,26 @@
     padding: 0;
     width: 230px;
     border-radius: 50%;
+}
+
+.editImg {
+    grid-area: e;
+    padding: 5px 15px;
+    background-color: #87a5d4;
+    border-radius: 5px;
+    border: none;
+    color: #fff;
+    margin: 0 0 0 15%;
+    width: 120px;
+    text-align: center;
+}
+
+.editImg:hover {
+    background-color: #4D6281;
+}
+
+.editImg input {
+   display: none;
 }
 
 .description {
@@ -28,14 +57,16 @@
 }
 
 .status {
-    margin-left: 10px;
+    grid-area: s;
+    margin: 20px 0 0 0;
 }
 
-.contacts {
-    margin-left: 10px;
+.information {
+    grid-area: c;
+    display: flex;
 }
 
-.contacts_buttonEdit {
+.information_buttonEdit {
     padding: 5px 15px;
     background-color: #87a5d4;
     border-radius: 5px;
@@ -44,6 +75,6 @@
     margin: 0 0 0 10px;
 }
 
-.contacts_buttonEdit:hover {
+.information_buttonEdit:hover {
     background-color: #4D6281;
 }

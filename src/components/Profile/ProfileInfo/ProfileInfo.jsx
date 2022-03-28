@@ -30,34 +30,43 @@ const ProfileInfo = (props) => {
     let ProfileData = () => {
 
         return (
-            <div className={s.contacts}>
-                <div><button className={s.contacts_buttonEdit} onClick={() => {toEditMode(true)}}>edit</button></div>
-                <div><b>Full name:</b> {props.profile.fullName}</div>
-                <div><b>Looking for a job:</b> {props.profile.lookingForAJob ? "yes" : "no"}</div>
-                <div><b>Description:</b> {props.profile.lookingForAJobDescription}</div>
-                <div><b>About me: </b>{props.profile.aboutMe}</div>
-                <div><b>Contacts:</b>{ Object.keys(props.profile.contacts).map(key => {
-                    return <Contact key={key} ContactTitle={key} ContactValue={props.profile.contacts[key]} />
-                }) }</div>
+            <div className={s.information}>
+                <div className={s.block1}>
+                    <div><b>Full name:</b> {props.profile.fullName}</div>
+                    <div><b>Looking for a job:</b> {props.profile.lookingForAJob ? "yes" : "no"}</div>
+                    <div><b>Description:</b> {props.profile.lookingForAJobDescription}</div>
+                    <div><b>About me: </b>{props.profile.aboutMe}</div>
+
+                    <div><b>Contacts:</b>{ Object.keys(props.profile.contacts).map(key => {
+                        return <Contact key={key} ContactTitle={key} ContactValue={props.profile.contacts[key]} />
+                    })                   }</div>
+                </div>
+                <div className={s.block2}>
+                    <div><button className={s.information_buttonEdit} onClick={() => {toEditMode(true)}}>edit</button></div>
+                </div>
             </div>
         )
     }
-    
+
     return (
             <div className={s.profile}>
                 <div className={s.avatar}>
                     <img src={props.profile.photos.large || "https://www.pngitem.com/pimgs/m/78-786293_1240-x-1240-0-avatar-profile-icon-png.png"} />
                 </div>
-                <div>
-                    {!props.match && <input type={"file"} onChange={getPhotoFromInput} />}
+                <div className={s.editImg}>
+                    {!props.match &&
+                        <label> Upload avatar
+                            <input type={"file"} accept=".png, .jpg, .jpeg, image/*" onChange={getPhotoFromInput} />
+                        </label>
+                    }
+                </div>
+                <div className={s.status}>
+                    <ProfileStatusWithHooks status={props.status} updateStatus={props.updateStatus} />
                 </div>
                 {editMode
                     ? <ProfileDataEditReduxForm onSubmit={onSubmit} toEditMode={toEditMode}
                                                       profile={props.profile} initialValues={props.profile} />
                     : <ProfileData />}
-                <div className={s.status}>
-                    <ProfileStatusWithHooks status={props.status} updateStatus={props.updateStatus} />
-                </div>
             </div>
     )
 

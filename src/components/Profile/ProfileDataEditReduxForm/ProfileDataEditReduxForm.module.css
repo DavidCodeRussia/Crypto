@@ -1,5 +1,6 @@
-.contacts {
-    margin-left: 10px;
+.information {
+    display: flex;
+    margin: 0 0 0 10px;
 }
 
 .formSummaryError {
@@ -8,15 +9,15 @@
     color: red;
 }
 
-.contacts_buttonSave {
+.information_buttonSave {
     padding: 5px 15px;
     background-color: #87a5d4;
     border-radius: 5px;
     border: none;
     color: #fff;
-    margin: 0 0 0 10px;
+    margin: 0 0 0 5px;
 }
 
-.contacts_buttonSave:hover {
+.information_buttonSave:hover {
     background-color: #4D6281;
 }
