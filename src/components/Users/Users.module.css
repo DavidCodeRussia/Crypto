@@ -15,3 +15,16 @@
 .user {
     margin-bottom: 10px;
 }
+
+.buttonFollowUnfollow button{
+    padding: 5px 15px;
+    background-color: #87a5d4;
+    border-radius: 5px;
+    border: none;
+    color: #fff;
+    margin: 5px 0;
+}
+
+.buttonFollowUnfollow button:hover {
+    background-color: #4D6281;
+}

@@ -56,7 +56,7 @@ const ProfileInfo = (props) => {
                 <div className={s.editImg}>
                     {!props.match &&
                         <label> Upload avatar
-                            <input type={"file"} accept=".png, .jpg, .jpeg, image/*" onChange={getPhotoFromInput} />
+                            <input type={"file"} accept=".png, .jpg, .jpeg" onChange={getPhotoFromInput} />
                         </label>
                     }
                 </div>

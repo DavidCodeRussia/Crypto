@@ -16,6 +16,21 @@
     vertical-align: middle;
 }
 
+.dialog {
+    padding-bottom: 10px;
+    text-align: center;
+    color: white;
+}
+
+.dialog .linka {
+    text-decoration: none;
+    color: #ffffff;
+}
+
+.dialog .linka:hover {
+    color: #000000;
+}
+
 
 
 

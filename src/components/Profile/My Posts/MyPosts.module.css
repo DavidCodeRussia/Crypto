@@ -5,3 +5,27 @@
 .post {
     margin: 20px 0;
 }
+
+.fieldPosts {
+    display: flex;
+}
+.nativeField {
+    border-radius: 5px;
+}
+
+.clearlyButton {
+    padding: 0 15px;
+    margin: 0 0 0 5px;
+    background-color: #87a5d4;
+    border-radius: 5px;
+    border: none;
+    color: #fff;
+}
+
+.clearlyButton:hover {
+    background-color: #4D6281;
+}
+
+/*------------------------------------------------*/
+
+

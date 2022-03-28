@@ -12,6 +12,10 @@
     border-radius: 10px;
 }
 
+.contacts {
+    margin: 0 0 0 5px;
+}
+
 .avatar {
     display: inline-block;
     margin: 0;
@@ -61,9 +65,15 @@
     margin: 20px 0 0 0;
 }
 
+
+
 .information {
     grid-area: c;
     display: flex;
+}
+
+.contactBio {
+    margin: 0 0 0 5px;
 }
 
 .information_buttonEdit {

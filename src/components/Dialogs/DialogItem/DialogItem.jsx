@@ -1,6 +1,5 @@
 import s from './DialogItem.module.css';
 import {NavLink} from "react-router-dom";
-import user from "../../../assets/images/user.png";
 
 const DialogItem = (props) => {
 
