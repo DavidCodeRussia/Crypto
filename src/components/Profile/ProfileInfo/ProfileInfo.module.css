@@ -8,8 +8,15 @@
     "e c";
     grid-template-columns: 2fr 4fr;
     grid-template-rows: 1fr 5fr;
-    margin: 0;
     border-radius: 10px;
+}
+
+@media (max-width: 900px) {
+    .profile {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
 }
 
 .contacts {
@@ -17,8 +24,7 @@
 }
 
 .avatar {
-    display: inline-block;
-    margin: 0;
+    margin: 0 15px 0 0;
     padding: 0;
     grid-area: a;
 }
@@ -42,6 +48,12 @@
     text-align: center;
 }
 
+@media (max-width: 600px) {
+    .editImg {
+        margin: 0;
+    }
+}
+
 .editImg:hover {
     background-color: #4D6281;
 }
@@ -62,7 +74,7 @@
 
 .status {
     grid-area: s;
-    margin: 20px 0 0 0;
+    margin: 20px 0 20px 0;
 }
 
 

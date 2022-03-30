@@ -1,4 +1,5 @@
 .dialogs {
+    padding: 10px;
     margin: 10px 0 0 10px;
 }
 
@@ -12,7 +13,6 @@
 .filesWithMessage {
     display: inline-block;
     margin-left: 10px;
-    vertical-align: top;
     color: #ffffff;
 }
 
@@ -26,19 +26,64 @@
 }
 
 .messageBody:nth-child(1) {
-    margin: 15px 0 25px 0;
+    margin: 15px 0 25px 25px;
 }
 
 .messageBody:nth-child(2) {
-   margin: 0 0 25px 500px;
+   margin: 0 0 25px 400px;
 }
 
 .messageBody:nth-child(3) {
-    margin: 0 0 25px 0;
+    margin: 0 0 25px 25px;
 }
 
 .messageBody:nth-child(4) {
-    margin: 0 0 0 500px;
+    margin: 0 0 0 400px;
+}
+
+@media(max-width: 1200px) {
+    .messageBody:nth-child(2) {
+        margin: 0 0 25px 370px;
+    }
+    .messageBody:nth-child(4) {
+        margin: 0 0 0 370px;
+    }
+}
+
+@media(max-width: 1120px) {
+    .containerDialogs {
+        display: flex;
+        border-right: none;
+        align-items: center;
+        margin: 0 0 0 70px;
+    }
+    .usersAvatar {
+        margin: 0 0 -190px 0;
+    }
+}
+
+@media(max-width: 1025px) {
+    .containerDialogs {
+        margin: 0 0 0 20px;
+    }
+}
+
+@media(max-width: 870px) {
+    .containerDialogs {
+        display: none;
+    }
+    .messageBody:nth-child(1) {
+        margin: 15px 0 25px 0;
+    }
+    .messageBody:nth-child(2) {
+        margin: 0 0 25px 150px;
+    }
+    .messageBody:nth-child(3) {
+        margin: 0 0 25px 0;
+    }
+    .messageBody:nth-child(4) {
+        margin: 0 0 0 150px;
+    }
 }
 
 

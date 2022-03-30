@@ -24,7 +24,7 @@ const Dialogs = (props) => {
             </div>
 
             <div className={s.filesWithMessage}>
-                <div>
+                <div className={s.usersAvatar}>
                     {messagesElements}
                 </div>
 

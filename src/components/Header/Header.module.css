@@ -4,15 +4,38 @@
     background-color: gray;
 }
 
+.header_menuButton {
+    display: none;
+}
+
 .firstSrc {
     margin: 0;
-    padding: 0 0 0 240px;
+    padding: 0 0 0 220px;
     height: 60px;
+}
+
+@media (max-width: 1200px) {
+    .firstSrc {
+        padding: 0 0 0 150px;
+    }
+}
+
+@media (max-width: 900px) {
+    .firstSrc {
+        padding: 0 0 0 90px;
+    }
+}
+
+@media (max-width: 600px) {
+    .firstSrc {
+        padding: 0 0 0 25px;
+    }
 }
 
 .loginBlock {
     float: right;
     padding: 10px 20px 10px 0;
+    margin: 5px 0 0 0;
 }
 
 .loginBlock a {

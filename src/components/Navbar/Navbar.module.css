@@ -1,13 +1,43 @@
 .nav {
-  width: 150px;
+  width: 125px;
   vertical-align: top;
   color: #ffa500;
   gria-area: n;
 }
 
+@media (max-width: 1200px) {
+  .nav {
+    width: 90px;
+    margin: 0 20px 0 0;
+  }
+}
+
+@media (max-width: 900px) {
+  .nav {
+    width: 90px;
+    margin: 0 50px 0 0;
+  }
+}
+
+@media (max-width: 530px) {
+  .nav {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: 1fr 1fr 1fr;
+    column-gap: 40px;
+    row-gap: 20px;
+    width: 90px;
+    margin: 0 0 10px -90px;
+  }
+  .item {
+    background-color: #516681;
+    border-radius: 2px;
+    width: 80px;
+  }
+}
+
 .item {
   padding: 10px 0;
-  border-radius: 10px;
 }
 
 .item:hover {
@@ -24,4 +54,6 @@
 .item a.active {
   color: gold;
 }
+
+
 

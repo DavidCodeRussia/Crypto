@@ -12,7 +12,7 @@ const AddMessageForm = (props) => {
             <div className={s.fieldPosts}>
                 <Field component={Textarea} name={"newMessageBody"}
                        validate={[required, maxLength100]} placeholder={"write message here"}
-                       style={{width: 550 + 'px'}} className={s.nativeField} />
+                       className={s.nativeField} />
                 <button className={s.clearlyButton}>Send</button>
             </div>
         </form>

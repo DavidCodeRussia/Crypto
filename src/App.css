@@ -1,5 +1,5 @@
 .app-wrapper {
-  width: 100%;
+  min-width: 100%;
   display: flex;
   flex-direction: column;
 }
@@ -25,4 +25,39 @@
   grid-area: p;
   margin: 0 0 0 -20px;
 }
+
+@media (max-width: 900px) {
+  .app-wrapper-content {
+    margin: 15px 0 15px 70px;
+  }
+  .main_content {
+    width: auto;
+  }
+}
+
+@media (max-width: 600px) {
+  .app-wrapper-content {
+    margin: 15px 0 15px 15px;
+  }
+  .main_content {
+    width: 350px;
+    margin: 0 0 0 5px;
+  }
+}
+
+@media (max-width: 530px) {
+  .app-wrapper-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 10px auto;
+  }
+  .main_content {
+    width: 260px;
+    padding: 0 10px;
+  }
+}
+
+
+
 
