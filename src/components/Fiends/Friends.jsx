@@ -4,7 +4,7 @@ import {withAuthNavigate} from "../../hoc/withAuthRedirect";
 const FriendsContainer = (props) => {
 
     return (
-        <div>friends</div>
+        <div>Oops. You have no friends. Sorry</div>
     )
 
 }

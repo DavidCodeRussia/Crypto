@@ -35,7 +35,7 @@ const AddPostForm = (props) => {
         <form className={s.fieldPosts} onSubmit={props.handleSubmit}>
             <Field name="NewPostBody" component={Textarea}
                    elementType={"input"} validate={[required, maxLengthCreator10]}
-                   placeholder={"Write your posts here"} className={s.nativeField} />
+                   placeholder={"Write your posts here"} className={s.nativeFieldProfile} />
             <button className={s.clearlyButton}>Add post</button>
         </form>
     )
