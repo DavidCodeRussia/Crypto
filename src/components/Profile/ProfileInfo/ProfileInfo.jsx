@@ -53,13 +53,13 @@ const ProfileInfo = (props) => {
                 <div className={s.avatar}>
                     <img src={props.profile.photos.large || "https://www.pngitem.com/pimgs/m/78-786293_1240-x-1240-0-avatar-profile-icon-png.png"} />
                 </div>
-                <div className={s.editImg}>
-                    {!props.match &&
+                {!props.match &&
+                    <div className={s.editImg}>
                         <label> Upload avatar
-                            <input type={"file"} accept=".png, .jpg, .jpeg" onChange={getPhotoFromInput} />
+                            <input type={"file"} accept=".png, .jpg, .jpeg" onChange={getPhotoFromInput}/>
                         </label>
-                    }
-                </div>
+                    </div>
+                }
                 <div className={s.status}>
                     <ProfileStatusWithHooks status={props.status} updateStatus={props.updateStatus} />
                 </div>

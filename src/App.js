@@ -13,8 +13,8 @@ import SettingsContainer from "./components/Settings/Settings";
 import FriendsContainer from "./components/Fiends/Friends";
 import Error from './components/error404/error'
 
-const ProfileContainer = React.lazy(() => import('./components/Profile/ProfileContainer.jsx'));
-const DialogsContainer = React.lazy(() => import('./components/Dialogs/DialogsContainer.jsx'));
+const ProfileContainer = React.lazy(() => import('./components/Profile/ProfileContainer.jsx')); // Ленивая загрузка
+const DialogsContainer = React.lazy(() => import('./components/Dialogs/DialogsContainer.jsx')); // Lazy download
 const UsersContainer = React.lazy(() => import('./components/Users/UsersContainer.jsx'));
 
 let App = (props) => {
