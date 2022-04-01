@@ -3,7 +3,7 @@ import {
     follow, requestUsers, onPage,
     toggleFollowingProgress,
     unfollow
-} from '../redux/users-reducer';
+} from '../../redux/users-reducer';
 import React, {useEffect} from 'react';
 import Users from './Users';
 import Preloader from "../common/preloader/Preloader";
@@ -11,7 +11,7 @@ import {
     getCurrentPage, getFollowingInProgress, getIsFetching,
     getPageSize, getTotalItemsCount,
     getUsers
-} from "../redux/users-selectors";
+} from "../../redux/users-selectors";
 import {compose} from "redux";
 import {withAuthNavigate} from "../../hoc/withAuthRedirect";
 
@@ -19,8 +19,8 @@ import {withAuthNavigate} from "../../hoc/withAuthRedirect";
 let UsersContainer = (props) => {
 
     useEffect(() => {
-    props.getUsers(props.currentPage, props.pageSize)
-}, [props.currentPage, props.pageSize])
+        props.getUsers(props.currentPage, props.pageSize)
+    },  [props.currentPage, props.pageSize])
 
     let onPageChanged = (pageNumber) => {
         props.onPage(pageNumber, props.pageSize)

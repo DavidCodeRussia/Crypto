@@ -6,7 +6,7 @@ import Footer from './components/Footer/Footer';
 import {Route, Routes} from 'react-router-dom';
 import LoginPage from "./components/Login/Login";
 import {connect} from "react-redux";
-import {initializeApp} from "./components/redux/app-reducer";
+import {initializeApp} from "./redux/app-reducer";
 import Preloader from "./components/common/preloader/Preloader";
 import NewsContainer from "./components/News/News";
 import SettingsContainer from "./components/Settings/Settings";

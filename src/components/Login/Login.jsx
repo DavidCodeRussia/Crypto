@@ -1,6 +1,6 @@
 import React from "react"
 import {connect} from "react-redux";
-import {login} from "../redux/auth-reducer";
+import {login} from "../../redux/auth-reducer";
 import {Navigate} from "react-router-dom";
 import {Field, reduxForm} from "redux-form";
 import {Input} from "../common/FormsControls/FormsControls";
