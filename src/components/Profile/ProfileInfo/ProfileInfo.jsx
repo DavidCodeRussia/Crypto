@@ -39,11 +39,13 @@ const ProfileInfo = (props) => {
 
                     <div><b>Contacts:</b>{ Object.keys(props.profile.contacts).map(key => {
                         return <Contact key={key} ContactTitle={key} ContactValue={props.profile.contacts[key]} />
-                    })                   }</div>
+                    })}</div>
                 </div>
+                {!props.match &&
                 <div className={s.block2}>
                     <div><button className={s.information_buttonEdit} onClick={() => {toEditMode(true)}}>edit</button></div>
                 </div>
+                }
             </div>
         )
     }

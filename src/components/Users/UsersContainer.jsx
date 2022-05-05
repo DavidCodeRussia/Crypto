@@ -57,6 +57,6 @@ let mapStateToProps = (state) => {
 
 export default compose(
     connect(mapStateToProps,{follow, unfollow, toggleFollowingProgress,
-        getUsers: requestUsers, onPage}),
+        getUsers: requestUsers, onPage}), // в mapDispatchToProps лежат action creator
     withAuthNavigate
 )(UsersContainer)
