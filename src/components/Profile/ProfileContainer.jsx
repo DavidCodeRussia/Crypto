@@ -24,7 +24,6 @@ let ProfileContainer = (props) => {
 }
 
 const ProfileURLMath = (props) => {
-
     const match = useMatch('/profile/:userId')
     return <ProfileContainer {...props} match={match} />
 }

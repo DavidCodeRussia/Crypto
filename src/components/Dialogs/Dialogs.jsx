@@ -2,7 +2,6 @@ import React from 'react';
 import s from './Dialogs.module.css';
 import DialogItem from "./DialogItem/DialogItem";
 import Message from "./Message/Message";
-import {Navigate} from "react-router-dom";
 import {AddMessageFormRedux} from "./AddMessageForm/AddMessageForm";
 
 const Dialogs = (props) => {
@@ -13,8 +12,6 @@ const Dialogs = (props) => {
     let addNewMessage = (values) => {
         props.sendMessage(values.newMessageBody)
     }
-
-    if(!props.isAuth) return <Navigate replace to="/Login" />
 
     return (
         <div className={s.dialogs}>

@@ -21,7 +21,7 @@ let reducers = combineReducers({
 
 
 const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
-const store = createStore(reducers, composeEnhancers(applyMiddleware(thunkMiddleware)));
+let store = createStore(reducers, composeEnhancers(applyMiddleware(thunkMiddleware)));
 
 // window.store = store // если раскоментировать, то сможем получить доступ к store из консоли браузера с помощью store.getState()
 

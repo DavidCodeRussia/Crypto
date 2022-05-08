@@ -1,7 +1,6 @@
 import {connect} from 'react-redux';
 import {
     follow, requestUsers, onPage,
-    toggleFollowingProgress,
     unfollow
 } from '../../redux/users-reducer';
 import React, {useEffect} from 'react';
@@ -33,11 +32,10 @@ let UsersContainer = (props) => {
                        pageSize={props.pageSize}
                        totalItemsCount={props.totalItemsCount}
                        currentPage={props.currentPage}
-                       followingInProgress={props.followingInProgress}
                        onPageChanged={onPageChanged}
                        follow={props.follow}
                        unfollow={props.unfollow}
-                       toggleFollowingProgress={props.toggleFollowingProgress}
+                       followingInProgress={props.followingInProgress}
                 />
             </>
         );
@@ -56,7 +54,6 @@ let mapStateToProps = (state) => {
 }
 
 export default compose(
-    connect(mapStateToProps,{follow, unfollow, toggleFollowingProgress,
-        getUsers: requestUsers, onPage}), // в mapDispatchToProps лежат action creator
+    connect(mapStateToProps,{follow, unfollow, getUsers: requestUsers, onPage}), // в mapDispatchToProps лежат action creator
     withAuthNavigate
 )(UsersContainer)
