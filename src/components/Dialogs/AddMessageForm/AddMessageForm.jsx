@@ -10,7 +10,7 @@ const AddMessageForm = (props) => {
     return (
         <form onSubmit={props.handleSubmit}>
             <div className={s.fieldPosts}>
-                <Field component={Textarea} name={"newMessageBody"}
+                <Field name={"newMessageBody"} component={Textarea}
                        validate={[required, maxLength100]} placeholder={"write message here"}
                        className={s.nativeField} />
                 <button className={s.clearlyButton}>Send</button>

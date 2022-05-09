@@ -63,7 +63,7 @@ const ProfileInfo = (props) => {
                     </div>
                 }
                 <div className={s.status}>
-                    <ProfileStatusWithHooks status={props.status} updateStatus={props.updateStatus} />
+                    <ProfileStatusWithHooks match={props.match} status={props.status} updateStatus={props.updateStatus} />
                 </div>
                 {editMode
                     ? <ProfileDataEditReduxForm onSubmit={onSubmit} toEditMode={toEditMode}

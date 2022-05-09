@@ -18,13 +18,12 @@ const MyPosts = props => {
             <div className={s.MyPosts}>
                 My Posts
                 <div className={s.post}>
-                    <AddPostFormRedux onSubmit={onAddPost}/>
+                    <AddPostFormRedux onSubmit={onAddPost} />
                 </div>
                 <div className={s.post}>
                     {postsElements}
                 </div>
             </div>
-
         )
 }
 
