@@ -1,4 +1,4 @@
-import s from "../common/FormsControls/FormsControls.module.css";
+import s from "../common/FormsControls/FormsControls.module.css"
 import {Field, reduxForm} from "redux-form";
 import {Input} from "../common/FormsControls/FormsControls";
 import {required} from "../../utils/validators/validators";
@@ -34,5 +34,4 @@ const LoginForm = (props) => {
 }
 
 const LoginReduxForm = reduxForm({form: 'login'})(LoginForm)
-
 export default LoginReduxForm

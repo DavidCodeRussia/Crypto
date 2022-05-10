@@ -2,7 +2,8 @@ import React from 'react';
 import s from './Dialogs.module.css';
 import DialogItem from "./DialogItem/DialogItem";
 import Message from "./Message/Message";
-import {AddMessageFormRedux} from "./AddMessageForm/AddMessageForm";
+import AddMessageForm from "./AddMessageForm/AddMessageForm";
+
 
 const Dialogs = (props) => {
 
@@ -26,7 +27,7 @@ const Dialogs = (props) => {
                 </div>
 
                 <div className={s.forDisplayTable}>
-                    <AddMessageFormRedux onSubmit={addNewMessage} />
+                    <AddMessageForm onSubmit={addNewMessage} />
                 </div>
             </div>
         </div>
