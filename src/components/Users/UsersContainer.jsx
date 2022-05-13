@@ -22,7 +22,7 @@ let UsersContainer = (props) => {
     },  [props.currentPage, props.pageSize])
 
     let onPageChanged = (pageNumber) => {
-        props.onPage(pageNumber, props.pageSize)
+        props.onPage(pageNumber, props.pageSize) // pageNumber - номер текущей страницы, props.pageSize - кол-во юзеров 5 или 10
     }
 
         return (

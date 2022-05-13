@@ -8,7 +8,7 @@ let Users = (props) => {
     return (
         <div className={s.UsersComponent}>
             <Paginator totalItemsCount={props.totalItemsCount} pageSize={props.pageSize}
-                       currentPage={props.currentPage} амChanged={props.onPageChanged} />
+                       currentPage={props.currentPage} onPageChanged={props.onPageChanged} />
             {
                 props.users.map(u => <div key={u.id} className={s.user}>
                     <span>

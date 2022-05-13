@@ -19,6 +19,7 @@ let initialState = {
 
 const usersReducer = (state = initialState, action) => {
     switch(action.type) {
+
         case FOLLOW:
 
             return {
@@ -84,6 +85,7 @@ export const requestUsers = (page, pageSize) => {
 
     return async (dispatch) => {
         dispatch(toggleIsFetching(true))
+        dispatch(setCurrentPage(page))
         let data = await usersAPI.getUsers(page, pageSize)
         dispatch(toggleIsFetching(false))
         dispatch(setUsers(data.items))
@@ -91,7 +93,8 @@ export const requestUsers = (page, pageSize) => {
     }
 }
 
-export const onPage = (pageNumber, pageSize) => {
+export const onPage = (pageNumber, pageSize) => { // pageNumber - номер текущей страницы, props.pageSize - кол-во юзеров 5 или 10
+
     return async (dispatch) => {
         dispatch(setCurrentPage(pageNumber))
         dispatch(toggleIsFetching(true))
@@ -100,7 +103,6 @@ export const onPage = (pageNumber, pageSize) => {
 
         dispatch(toggleIsFetching(false))
         dispatch(setUsers(data.items))
-
     }
 }
 

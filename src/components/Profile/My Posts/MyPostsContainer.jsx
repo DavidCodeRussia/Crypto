@@ -4,6 +4,7 @@ import MyPosts from "./MyPosts";
 import {connect} from "react-redux";
 
 const ContainerDataPosts = (props) => {
+
     return (
         <MyPostsContainer/>
     )
