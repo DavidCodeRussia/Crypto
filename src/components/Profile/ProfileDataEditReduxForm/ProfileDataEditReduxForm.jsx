@@ -4,6 +4,7 @@ import {Input, Textarea} from "../../common/FormsControls/FormsControls";
 import React from "react";
 
 let ProfileDataEdit = ({profile, handleSubmit, error}) => {
+
     return (
         <form className={s.information} onSubmit={handleSubmit}>
             <div className={s.block1}>
@@ -28,7 +29,7 @@ let ProfileDataEdit = ({profile, handleSubmit, error}) => {
                 </div>
                 <div>
                         <b>Contacts:</b>{ Object.keys(profile.contacts).map(key => {
-                        return <div>
+                        return <div key={key}>
                             {key}: <Field key={key} placeholder={key} name={"contacts." + key} component={Input}/>
                         </div>
                     }) }

@@ -14,7 +14,7 @@ let ProfileContainer = (props) => {
 
         props.getUserProfile(userId)
         props.getStatus(userId)
-    })
+    }, [])
 
         return (
             <Profile profile={props.profile} status={props.status}

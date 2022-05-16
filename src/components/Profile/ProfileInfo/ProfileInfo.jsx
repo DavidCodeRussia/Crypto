@@ -3,6 +3,7 @@ import s from './ProfileInfo.module.css';
 import Preloader from "../../common/preloader/Preloader";
 import ProfileStatusWithHooks from ".././ProfileStatus/ProfileStatusWithHooks"
 import ProfileDataEditReduxForm from "../ProfileDataEditReduxForm/ProfileDataEditReduxForm";
+import ProfileData from "../ProfileData/ProfileData";
 
 const ProfileInfo = (props) => {
 
@@ -18,36 +19,9 @@ const ProfileInfo = (props) => {
         }
     }
 
-    let Contact = ({ContactTitle, ContactValue}) => {
-        return <div className={s.contacts}>{ContactTitle} {ContactValue}</div>
-    }
-
     let onSubmit = (formData) => {
         props.saveDataProfile(formData)
             .then( () => {toEditMode(false)} )
-    }
-
-    let ProfileData = () => {
-
-        return (
-            <div className={s.information}>
-                <div className={s.block1}>
-                    <div><b>Full name:</b> {props.profile.fullName}</div>
-                    <div><b>Looking for a job:</b> {props.profile.lookingForAJob ? "yes" : "no"}</div>
-                    <div><b>Description:</b> {props.profile.lookingForAJobDescription}</div>
-                    <div><b>About me: </b>{props.profile.aboutMe}</div>
-
-                    <div><b>Contacts:</b>{ Object.keys(props.profile.contacts).map(key => {
-                        return <Contact key={key} ContactTitle={key} ContactValue={props.profile.contacts[key]} />
-                    })}</div>
-                </div>
-                {!props.match &&
-                <div className={s.block2}>
-                    <div><button className={s.information_buttonEdit} onClick={() => {toEditMode(true)}}>edit</button></div>
-                </div>
-                }
-            </div>
-        )
     }
 
     return (
@@ -68,7 +42,8 @@ const ProfileInfo = (props) => {
                 {editMode
                     ? <ProfileDataEditReduxForm onSubmit={onSubmit} toEditMode={toEditMode}
                                                       profile={props.profile} initialValues={props.profile} />
-                    : <ProfileData />}
+                    : <ProfileData profile={props.profile} toEditMode={toEditMode}
+                                   match={props.match} />}
             </div>
     )
 
