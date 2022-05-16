@@ -66,6 +66,7 @@ export const logout = () => async (dispatch) => {
 export const getCaptchaSuccess = () => async (dispatch) => {
     const response = await captchaAPI.getCaptcha()
     let captcha = response.data.url
+
     dispatch(getCaptcha(captcha))
 }
 

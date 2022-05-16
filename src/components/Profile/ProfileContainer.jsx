@@ -9,12 +9,11 @@ import {withAuthNavigate} from "../../hoc/withAuthRedirect";
 
 let ProfileContainer = (props) => {
 
+    let userId = props.match ? props.match.params.userId : props.authorizedUserId;
     useEffect(() => {
-        let userId = props.match ? props.match.params.userId : props.authorizedUserId;
-
         props.getUserProfile(userId)
         props.getStatus(userId)
-    }, [])
+    }, [userId])
 
         return (
             <Profile profile={props.profile} status={props.status}
