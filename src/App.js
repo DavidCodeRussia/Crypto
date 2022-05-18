@@ -3,7 +3,7 @@ import './App.css';
 import HeaderContainer from './components/Header/HeaderContainer';
 import Nav from './components/Navbar/Navbar';
 import Footer from './components/Footer/Footer';
-import {Route, Routes} from 'react-router-dom';
+import {Navigate, Route, Routes} from 'react-router-dom';
 import LoginPage from "./components/Login/Login";
 import {connect} from "react-redux";
 import {initializeApp} from "./redux/app-reducer";
@@ -11,7 +11,6 @@ import Preloader from "./components/common/preloader/Preloader";
 import NewsContainer from "./components/News/News";
 import SettingsContainer from "./components/Settings/Settings";
 import FriendsContainer from "./components/Fiends/Friends";
-import Error from './components/error404/error'
 
 const ProfileContainer = React.lazy(() => import('./components/Profile/ProfileContainer.jsx')); // Ленивая загрузка
 const DialogsContainer = React.lazy(() => import('./components/Dialogs/DialogsContainer.jsx')); // Lazy download
@@ -43,8 +42,7 @@ let App = (props) => {
                                     <Route path='/News/*' element={<NewsContainer/>}/>
                                     <Route path='/Settings/*' element={<SettingsContainer/>}/>
                                     <Route path='/Login/*' element={<LoginPage/>}/>
-                                    <Route path='/' element={<ProfileContainer/>} />
-                                    <Route path='*' element={<Error />} />
+                                    <Route path='*' element={ <Navigate to="/Profile" replace /> } />
                                 </Routes>
                             </Suspense>
                         </div>
