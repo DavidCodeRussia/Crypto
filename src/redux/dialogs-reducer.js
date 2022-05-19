@@ -6,7 +6,7 @@ let initialState = {
         {id: 2, name: 'Katya'},
         {id: 3, name: 'Vanya'},
         {id: 4, name: 'Magomed'},
-        {id: 5, name: 'Natali'},
+        {id: 5, name: 'Katysha'},
         {id: 6, name: 'Eduard'},
         {id: 7, name: 'Sergey'}
     ],
