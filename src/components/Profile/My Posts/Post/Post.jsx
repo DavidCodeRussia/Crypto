@@ -6,6 +6,7 @@ const Post = (props) => {
     return (
         <div className={s.item}>
             <div className={s.imgMini}>
+                {/*<img src={ props.profile.photos.small || "https://upload.wikimedia.org/wikipedia/commons/thumb/5/59/User-avatar.svg/1024px-User-avatar.svg.png"} />*/}
                 <img src={"https://upload.wikimedia.org/wikipedia/commons/thumb/5/59/User-avatar.svg/1024px-User-avatar.svg.png"} />
             </div>
             <div className={s.post}>{props.message}</div>

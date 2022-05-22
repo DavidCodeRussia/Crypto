@@ -27,7 +27,7 @@ const ProfileInfo = (props) => {
     return (
             <div className={s.profile}>
                 <div className={s.avatar}>
-                    <img src={props.profile.photos.large || "https://www.pngitem.com/pimgs/m/78-786293_1240-x-1240-0-avatar-profile-icon-png.png"} />
+                    <img src={props.profile.photos.large || "https://upload.wikimedia.org/wikipedia/commons/thumb/5/59/User-avatar.svg/1024px-User-avatar.svg.png"} />
                 </div>
                 {!props.match &&
                     <div className={s.editImg}>

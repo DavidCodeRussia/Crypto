@@ -1,12 +1,13 @@
 .dialogs {
-    margin: 10px 0 0 10px;
+    margin: 0;
+    padding: 0;
 }
 
 .containerDialogs {
     display: inline-block;
     width: 160px;
     border-right: 1px solid black;
-    margin-bottom: 10px;
+    margin: 10px 0 10px 0;
 }
 
 .filesWithMessage {
@@ -16,7 +17,7 @@
 }
 
 .forDisplayTable {
-    margin-top: 300px;
+    margin-top: 180px;
 }
 
 .messageBody {

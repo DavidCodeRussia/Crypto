@@ -6,11 +6,12 @@ import {connect} from "react-redux";
 const ContainerDataPosts = (props) => {
 
     return (
-        <MyPostsContainer/>
+        <MyPostsContainer profile={props.profile} />
     )
 }
 
 let mapStateToProps = (state) => {
+
     return {
         posts: state.profilePage.posts,
         newPostText: state.profilePage.newPostText
