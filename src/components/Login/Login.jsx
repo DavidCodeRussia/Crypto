@@ -18,6 +18,9 @@ const Login = (props) => {
     return <div className={s.form}>
         <h1>Login</h1>
         <LoginReduxForm onSubmit={onSubmit} captcha={props.captcha} />
+        <div>
+            Don't have account yet ? Click here to <a href="https://social-network.samuraijs.com/signUp" className={s.button_sign_up}>Sign Up</a>
+        </div>
     </div>
 }
 
