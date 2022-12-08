@@ -1,5 +1,7 @@
+
+import { stopSubmit } from "redux-form";
+
 import {authAPI, captchaAPI} from '../API/api';
-import {stopSubmit} from 'redux-form'
 
 const SET_USER_DATA = 'auth-reducer/SET_USER_DATA'
 const GET_CAPTCHA = 'auth-reducer/GET_CAPTCHA'

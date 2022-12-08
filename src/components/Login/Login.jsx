@@ -1,9 +1,12 @@
 import React from "react"
 import {connect} from "react-redux";
+import { Navigate } from "react-router-dom";
+
 import {login} from "../../redux/auth-reducer";
-import {Navigate} from "react-router-dom";
-import s from "../common/FormsControls/FormsControls.module.css";
 import LoginReduxForm from "./LoginReduxForm";
+
+import s from "../common/FormsControls/FormsControls.module.css";
+
 
 const Login = (props) => {
 
