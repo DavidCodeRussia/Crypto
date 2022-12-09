@@ -1,0 +1,61 @@
+.header {
+  margin: 0;
+  padding: 0;
+  background-color: #87191f;
+
+  .firstSrc {
+    margin: 0;
+    padding: 0 0 0 220px;
+    height: 60px;
+  }
+  @media (max-width: 1200px) {
+    .firstSrc {
+      padding: 0 0 0 150px;
+    }
+  }
+
+  @media (max-width: 900px) {
+    .firstSrc {
+      padding: 0 0 0 90px;
+    }
+  }
+
+  @media (max-width: 600px) {
+    .firstSrc {
+      padding: 0 0 0 25px;
+    }
+  }
+
+  .loginBlock {
+    float: right;
+    padding: 10px 20px 10px 0;
+    margin: 5px 0 0 0;
+
+    .loginName {
+      color: #fff;
+
+      .logoutButton {
+        /*сама кнопка login*/
+        padding: 5px 15px;
+        background-color: #87a5d4;
+        border-radius: 5px;
+        border: none;
+        color: #fff;
+        margin: 0 0 0 5px;
+      }
+
+      .logoutButton:hover {
+        background-color: #4d6281;
+      }
+    }
+  }
+
+  .loginBlock a {
+    color: white;
+  }
+}
+
+.mainContent {
+  display: flex;
+  margin: 2% 15%;
+}

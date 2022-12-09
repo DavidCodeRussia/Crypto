@@ -1,0 +1,101 @@
+.profile {
+  display: grid;
+  grid-template-areas:
+    "a s"
+    "a c"
+    "e c"
+    "e c";
+  grid-template-columns: 4fr 3fr;
+  grid-template-rows: 1fr 5fr;
+  min-width: 100%;
+  background-color: #f59497;
+  border-radius: 10px;
+
+  .avatar {
+    margin: 0 15px 0 0;
+    padding: 0;
+    grid-area: a;
+  }
+
+  .avatar img {
+    margin: 10px 0 10px 10px;
+    padding: 0;
+    width: 230px;
+    border-radius: 50%;
+  }
+
+  .editImg {
+    grid-area: e;
+    padding: 5px 15px;
+    background-color: #87a5d4;
+    border-radius: 5px;
+    border: none;
+    color: #fff;
+    margin: 0 0 0 15%;
+    width: 120px;
+    text-align: center;
+  }
+
+  @media (max-width: 600px) {
+    .editImg {
+      margin: 0;
+    }
+  }
+
+  .editImg:hover {
+    background-color: #4d6281;
+  }
+
+  .editImg input {
+    display: none;
+  }
+
+  .status {
+    grid-area: s;
+    margin: 20px 0 20px 0;
+  }
+}
+
+@media (max-width: 900px) {
+  .profile {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+}
+
+.contacts {
+  margin: 0 0 0 5px;
+}
+
+.description {
+  display: inline-block;
+  margin: 10px 10px 10px 50px;
+  vertical-align: top;
+}
+
+.descriptionItem {
+  margin-bottom: 15px;
+}
+
+.information {
+  grid-area: c;
+  display: flex;
+}
+
+.contactBio {
+  margin: 0 0 0 5px;
+}
+
+.information_buttonEdit {
+  padding: 5px 15px;
+  background-color: #87a5d4;
+  border-radius: 5px;
+  border: none;
+  color: #fff;
+  margin: 0 0 0 10px;
+}
+
+.information_buttonEdit:hover {
+  background-color: #4d6281;
+}
