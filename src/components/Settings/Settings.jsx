@@ -1,12 +1,13 @@
-import s from './Settings.module.css';
-import React from "react";
-import {withAuthNavigate} from "../../hoc/withAuthRedirect";
+import { withAuthNavigate } from "../../hoc/withAuthRedirect";
+import WrapperForMain from "@components/common/WrapperForMain";
+import s from "./Settings.module.scss";
 
 const SettingsContainer = (props) => {
-
-    return (
-        <div className={s.SettingsFeed}>Settings</div>
-    )
-}
+  return (
+    <WrapperForMain>
+      <div className={s.SettingsFeed}>Settings</div>
+    </WrapperForMain>
+  );
+};
 
 export default withAuthNavigate(SettingsContainer);

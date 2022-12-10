@@ -1,6 +1,6 @@
 import MyPostsContainer from "./My Posts/MyPostsContainer";
 import ProfileInfo from "./ProfileInfo/ProfileInfo";
-import WrapperForMain from "../common/wrapperForMain/wrapperForMain";
+import WrapperForMain from "@components/common/WrapperForMain";
 
 import s from "./Profile.module.scss";
 
