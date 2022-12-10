@@ -1,9 +1,12 @@
 import MyPostsContainer from "./My Posts/MyPostsContainer";
 import ProfileInfo from "./ProfileInfo/ProfileInfo";
+import WrapperForMain from "../common/wrapperForMain/wrapperForMain";
+
+import s from "./Profile.module.scss";
 
 const Profile = (props) => {
   return (
-    <div>
+    <WrapperForMain>
       <ProfileInfo
         profile={props.profile}
         status={props.status}
@@ -14,7 +17,7 @@ const Profile = (props) => {
         saveDataProfile={props.saveDataProfile}
       />
       <MyPostsContainer profile={props.profile} />
-    </div>
+    </WrapperForMain>
   );
 };
 

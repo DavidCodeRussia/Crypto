@@ -1,0 +1,59 @@
+.MyPosts {
+  margin: 15px 0 0 0;
+  padding: 10px;
+  background-color: gray;
+  border-radius: 5px;
+
+  .post {
+    margin: 20px 0;
+
+    .fieldPosts {
+      display: flex;
+
+      .nativeFieldProfile {
+        width: 270px;
+      }
+      .clearlyButton {
+        padding: 0 15px;
+        margin: 0 0 0 5px;
+        background-color: #87a5d4;
+        border-radius: 5px;
+        border: none;
+        color: #fff;
+      }
+    }
+  }
+}
+
+.nativeField {
+  // поле для textarea в сообщениях
+  border-radius: 5px;
+  width: 450px;
+}
+
+.clearlyButton:hover {
+  background-color: #4d6281;
+}
+
+@media (max-width: 880px) {
+  .MyPosts {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  .nativeField {
+    border-radius: 5px;
+    width: 150px;
+  }
+  .nativeFieldProfile {
+    width: 200px;
+  }
+}
+
+@media (max-width: 530px) {
+  .nativeFieldProfile {
+    width: 150px;
+  }
+}
+
+/*------------------------------------------------*/

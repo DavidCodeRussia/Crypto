@@ -3,7 +3,7 @@ import { Outlet } from "react-router-dom";
 import Nav from "../Navbar/Navbar";
 import Footer from "../Footer/Footer";
 
-import s from "./Header.module.scss";
+import s from "./HeaderLayout.module.scss";
 
 const HeaderLayout = (props) => {
   return (
@@ -12,6 +12,7 @@ const HeaderLayout = (props) => {
         <img
           className={s.firstSrc}
           src="https://upload.wikimedia.org/wikipedia/commons/thumb/4/46/Bitcoin.svg/1024px-Bitcoin.svg.png"
+          alt=""
         />
         <div className={s.loginBlock}>
           {props.isAuth && (
