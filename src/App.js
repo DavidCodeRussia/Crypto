@@ -8,9 +8,9 @@ import HeaderContainer from "./components/Header/HeaderContainer";
 
 import Login from "./components/Login/Login";
 import Preloader from "./components/common/preloader/Preloader";
-import FriendsContainer from "./components/Fiends/Friends";
-import NewsContainer from "./components/News/News";
-import SettingsContainer from "./components/Settings/Settings";
+import FriendsContainer from "./components/Fiends";
+import NewsContainer from "./components/News";
+import SettingsContainer from "./components/Settings";
 
 import "./App.scss";
 

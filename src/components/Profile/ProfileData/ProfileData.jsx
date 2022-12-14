@@ -13,15 +13,12 @@ const ProfileData = (props) => {
 
   return (
     <div className={s.information}>
-      <div className={s.block1}>
-        <div>
-          <b>Full name:</b> {props.profile.fullName}
-        </div>
+      <div>
         <div>
           <b>Looking for a job:</b> {props.profile.lookingForAJob ? "yes" : "no"}
         </div>
         <div>
-          <b>Description:</b> {props.profile.lookingForAJobDescription}
+          <b>Birthday:</b> {props.profile.lookingForAJobDescription}
         </div>
         <div>
           <b>About me: </b>

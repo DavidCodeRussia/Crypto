@@ -1,7 +1,9 @@
+@import "../../../src/sass/variables.scss";
+
 .header {
   margin: 0;
   padding: 0;
-  background-color: #87191f;
+  background-color: $major_background;
 
   .firstSrc {
     margin: 0;
@@ -32,7 +34,7 @@
     margin: 5px 0 0 0;
 
     .loginName {
-      color: #fff;
+      color: $black;
 
       .logoutButton {
         /*сама кнопка login*/
@@ -59,4 +61,5 @@
   display: flex;
   justify-content: center;
   margin: 2% 15%;
+  min-height: 83%;
 }

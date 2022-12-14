@@ -1,6 +1,8 @@
 import React, { useEffect, useState } from "react";
 
-const ProfileStatusWithHooks = (props) => {
+import s from "./ProfileStatus.module.scss";
+
+const ProfileStatus = (props) => {
   let [editMode, setEditMode] = useState(false);
   let [status, setStatus] = useState(props.status);
 
@@ -23,20 +25,21 @@ const ProfileStatusWithHooks = (props) => {
 
   return (
     <div>
+      <div className={s.name}>{props.fullName}</div>
       {!editMode && (
-        <div>
-          <span onClick={activateMode}>
-            <b>Status:</b> {props.status || "empty status"}
+        <div className={s.wrapperStatus}>
+          <span className={s.status} onClick={activateMode}>
+            {props.status || ""}
           </span>
         </div>
       )}
       {editMode && !props.match && (
         <div>
-          <b>Status:</b> <input onChange={onStatusChange} value={status} onBlur={deactivateMode} autoFocus={true} />
+          <input onChange={onStatusChange} value={status} onBlur={deactivateMode} autoFocus={true} />
         </div>
       )}
     </div>
   );
 };
 
-export default ProfileStatusWithHooks;
+export default ProfileStatus;

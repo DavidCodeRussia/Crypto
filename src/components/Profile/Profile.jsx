@@ -1,8 +1,6 @@
 import MyPostsContainer from "./My Posts/MyPostsContainer";
-import ProfileInfo from "./ProfileInfo/ProfileInfo";
+import ProfileInfo from "./ProfileInfo";
 import WrapperForMain from "@components/common/WrapperForMain";
-
-import s from "./Profile.module.scss";
 
 const Profile = (props) => {
   return (

@@ -1,4 +1,8 @@
-.SettingsFeed {
-    display: inline-block;
-    color: white;
+@import "../../sass/variables.scss";
+
+.settings {
+  font-weight: 700;
+  font-size: 3.75rem;
+  line-height: 3.75rem;
+  height: 95%;
 }

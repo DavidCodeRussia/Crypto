@@ -1,8 +1,11 @@
+@import "../../../src/sass/variables.scss";
+
 .nav {
   width: 125px;
+  height: 100%;
   vertical-align: top;
   color: #ffa500;
-  background-color: #333333;
+  background-color: $major_background;
   border-radius: 5px;
   margin: 0 15px 0 0;
   gria-area: n;
@@ -13,13 +16,13 @@
   }
 
   .item:hover {
-    background-color: #516681;
+    background-color: $lighten_gray;
     border-radius: 5px;
   }
 
   .item a {
     display: flex;
-    color: #ffffff;
+    color: $black;
     text-decoration: none;
     justify-content: center;
   }

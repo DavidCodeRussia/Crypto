@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 
 import Preloader from "../../common/preloader/Preloader";
-import ProfileStatusWithHooks from ".././ProfileStatus/ProfileStatusWithHooks";
+import ProfileStatus from "../ProfileStatus";
 import ProfileDataEditReduxForm from "../ProfileDataEditReduxForm/ProfileDataEditReduxForm";
 import ProfileData from "../ProfileData/ProfileData";
 
@@ -36,6 +36,7 @@ const ProfileInfo = (props) => {
           }
         />
       </div>
+
       {!props.match && (
         <div className={s.editImg}>
           <label>
@@ -45,9 +46,16 @@ const ProfileInfo = (props) => {
           </label>
         </div>
       )}
+
       <div className={s.status}>
-        <ProfileStatusWithHooks match={props.match} status={props.status} updateStatus={props.updateStatus} />
+        <ProfileStatus
+          match={props.match}
+          status={props.status}
+          fullName={props.profile.fullName}
+          updateStatus={props.updateStatus}
+        />
       </div>
+
       {editMode ? (
         <ProfileDataEditReduxForm
           onSubmit={onSubmit}
