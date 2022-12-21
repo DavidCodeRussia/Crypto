@@ -1,0 +1,11 @@
+@import "@sass/variables.scss";
+
+.form_wrapper {
+  .form {
+    background-color: $gray;
+
+    .login {
+      color: rgb(46, 10, 252);
+    }
+  }
+}

@@ -1,4 +1,4 @@
-import { Outlet } from "react-router-dom";
+import { Outlet, useLocation } from "react-router-dom";
 
 import Nav from "../Navbar/Navbar";
 import Footer from "../Footer/Footer";
@@ -6,6 +6,10 @@ import Footer from "../Footer/Footer";
 import s from "./HeaderLayout.module.scss";
 
 const HeaderLayout = (props) => {
+  const location = useLocation();
+  const login = location?.pathname ?? null;
+  console.log("location", location);
+
   return (
     <>
       <header className={s.header}>
@@ -26,7 +30,7 @@ const HeaderLayout = (props) => {
         </div>
       </header>
       <div className={s.mainContent}>
-        <Nav />
+        {!login && <Nav />}
         <Outlet />
       </div>
 

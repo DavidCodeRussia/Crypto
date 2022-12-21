@@ -1,27 +1,16 @@
 import React from "react";
 import { Field, reduxForm } from "redux-form";
 
-import { Input } from "../common/FormsControls/FormsControls";
-import { required } from "../../utils/validators/validators";
+import { Input } from "../../common/FormsControls/FormsControls";
+import { required } from "../../../utils/validators/validators";
 
-import s from "../common/FormsControls/FormsControls.module.css";
+import s from "./LoginReduxForm.module.scss";
 
 const LoginForm = (props) => {
   return (
     <form className={s.form_main_login} onSubmit={props.handleSubmit}>
-      <Field
-        placeholder={"Email"}
-        name={"email"}
-        component={Input}
-        validate={[required]}
-      />
-      <Field
-        placeholder={"Password"}
-        name={"password"}
-        component={Input}
-        validate={[required]}
-        type={"password"}
-      />
+      <Field placeholder={"Email"} name={"email"} component={Input} validate={[required]} />
+      <Field placeholder={"Password"} name={"password"} component={Input} validate={[required]} type={"password"} />
 
       <div className={s.container_for_buttons}>
         <Field name={"rememberMe"} component={Input} type="checkbox" />
@@ -30,11 +19,7 @@ const LoginForm = (props) => {
           {props.captcha && (
             <div>
               <img src={props.captcha} />
-              <Field
-                placeholder={"captcha"}
-                name={"captcha"}
-                component={Input}
-              />
+              <Field placeholder={"captcha"} name={"captcha"} component={Input} />
             </div>
           )}
         </div>
