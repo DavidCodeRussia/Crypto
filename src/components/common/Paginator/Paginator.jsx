@@ -1,42 +1,75 @@
-import React, {useState} from 'react'
-import styles from './Paginator.module.css'
-import cn from 'classnames'
+import React, { useState } from "react";
+import cn from "classnames";
 
-let Paginator = ({totalItemsCount, pageSize, currentPage, onPageChanged, portionSize = 10}) => {
+import Stack from "@mui/material/Stack";
+import Button from "@mui/material/Button";
 
-    let pagesCount = Math.ceil(totalItemsCount / pageSize) // кол-во страниц
+import styles from "./Paginator.module.scss";
 
-    let pages = []
+let Paginator = ({ totalItemsCount, pageSize, currentPage, onPageChanged, portionSize = 10 }) => {
+  let pagesCount = Math.ceil(totalItemsCount / pageSize); // кол-во страниц
 
-    for(let i = 1; i <= pagesCount; i++) {
-        pages.push(i)
-    }
+  let pages = [];
 
-    let portionCount = pagesCount / portionSize // portionSize - кол-во кнопок которое видно на экране | portionCount - кол-во порций
-    let [portionNumber, setPortionNumber] = useState(1) // portionNumber - текущий номер страницы
-    let leftPortionPageNumber = (portionNumber - 1) * portionSize + 1 // portionSize - кол-во кнопок которое видно на экране
-    let rightPortionPageNumber = portionNumber * portionSize
+  for (let i = 1; i <= pagesCount; i++) {
+    pages.push(i);
+  }
 
-    return (
-        <div className={styles.pagination}>
-            { portionNumber > 1 &&
-                <button onClick={ () => {setPortionNumber(portionNumber - 1)} } className={styles.buttonPagin}>PREVIOUS</button>
-            }
+  let portionCount = pagesCount / portionSize; // portionSize - кол-во кнопок которое видно на экране | portionCount - кол-во порций
+  let [portionNumber, setPortionNumber] = useState(1); // portionNumber - текущий номер страницы
+  let leftPortionPageNumber = (portionNumber - 1) * portionSize + 1; // portionSize - кол-во кнопок которое видно на экране
+  let rightPortionPageNumber = portionNumber * portionSize;
 
-            {pages
-                .filter( p => p >= leftPortionPageNumber && p <= rightPortionPageNumber )
-                .map( p => {
-                return (
-                    <span className={ cn(styles.pageNumber, {[styles.selectedPage]: currentPage === p }) }
-                          key={p} onClick={ (e) => {onPageChanged(p)} }>{p}</span>
-                )
-            })}
-
-            { portionCount > portionNumber &&
-                <button onClick={ () => {setPortionNumber(portionNumber + 1)} } className={styles.buttonPagin}>NEXT</button>
-            }
+  return (
+    <div className={styles.pagination}>
+      {portionNumber > 1 && (
+        <div className={styles.buttonPagin}>
+          <Stack>
+            <Button
+              onClick={() => {
+                setPortionNumber(portionNumber - 1);
+              }}
+              variant="contained"
+            >
+              PREVIOUS
+            </Button>
+          </Stack>
         </div>
-    )
-}
+      )}
 
-export default Paginator
+      {pages
+        .filter((p) => p >= leftPortionPageNumber && p <= rightPortionPageNumber)
+        .map((p) => {
+          return (
+            <span
+              className={cn(styles.pageNumber, { [styles.selectedPage]: currentPage === p })}
+              key={p}
+              onClick={(e) => {
+                onPageChanged(p);
+              }}
+            >
+              {p}
+            </span>
+          );
+        })}
+
+      {portionCount > portionNumber && (
+        // <button onClick={ () => {setPortionNumber(portionNumber + 1)} } className={styles.buttonPagin}>NEXT</button>
+        <div className={styles.buttonPagin}>
+          <Stack>
+            <Button
+              onClick={() => {
+                setPortionNumber(portionNumber + 1);
+              }}
+              variant="contained"
+            >
+              NEXT
+            </Button>
+          </Stack>
+        </div>
+      )}
+    </div>
+  );
+};
+
+export default Paginator;

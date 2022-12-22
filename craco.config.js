@@ -5,6 +5,7 @@ module.exports = {
     alias: {
       "@components": path.resolve(__dirname, "src", "components"),
       "@sass": path.resolve(__dirname, "src", "sass"),
+      "@src": path.resolve(__dirname, "src"),
     },
   },
 };

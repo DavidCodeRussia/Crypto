@@ -1,4 +1,4 @@
-@import "../../../src/sass/variables.scss";
+@import "@sass/variables.scss";
 
 .nav {
   width: 125px;
@@ -28,7 +28,7 @@
   }
 
   .item a.active {
-    color: gold;
+    color: $gold;
   }
 
   @media (max-width: 1200px) {

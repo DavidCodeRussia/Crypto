@@ -1,11 +1,28 @@
 @import "@sass/variables.scss";
 
 .form_wrapper {
+  margin: auto;
+  width: 41%;
+
   .form {
-    background-color: $gray;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    background-color: $major_background;
+    border: 1px solid $gray;
+    border-radius: 5px;
+    padding: 15px;
 
     .login {
-      color: rgb(46, 10, 252);
+      font-size: 32px;
+      line-height: 28px;
+      text-align: center;
+      margin: 0 0 10px 0;
+    }
+    .link_reg {
+      color: $dark_blue;
+      text-decoration: none;
     }
   }
 }

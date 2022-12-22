@@ -13,9 +13,9 @@ import SettingsContainer from "@components/Settings";
 
 import "./App.scss";
 
-const ProfileContainer = React.lazy(() => import("./components/Profile/ProfileContainer.jsx")); // Ленивая загрузка
-const DialogsContainer = React.lazy(() => import("./components/Dialogs/DialogsContainer.jsx")); // Lazy download
-const UsersContainer = React.lazy(() => import("./components/Users/UsersContainer.jsx"));
+const ProfileContainer = React.lazy(() => import("@components/Profile/ProfileContainer.jsx")); // Ленивая загрузка
+const DialogsContainer = React.lazy(() => import("@components/Dialogs/DialogsContainer.jsx")); // Lazy download
+const UsersContainer = React.lazy(() => import("@components/Users/UsersContainer.jsx"));
 
 let App = (props) => {
   useEffect(() => {

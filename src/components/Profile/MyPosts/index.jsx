@@ -4,6 +4,8 @@ import { Field, reduxForm } from "redux-form";
 import { maxLengthCreator } from "../../../utils/validators/validators";
 import { Textarea } from "../../common/FormsControls/FormsControls";
 
+import Stack from "@mui/material/Stack";
+import Button from "@mui/material/Button";
 import Post from "./Post/Post";
 
 import s from "./MyPosts.module.scss";
@@ -41,7 +43,11 @@ const AddPostForm = (props) => {
         placeholder={"Write your posts here"}
         className={s.nativeFieldProfile}
       />
-      <button className={s.clearlyButton}>Add post</button>
+      <Stack>
+        <Button type="submit" variant="contained">
+          Add post
+        </Button>
+      </Stack>
     </form>
   );
 };

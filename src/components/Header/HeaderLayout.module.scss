@@ -1,59 +1,64 @@
 @import "../../../src/sass/variables.scss";
 
 .header {
+  display: flex;
+  justify-content: space-between;
+
+  min-height: 60px;
   margin: 0;
   padding: 0;
   background-color: $major_background;
 
-  .firstSrc {
-    margin: 0;
-    padding: 0 0 0 220px;
-    height: 60px;
-  }
-  @media (max-width: 1200px) {
-    .firstSrc {
-      padding: 0 0 0 150px;
-    }
-  }
+  .wrapper_logo {
+    display: flex;
+    align-items: center;
 
-  @media (max-width: 900px) {
-    .firstSrc {
-      padding: 0 0 0 90px;
+    .logo {
+      margin: 0;
+      padding: 0 5px 0 220px;
+      height: 60px;
     }
-  }
 
-  @media (max-width: 600px) {
-    .firstSrc {
-      padding: 0 0 0 25px;
+    @media (max-width: 1200px) {
+      .logo {
+        padding: 0 0 0 150px;
+      }
+    }
+
+    @media (max-width: 900px) {
+      .logo {
+        padding: 0 0 0 90px;
+      }
+    }
+
+    @media (max-width: 600px) {
+      .logo {
+        padding: 0 0 0 25px;
+      }
+    }
+
+    .title {
+      font-size: 32px;
+      line-height: 28px;
+      font-weight: 700;
     }
   }
 
   .loginBlock {
     float: right;
-    padding: 10px 20px 10px 0;
-    margin: 5px 0 0 0;
+    padding: 15px 20px 10px 0;
 
     .loginName {
+      display: flex;
+      align-items: center;
+
       color: $black;
+      font-weight: 700;
 
-      .logoutButton {
-        /*сама кнопка login*/
-        padding: 5px 15px;
-        background-color: #87a5d4;
-        border-radius: 5px;
-        border: none;
-        color: #fff;
-        margin: 0 0 0 5px;
-      }
-
-      .logoutButton:hover {
-        background-color: #4d6281;
+      .login {
+        margin: 0 10px 0 0;
       }
     }
-  }
-
-  .loginBlock a {
-    color: white;
   }
 }
 
@@ -61,5 +66,5 @@
   display: flex;
   justify-content: center;
   margin: 2% 15%;
-  min-height: 83%;
+  height: 100vh;
 }

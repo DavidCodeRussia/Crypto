@@ -1,5 +1,9 @@
 import React, { useState } from "react";
 
+import Button from "@mui/material/Button";
+import IconButton from "@mui/material/IconButton";
+import Stack from "@mui/material/Stack";
+
 import Preloader from "../../common/preloader/Preloader";
 import ProfileStatus from "../ProfileStatus";
 import ProfileDataEditReduxForm from "../ProfileDataEditReduxForm/ProfileDataEditReduxForm";
@@ -34,17 +38,17 @@ const ProfileInfo = (props) => {
             props.profile.photos.large ||
             "https://upload.wikimedia.org/wikipedia/commons/thumb/5/59/User-avatar.svg/1024px-User-avatar.svg.png"
           }
+          alt="default user avatar"
         />
       </div>
 
       {!props.match && (
-        <div className={s.editImg}>
-          <label>
-            {" "}
-            Upload avatar
-            <input type={"file"} accept=".png, .jpg, .jpeg" onChange={getPhotoFromInput} />
-          </label>
-        </div>
+        <Stack className={s.uploadBtn} direction="row" alignItems="center" spacing={2}>
+          <Button onChange={getPhotoFromInput} variant="contained" component="label">
+            Upload
+            <input hidden accept="image/*" multiple type="file" />
+          </Button>
+        </Stack>
       )}
 
       <div className={s.status}>

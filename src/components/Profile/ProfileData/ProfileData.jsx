@@ -1,6 +1,9 @@
 import React from "react";
 
-import s from "../ProfileInfo/ProfileInfo.module.scss";
+import Stack from "@mui/material/Stack";
+import Button from "@mui/material/Button";
+
+import s from "./ProfileData.module.scss";
 
 const ProfileData = (props) => {
   let Contact = ({ ContactTitle, ContactValue }) => {
@@ -35,14 +38,15 @@ const ProfileData = (props) => {
       {!props.match && (
         <div className={s.block2}>
           <div>
-            <button
-              className={s.information_buttonEdit}
+            <Stack
               onClick={() => {
                 props.toEditMode(true);
               }}
             >
-              edit
-            </button>
+              <Button size="small" variant="contained">
+                Edit
+              </Button>
+            </Stack>
           </div>
         </div>
       )}

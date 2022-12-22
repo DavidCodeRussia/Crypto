@@ -1,7 +1,12 @@
-import s from "./ProfileDataEditReduxForm.module.css";
+import React from "react";
+
+import Stack from "@mui/material/Stack";
+import Button from "@mui/material/Button";
+
 import { Field, reduxForm } from "redux-form";
 import { Input, Textarea } from "../../common/FormsControls/FormsControls";
-import React from "react";
+
+import s from "./ProfileDataEditReduxForm.module.css";
 
 let ProfileDataEdit = ({ profile, handleSubmit, error }) => {
   return (
@@ -37,7 +42,11 @@ let ProfileDataEdit = ({ profile, handleSubmit, error }) => {
       </div>
       <div className={s.block2}>
         <div>
-          <button className={s.information_buttonSave}>save</button>
+          <Stack>
+            <Button size="small" variant="contained" type="submit">
+              Save
+            </Button>
+          </Stack>
         </div>
       </div>
     </form>

@@ -9,11 +9,15 @@ body {
 *::after {
   margin: 0;
   padding: 0;
+  box-sizing: border-box;
 }
 
 body {
   margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, "Lato", sans-serif;
+  // font-family: -apple-system, BlinkMacSystemFont, "Lato", sans-serif;
+  // font-family: -apple-system, sohne, "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-family: "IBM Plex Sans", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial,
+    sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
   font-size: 16px;
   line-height: 18px;
   -webkit-font-smoothing: antialiased;

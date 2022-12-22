@@ -13,44 +13,30 @@
   background-color: $major_background;
   border-radius: 10px;
   padding: 10px;
+  transition: 0.5s ease-out;
 
   .avatar {
     margin: 0 15px 0 0;
     padding: 0;
     grid-area: a;
-  }
 
-  .avatar img {
-    margin: 5% 5% 0 5%;
-    padding: 0;
-    width: 230px;
-    border-radius: 50%;
-  }
-
-  .editImg {
-    grid-area: e;
-    padding: 5px 15px;
-    background-color: #87a5d4;
-    border-radius: 5px;
-    border: none;
-    color: #fff;
-    margin: 0 0 0 14%;
-    width: 120px;
-    text-align: center;
-  }
-
-  @media (max-width: 600px) {
-    .editImg {
-      margin: 0;
+    img {
+      margin: 5% 5% 0 5%;
+      padding: 0;
+      width: 230px;
+      border-radius: 50%;
     }
   }
 
-  .editImg:hover {
-    background-color: #4d6281;
-  }
+  .uploadBtn {
+    margin: 0 0 0 19%;
 
-  .editImg input {
-    display: none;
+    @media (max-width: 1400px) {
+      margin: 0 0 0 21%;
+    }
+    @media (max-width: 992px) {
+      margin: 0 0 0 31%;
+    }
   }
 
   .status {
@@ -59,16 +45,12 @@
   }
 }
 
-@media (max-width: 900px) {
+@media (max-width: 992px) {
   .profile {
     display: flex;
     flex-direction: column;
     align-items: center;
   }
-}
-
-.contacts {
-  margin: 0 0 0 5px;
 }
 
 .description {
@@ -81,29 +63,6 @@
   margin-bottom: 15px;
 }
 
-.information {
-  grid-area: c;
-  display: flex;
-  align-items: end;
-}
-
 .contactBio {
   margin: 0 0 0 5px;
-}
-
-.block2 {
-  align-self: center;
-}
-
-.information_buttonEdit {
-  padding: 5px 15px;
-  background-color: #87a5d4;
-  border-radius: 5px;
-  border: none;
-  color: #fff;
-  margin: 0 0 0 10px;
-}
-
-.information_buttonEdit:hover {
-  background-color: #4d6281;
 }

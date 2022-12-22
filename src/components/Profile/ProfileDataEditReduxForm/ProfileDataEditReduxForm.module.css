@@ -1,23 +1,11 @@
 .information {
-    display: flex;
-    margin: 0 0 0 10px;
+  grid-area: c;
+  display: flex;
+  margin: 0 0 0 10px;
 }
 
 .formSummaryError {
-    border: 1px solid red;
-    padding: 5px;
-    color: red;
-}
-
-.information_buttonSave {
-    padding: 5px 15px;
-    background-color: #87a5d4;
-    border-radius: 5px;
-    border: none;
-    color: #fff;
-    margin: 0 0 0 5px;
-}
-
-.information_buttonSave:hover {
-    background-color: #4D6281;
+  border: 1px solid red;
+  padding: 5px;
+  color: red;
 }

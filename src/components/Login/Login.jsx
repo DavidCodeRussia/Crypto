@@ -19,14 +19,23 @@ const Login = (props) => {
   return (
     <div className={s.form_wrapper}>
       <div className={s.form}>
-        <h1 className={s.login}>Login</h1>
+        <h1 className={s.login}>
+          Login
+          <br />
+          to
+          <br />
+          Cryptoella
+        </h1>
         <LoginReduxForm onSubmit={onSubmit} captcha={props.captcha} />
-        <div>
-          Don't have account yet ? Click here to{" "}
-          <a href="https://social-network.samuraijs.com/signUp" className={s.button_sign_up}>
-            Sign Up
-          </a>
-        </div>
+
+        {!props.captcha && (
+          <div>
+            Don't have account yet ? Click here to{" "}
+            <a href="https://social-network.samuraijs.com/signUp" className={s.link_reg}>
+              Sign Up
+            </a>
+          </div>
+        )}
       </div>
     </div>
   );
