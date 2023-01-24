@@ -3,6 +3,7 @@ import { Field, reduxForm } from "redux-form";
 
 import { maxLengthCreator } from "../../../utils/validators/validators";
 import { Textarea } from "../../common/FormsControls/FormsControls";
+import { TAddPost } from "../types";
 
 import Stack from "@mui/material/Stack";
 import Button from "@mui/material/Button";
@@ -38,7 +39,7 @@ const AddPostForm = (props) => {
       <Field
         name="NewPostBody"
         component={Textarea}
-        elementType={"input"}
+        elementtype={"input"}
         validate={maxLengthCreator10}
         placeholder={"Write your posts here"}
         className={s.nativeFieldProfile}

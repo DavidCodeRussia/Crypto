@@ -4,20 +4,20 @@ import { connect } from "react-redux";
 
 import { initializeApp } from "./redux/app-reducer";
 
-import HeaderContainer from "@components/Header/HeaderContainer";
-import Login from "@components/Login/Login";
-import Preloader from "@components/common/preloader/Preloader";
-import FriendsContainer from "@components/Fiends";
-import NewsContainer from "@components/News";
-import SettingsContainer from "@components/Settings";
+import HeaderContainer from "./components/Header/HeaderContainer";
+import Login from "./components/Login/Login";
+import Preloader from "./components/common/preloader/Preloader";
+import FriendsContainer from "./components/Fiends";
+import NewsContainer from "./components/News";
+import SettingsContainer from "./components/Settings";
 
 import "./App.scss";
 
-const ProfileContainer = React.lazy(() => import("@components/Profile/ProfileContainer.jsx")); // Ленивая загрузка
-const DialogsContainer = React.lazy(() => import("@components/Dialogs/DialogsContainer.jsx")); // Lazy download
-const UsersContainer = React.lazy(() => import("@components/Users/UsersContainer.jsx"));
+const ProfileContainer = React.lazy(() => import("./components/Profile/ProfileContainer.jsx")); // Ленивая загрузка
+const DialogsContainer = React.lazy(() => import("./components/Dialogs/DialogsContainer.jsx")); // Lazy download
+const UsersContainer = React.lazy(() => import("./components/Users/UsersContainer.jsx"));
 
-let App = (props) => {
+let App = (props: any) => {
   useEffect(() => {
     props.initializeApp();
   });
@@ -47,7 +47,7 @@ let App = (props) => {
   );
 };
 
-const mapStateToProps = (state) => ({
+const mapStateToProps = (state: any) => ({
   initialized: state.app.initialized,
 });
 

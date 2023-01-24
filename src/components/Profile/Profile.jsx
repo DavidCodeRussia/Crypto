@@ -1,4 +1,4 @@
-import MyPostsContainer from "./MyPosts/MyPostsContainer/MyPostsContainer";
+import MyPostsContainer from "./MyPosts/MyPostsContainer";
 import ProfileInfo from "./ProfileInfo";
 import WrapperForMain from "@components/common/WrapperForMain";
 
