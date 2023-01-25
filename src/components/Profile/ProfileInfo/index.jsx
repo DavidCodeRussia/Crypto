@@ -1,7 +1,6 @@
 import React, { useState } from "react";
 
 import Button from "@mui/material/Button";
-import IconButton from "@mui/material/IconButton";
 import Stack from "@mui/material/Stack";
 
 import Preloader from "../../common/preloader/Preloader";

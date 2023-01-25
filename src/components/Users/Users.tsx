@@ -2,15 +2,17 @@ import React from "react";
 
 import { NavLink } from "react-router-dom";
 
-import Paginator from "../common/Paginator/Paginator.jsx";
-import WrapperForMain from "@components/common/WrapperForMain";
+import { defaultAvatar } from "../../constants/constants";
+import { TUsersProps } from "./types";
+
+import Paginator from "../common/Paginator";
+import WrapperForMain from "../common/WrapperForMain";
 import Stack from "@mui/material/Stack";
 import Button from "@mui/material/Button";
-import { defaultAvatar } from "@src/constants/constants.js";
 
 import s from "./Users.module.scss";
 
-let Users = (props) => {
+let Users: React.FC<TUsersProps> = (props) => {
   return (
     <WrapperForMain>
       <div className={s.UsersComponent}>
@@ -39,8 +41,7 @@ let Users = (props) => {
                         props.unfollow(u.id);
                       }}
                       type="submit"
-                      variant="contained"
-                    >
+                      variant="contained">
                       Unfollow
                     </Button>
                   </Stack>
@@ -52,8 +53,7 @@ let Users = (props) => {
                         props.follow(u.id);
                       }}
                       type="submit"
-                      variant="contained"
-                    >
+                      variant="contained">
                       Follow
                     </Button>
                   </Stack>

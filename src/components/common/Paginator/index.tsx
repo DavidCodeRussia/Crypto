@@ -1,12 +1,20 @@
 import React, { useState } from "react";
 import cn from "classnames";
 
+import { TProps } from "./type";
+
 import Stack from "@mui/material/Stack";
 import Button from "@mui/material/Button";
 
 import styles from "./Paginator.module.scss";
 
-let Paginator = ({ totalItemsCount, pageSize, currentPage, onPageChanged, portionSize = 10 }) => {
+let Paginator: React.FC<TProps> = ({
+  totalItemsCount,
+  pageSize,
+  currentPage,
+  onPageChanged,
+  portionSize = 10,
+}) => {
   let pagesCount = Math.ceil(totalItemsCount / pageSize); // кол-во страниц
 
   let pages = [];
@@ -29,8 +37,7 @@ let Paginator = ({ totalItemsCount, pageSize, currentPage, onPageChanged, portio
               onClick={() => {
                 setPortionNumber(portionNumber - 1);
               }}
-              variant="contained"
-            >
+              variant="contained">
               PREVIOUS
             </Button>
           </Stack>
@@ -46,8 +53,7 @@ let Paginator = ({ totalItemsCount, pageSize, currentPage, onPageChanged, portio
               key={p}
               onClick={(e) => {
                 onPageChanged(p);
-              }}
-            >
+              }}>
               {p}
             </span>
           );
@@ -61,8 +67,7 @@ let Paginator = ({ totalItemsCount, pageSize, currentPage, onPageChanged, portio
               onClick={() => {
                 setPortionNumber(portionNumber + 1);
               }}
-              variant="contained"
-            >
+              variant="contained">
               NEXT
             </Button>
           </Stack>

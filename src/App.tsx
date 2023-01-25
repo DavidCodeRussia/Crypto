@@ -15,7 +15,7 @@ import "./App.scss";
 
 const ProfileContainer = React.lazy(() => import("./components/Profile/ProfileContainer.jsx")); // Ленивая загрузка
 const DialogsContainer = React.lazy(() => import("./components/Dialogs/DialogsContainer.jsx")); // Lazy download
-const UsersContainer = React.lazy(() => import("./components/Users/UsersContainer.jsx"));
+const UsersContainer = React.lazy(() => import("./components/Users/UsersContainer.tsx"));
 
 let App = (props: any) => {
   useEffect(() => {
@@ -35,7 +35,7 @@ let App = (props: any) => {
             <Route path="/Profile/*" element={<ProfileContainer />} />
             <Route path="/Dialogs/*" element={<DialogsContainer />} />
             <Route path="/Friends/*" element={<FriendsContainer />} />
-            <Route path="/Users/*" element={<UsersContainer />} />
+            <Route path="/Users/*" element={<UsersContainer pageTitle="Hello world123" />} />
             <Route path="/News/*" element={<NewsContainer />} />
             <Route path="/Settings/*" element={<SettingsContainer />} />
             <Route path="/Login/*" element={<Login />} />

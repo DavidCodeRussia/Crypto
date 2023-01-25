@@ -1,5 +1,6 @@
-import { useEffect } from "react";
-import { connect } from "react-redux";
+/* eslint-disable react-hooks/exhaustive-deps */
+import React, { useEffect } from "react";
+import { connect, MapStateToProps } from "react-redux";
 import { compose } from "redux";
 
 import { follow, requestUsers, onPage, unfollow } from "../../redux/users-reducer";
@@ -12,16 +13,18 @@ import {
   getUsers,
 } from "../../redux/users-selectors";
 import { withAuthNavigate } from "../../hoc/withAuthRedirect";
+import { TMapDisptachToProps, TMapStateToProps, TOwnProps, TUsersContainerProps } from "./types";
+import { AppStateType } from "../../redux/redux-store";
 
 import Users from "./Users";
 import Preloader from "../common/preloader/Preloader";
 
-let UsersContainer = (props) => {
+let UsersContainer: React.FC<TUsersContainerProps> = (props) => {
   useEffect(() => {
     props.getUsers(props.currentPage, props.pageSize);
   }, [props.currentPage, props.pageSize]);
 
-  let onPageChanged = (pageNumber) => {
+  let onPageChanged = (pageNumber: number) => {
     props.onPage(pageNumber, props.pageSize); // pageNumber - номер текущей страницы, props.pageSize - кол-во юзеров 5 или 10
   };
 
@@ -29,6 +32,7 @@ let UsersContainer = (props) => {
     <>
       {props.isFetching ? <Preloader /> : null}
       <Users
+        pageTitle={props.pageTitle}
         users={props.users}
         pageSize={props.pageSize}
         totalItemsCount={props.totalItemsCount}
@@ -42,7 +46,7 @@ let UsersContainer = (props) => {
   );
 };
 
-let mapStateToProps = (state) => {
+let mapStateToProps = (state: AppStateType): TMapStateToProps => {
   return {
     users: getUsers(state),
     pageSize: getPageSize(state),
@@ -53,7 +57,13 @@ let mapStateToProps = (state) => {
   };
 };
 
-export default compose(
-  connect(mapStateToProps, { follow, unfollow, getUsers: requestUsers, onPage }), // в mapDispatchToProps лежат action creator
-  withAuthNavigate
+export default compose<React.Component>(
+  // TStateProps, TOwnProps, State = DefaultRootState
+  connect<MapStateToProps, TMapDisptachToProps, TOwnProps, AppStateType>(mapStateToProps, {
+    follow,
+    unfollow,
+    getUsers: requestUsers,
+    onPage,
+  }), // в mapDispatchToProps лежат action creator
+  withAuthNavigate,
 )(UsersContainer);

@@ -1,5 +1,5 @@
-import { TDialogsReducerState } from "./types";
-const ADD_MESSAGE = "ADD-MESSAGE";
+import { TAddMessageAC, TDialogsReducerState } from "./types";
+export const ADD_MESSAGE = "ADD-MESSAGE";
 
 let initialState: TDialogsReducerState = {
   dialogsData: [
@@ -32,7 +32,7 @@ const dialogsReducer = (state = initialState, action: any) => {
   }
 };
 
-export const addMessageActionCreator = (newMessageBody: string) => ({
+export const addMessageActionCreator = (newMessageBody: string): TAddMessageAC => ({
   type: ADD_MESSAGE,
   newMessageBody: newMessageBody,
 });
