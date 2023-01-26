@@ -1,6 +1,6 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 import React, { useEffect } from "react";
-import { connect, MapStateToProps } from "react-redux";
+import { connect } from "react-redux";
 import { compose } from "redux";
 
 import { follow, requestUsers, onPage, unfollow } from "../../redux/users-reducer";
@@ -18,6 +18,7 @@ import { AppStateType } from "../../redux/redux-store";
 
 import Users from "./Users";
 import Preloader from "../common/preloader/Preloader";
+import { somethingNew } from "../../App";
 
 let UsersContainer: React.FC<TUsersContainerProps> = (props) => {
   useEffect(() => {
@@ -57,13 +58,14 @@ let mapStateToProps = (state: AppStateType): TMapStateToProps => {
   };
 };
 
-export default compose<React.Component>(
+export default compose(
   // TStateProps, TOwnProps, State = DefaultRootState
-  connect<MapStateToProps, TMapDisptachToProps, TOwnProps, AppStateType>(mapStateToProps, {
+  connect(mapStateToProps, {
     follow,
     unfollow,
     getUsers: requestUsers,
     onPage,
+    somethingNew,
   }), // в mapDispatchToProps лежат action creator
   withAuthNavigate,
 )(UsersContainer);

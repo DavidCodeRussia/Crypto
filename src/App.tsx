@@ -51,4 +51,6 @@ const mapStateToProps = (state: any) => ({
   initialized: state.app.initialized,
 });
 
+export let somethingNew = () => {};
+
 export default connect(mapStateToProps, { initializeApp })(App);
