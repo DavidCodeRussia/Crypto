@@ -1,5 +1,7 @@
-import { usersAPI } from "../../API/api";
+import { usersAPI } from '../../API/api';
+import { AppStateType } from '../redux-store';
 import {
+  TActionsUsersReducers,
   TFollowSuccessAC,
   TSetCurrentPageAC,
   TSetTotalItemsCountAC,
@@ -8,15 +10,15 @@ import {
   TUnFollowSuccessAC,
   TUser,
   TUsersReducerState,
-} from "./types";
+} from './types';
 
-export const FOLLOW = "FOLLOW";
-export const UNFOLLOW = "UNFOLLOW";
-export const SET_USERS = "SET_USERS";
-export const SET_CURRENT_PAGE = "SET_CURRENT_PAGE";
-export const SET_TOTAL_ITEMS_COUNT = "SET_TOTAL_ITEMS_COUNT";
-export const TOGGLE_IS_FETCHING = "TOGGLE_IS_FETCHING";
-export const TOGGLE_IS_FOLLOWING_PROGRESS = "TOGGLE_IS_FOLLOWING_PROGRESS";
+export const FOLLOW = 'FOLLOW';
+export const UNFOLLOW = 'UNFOLLOW';
+export const SET_USERS = 'SET_USERS';
+export const SET_CURRENT_PAGE = 'SET_CURRENT_PAGE';
+export const SET_TOTAL_ITEMS_COUNT = 'SET_TOTAL_ITEMS_COUNT';
+export const TOGGLE_IS_FETCHING = 'TOGGLE_IS_FETCHING';
+export const TOGGLE_IS_FOLLOWING_PROGRESS = 'TOGGLE_IS_FOLLOWING_PROGRESS';
 
 let initialState: TUsersReducerState = {
   users: [],
@@ -27,7 +29,7 @@ let initialState: TUsersReducerState = {
   followingInProgress: [],
 };
 
-const usersReducer = (state = initialState, action: any) => {
+const usersReducer = (state = initialState, action: TActionsUsersReducers) => {
   switch (action.type) {
     case FOLLOW:
       return {
@@ -109,7 +111,7 @@ export const toggleFollowingProgress = (
 });
 
 export const requestUsers = (page: number, pageSize: number) => {
-  return async (dispatch: any) => {
+  return async (dispatch: any, getState: () => AppStateType) => {
     dispatch(toggleIsFetching(true));
     dispatch(setCurrentPage(page));
     let data = await usersAPI.getUsers(page, pageSize);
@@ -122,7 +124,7 @@ export const requestUsers = (page: number, pageSize: number) => {
 export const onPage = (pageNumber: number, pageSize: number) => {
   // pageNumber - номер текущей страницы, props.pageSize - кол-во юзеров 5 или 10
 
-  return async (dispatch: any) => {
+  return async (dispatch: any, getState: () => AppStateType) => {
     dispatch(setCurrentPage(pageNumber));
     dispatch(toggleIsFetching(true));
 
@@ -134,7 +136,7 @@ export const onPage = (pageNumber: number, pageSize: number) => {
 };
 
 export const unfollow = (userId: number) => {
-  return async (dispatch: any) => {
+  return async (dispatch: any, getState: () => AppStateType) => {
     dispatch(toggleFollowingProgress(true, userId));
     let data = await usersAPI.unfollow(userId);
 
@@ -146,7 +148,7 @@ export const unfollow = (userId: number) => {
 };
 
 export const follow = (userId: number) => {
-  return async (dispatch: any) => {
+  return async (dispatch: any, getState: () => AppStateType) => {
     dispatch(toggleFollowingProgress(true, userId));
     let data = await usersAPI.follow(userId);
 
