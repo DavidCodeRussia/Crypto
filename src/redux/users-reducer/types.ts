@@ -61,3 +61,5 @@ export type TToggleFollowingProgressAC = {
   isFetching: boolean;
   userId: number;
 };
+
+export type ActionsType = {};
