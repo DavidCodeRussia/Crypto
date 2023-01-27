@@ -1,7 +1,13 @@
 import { stopSubmit } from "redux-form";
 
 import { authAPI, captchaAPI } from "../../API/api";
-import { TAuthReducerState, TGetCaptchaSuccess, TSetAuthUserDataAction } from "./types";
+import {
+  TAuthReducerState,
+  TGetCaptchaSuccessAC,
+  TSetAuthUserDataAC,
+  TActionsAuthReducer,
+  TThunkAuthReducer,
+} from "./types";
 
 export const SET_USER_DATA = "auth-reducer/SET_USER_DATA";
 export const GET_CAPTCHA = "auth-reducer/GET_CAPTCHA";
@@ -14,7 +20,7 @@ let initialState: TAuthReducerState = {
   captcha: null,
 };
 
-const authReducer = (state = initialState, action: any): TAuthReducerState => {
+const authReducer = (state = initialState, action: TActionsAuthReducer): TAuthReducerState => {
   switch (action.type) {
     case SET_USER_DATA:
     case GET_CAPTCHA:
@@ -32,17 +38,17 @@ export const setAuthUserData = (
   id: number | null,
   login: string | null,
   isAuth: boolean,
-): TSetAuthUserDataAction => ({
+): TSetAuthUserDataAC => ({
   type: SET_USER_DATA,
   payload: { email, id, login, isAuth },
 });
 
-export const getCaptchaSuccess = (captcha: string): TGetCaptchaSuccess => ({
+export const getCaptchaSuccess = (captcha: string): TGetCaptchaSuccessAC => ({
   type: GET_CAPTCHA,
   payload: { captcha },
 });
 
-export const getAuthUserData = () => async (dispatch: any) => {
+export const getAuthUserData = (): TThunkAuthReducer => async (dispatch) => {
   let response = await authAPI.me();
 
   if (response.resultCode === 0) {
@@ -67,7 +73,7 @@ export const login =
     }
   };
 
-export const logout = () => async (dispatch: any) => {
+export const logout = (): TThunkAuthReducer => async (dispatch: any) => {
   let response = await authAPI.logout();
 
   if (response.data.resultCode === 0) {
@@ -75,7 +81,7 @@ export const logout = () => async (dispatch: any) => {
   }
 };
 
-export const getCaptcha = () => async (dispatch: any) => {
+export const getCaptcha = (): TThunkAuthReducer => async (dispatch: any) => {
   const response = await captchaAPI.getCaptcha();
   let captcha = response.data.url;
 

@@ -1,4 +1,4 @@
-import { TPhotos } from '../../types';
+import { TPhotos } from "../../types";
 import {
   FOLLOW,
   UNFOLLOW,
@@ -7,7 +7,7 @@ import {
   SET_TOTAL_ITEMS_COUNT,
   TOGGLE_IS_FETCHING,
   TOGGLE_IS_FOLLOWING_PROGRESS,
-} from './index';
+} from "./index";
 
 export type TUser = {
   name: string;

@@ -1,5 +1,6 @@
 import { getAuthUserData } from "../auth-reducer";
-import { TAppReducerState, TInitializedSuccesAction } from "./types";
+
+import { TAppReducerState, TInitializedSuccesAC, TActionsAppReducer } from "./types";
 
 export const INITIALIZED_SUCCESS = "INITIALIZED_SUCCESS";
 
@@ -7,7 +8,7 @@ let initialState: TAppReducerState = {
   initialized: false,
 };
 
-export const appReducer = (state = initialState, action: any): TAppReducerState => {
+export const appReducer = (state = initialState, action: TActionsAppReducer): TAppReducerState => {
   switch (action.type) {
     case INITIALIZED_SUCCESS:
       return {
@@ -19,7 +20,7 @@ export const appReducer = (state = initialState, action: any): TAppReducerState 
   }
 };
 
-export const initializedSuccess = (): TInitializedSuccesAction => ({ type: INITIALIZED_SUCCESS });
+export const initializedSuccess = (): TInitializedSuccesAC => ({ type: INITIALIZED_SUCCESS });
 
 export const initializeApp = () => (dispatch: any) => {
   let promise = dispatch(getAuthUserData());

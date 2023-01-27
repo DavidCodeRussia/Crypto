@@ -1,5 +1,7 @@
-import { usersAPI } from '../../API/api';
-import { AppStateType } from '../redux-store';
+import { Dispatch } from "redux";
+import { ThunkAction } from "redux-thunk";
+import { usersAPI } from "../../API/api";
+import { AppStateType } from "../redux-store";
 import {
   TActionsUsersReducers,
   TFollowSuccessAC,
@@ -7,18 +9,19 @@ import {
   TSetTotalItemsCountAC,
   TSetUsersAC,
   TToggleFollowingProgressAC,
+  TToggleIsFetchingAC,
   TUnFollowSuccessAC,
   TUser,
   TUsersReducerState,
-} from './types';
+} from "./types";
 
-export const FOLLOW = 'FOLLOW';
-export const UNFOLLOW = 'UNFOLLOW';
-export const SET_USERS = 'SET_USERS';
-export const SET_CURRENT_PAGE = 'SET_CURRENT_PAGE';
-export const SET_TOTAL_ITEMS_COUNT = 'SET_TOTAL_ITEMS_COUNT';
-export const TOGGLE_IS_FETCHING = 'TOGGLE_IS_FETCHING';
-export const TOGGLE_IS_FOLLOWING_PROGRESS = 'TOGGLE_IS_FOLLOWING_PROGRESS';
+export const FOLLOW = "FOLLOW";
+export const UNFOLLOW = "UNFOLLOW";
+export const SET_USERS = "SET_USERS";
+export const SET_CURRENT_PAGE = "SET_CURRENT_PAGE";
+export const SET_TOTAL_ITEMS_COUNT = "SET_TOTAL_ITEMS_COUNT";
+export const TOGGLE_IS_FETCHING = "TOGGLE_IS_FETCHING";
+export const TOGGLE_IS_FOLLOWING_PROGRESS = "TOGGLE_IS_FOLLOWING_PROGRESS";
 
 let initialState: TUsersReducerState = {
   users: [],
@@ -97,7 +100,7 @@ export const setTotalItemsCount = (totalItemsCount: number): TSetTotalItemsCount
   type: SET_TOTAL_ITEMS_COUNT,
   totalItemsCount: totalItemsCount,
 });
-export const toggleIsFetching = (isFetching: boolean) => ({
+export const toggleIsFetching = (isFetching: boolean): TToggleIsFetchingAC => ({
   type: TOGGLE_IS_FETCHING,
   isFetching: isFetching,
 });
@@ -110,10 +113,15 @@ export const toggleFollowingProgress = (
   userId,
 });
 
+type GetStateType = () => AppStateType; // first
+type DispatchType = Dispatch<TActionsUsersReducers>;
+
 export const requestUsers = (page: number, pageSize: number) => {
-  return async (dispatch: any, getState: () => AppStateType) => {
+  // first method of typizate thunk
+  return async (dispatch: DispatchType, getState: GetStateType) => {
     dispatch(toggleIsFetching(true));
     dispatch(setCurrentPage(page));
+
     let data = await usersAPI.getUsers(page, pageSize);
     dispatch(toggleIsFetching(false));
     dispatch(setUsers(data.items));
@@ -121,10 +129,14 @@ export const requestUsers = (page: number, pageSize: number) => {
   };
 };
 
-export const onPage = (pageNumber: number, pageSize: number) => {
+export const onPage = (
+  pageNumber: number,
+  pageSize: number,
+): ThunkAction<Promise<void>, AppStateType, unknown, TActionsUsersReducers> => {
+  // second method of typizate thunk
   // pageNumber - номер текущей страницы, props.pageSize - кол-во юзеров 5 или 10
 
-  return async (dispatch: any, getState: () => AppStateType) => {
+  return async (dispatch) => {
     dispatch(setCurrentPage(pageNumber));
     dispatch(toggleIsFetching(true));
 
@@ -135,8 +147,10 @@ export const onPage = (pageNumber: number, pageSize: number) => {
   };
 };
 
-export const unfollow = (userId: number) => {
-  return async (dispatch: any, getState: () => AppStateType) => {
+export const unfollow = (
+  userId: number,
+): ThunkAction<Promise<void>, AppStateType, unknown, TActionsUsersReducers> => {
+  return async (dispatch) => {
     dispatch(toggleFollowingProgress(true, userId));
     let data = await usersAPI.unfollow(userId);
 
@@ -147,8 +161,10 @@ export const unfollow = (userId: number) => {
   };
 };
 
-export const follow = (userId: number) => {
-  return async (dispatch: any, getState: () => AppStateType) => {
+export const follow = (
+  userId: number,
+): ThunkAction<Promise<void>, AppStateType, unknown, TActionsUsersReducers> => {
+  return async (dispatch) => {
     dispatch(toggleFollowingProgress(true, userId));
     let data = await usersAPI.follow(userId);
 
