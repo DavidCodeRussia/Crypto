@@ -15,6 +15,8 @@ export type TProfile = {
   lookingForAJobDescription: string;
   fullName: string;
   contacts: TContacts;
+  aboutMe: string;
+  photos: TPhotos;
 };
 
 export type TPosts = {
