@@ -1,11 +1,11 @@
-import { Field, InjectedFormProps, reduxForm } from "redux-form";
-import Stack from "@mui/material/Stack";
-import Button from "@mui/material/Button";
+import { Field, InjectedFormProps, reduxForm } from 'redux-form';
+import Stack from '@mui/material/Stack';
+import Button from '@mui/material/Button';
 
-import { Input } from "../../common/FormsControls/FormsControls";
-import { required } from "../../../utils/validators/validators";
-import { TFormData, TLoginReduxFormOwnProps } from "../type";
-import s from "./LoginReduxForm.module.scss";
+import { Input } from '../../common/FormsControls/FormsControls';
+import { required } from '../../../utils/validators/validators';
+import { TFormData, TLoginReduxFormOwnProps } from '../types';
+import s from './LoginReduxForm.module.scss';
 
 const LoginForm: React.FC<
   InjectedFormProps<TFormData, TLoginReduxFormOwnProps> & TLoginReduxFormOwnProps
@@ -13,19 +13,19 @@ const LoginForm: React.FC<
   return (
     <form className={s.form_login} onSubmit={handleSubmit}>
       <Field
-        name={"email"}
+        name={'email'}
         className={s.field}
-        placeholder={"Email"}
+        placeholder={'Email'}
         component={Input}
         validate={[required]}
       />
       <Field
-        name={"password"}
+        name={'password'}
         className={s.field}
-        placeholder={"Password"}
+        placeholder={'Password'}
         component={Input}
         validate={[required]}
-        type={"password"}
+        type={'password'}
       />
       <div className={s.wrapper_for_buttons}>
         <Stack>
@@ -36,7 +36,7 @@ const LoginForm: React.FC<
         <label className={s.container_for_buttons}>
           <Field
             className={s.field_checkbox}
-            name={"rememberMe"}
+            name={'rememberMe'}
             component={Input}
             type="checkbox"
           />
@@ -47,7 +47,7 @@ const LoginForm: React.FC<
       {captcha && (
         <>
           <img className={s.img_captcha} src={captcha} alt="" />
-          <Field className={s.field} placeholder={"captcha"} name={"captcha"} component={Input} />
+          <Field className={s.field} placeholder={'captcha'} name={'captcha'} component={Input} />
         </>
       )}
 
@@ -56,6 +56,6 @@ const LoginForm: React.FC<
   );
 };
 
-const LoginReduxForm = reduxForm<TFormData, TLoginReduxFormOwnProps>({ form: "login" })(LoginForm);
+const LoginReduxForm = reduxForm<TFormData, TLoginReduxFormOwnProps>({ form: 'login' })(LoginForm);
 
 export default LoginReduxForm;
