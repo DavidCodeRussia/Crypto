@@ -1,14 +1,14 @@
-import React, { useState } from 'react';
+import React, { useState } from "react";
 
-import Button from '@mui/material/Button';
-import Stack from '@mui/material/Stack';
+import Button from "@mui/material/Button";
+import Stack from "@mui/material/Stack";
 
-import Preloader from '../../common/preloader/Preloader';
-import ProfileStatus from '../ProfileStatus';
-import ProfileDataEditReduxForm from '../ProfileDataEditReduxForm/ProfileDataEditReduxForm';
-import ProfileData from '../ProfileData/ProfileData';
+import Preloader from "../../common/preloader/Preloader";
+import ProfileStatus from "../ProfileStatus";
+import ProfileDataEditReduxForm from "../ProfileDataEditReduxForm/ProfileDataEditReduxForm";
+import ProfileData from "../ProfileData/ProfileData";
 
-import s from './ProfileInfo.module.scss';
+import s from "./ProfileInfo.module.scss";
 
 const ProfileInfo = (props) => {
   let [editMode, toEditMode] = useState(false);
@@ -24,7 +24,6 @@ const ProfileInfo = (props) => {
   };
 
   let onSubmit = (formData) => {
-    console.log('formData в ProfileInfo', formData);
     props.saveDataProfile(formData).then(() => {
       toEditMode(false);
     });
@@ -36,7 +35,7 @@ const ProfileInfo = (props) => {
         <img
           src={
             props.profile.photos.large ||
-            'https://upload.wikimedia.org/wikipedia/commons/thumb/5/59/User-avatar.svg/1024px-User-avatar.svg.png'
+            "https://upload.wikimedia.org/wikipedia/commons/thumb/5/59/User-avatar.svg/1024px-User-avatar.svg.png"
           }
           alt="default user avatar"
         />

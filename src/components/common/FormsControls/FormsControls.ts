@@ -1,4 +1,3 @@
-import React from "react";
 import s from "./FormsControls.module.scss";
 
 export const Form = ({ input, meta, child, ...props }) => {

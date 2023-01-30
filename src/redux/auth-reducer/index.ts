@@ -1,16 +1,17 @@
-import { stopSubmit } from 'redux-form';
+import { stopSubmit } from "redux-form";
 
-import { authAPI, captchaAPI } from '../../API/api';
+import { authAPI, captchaAPI } from "../../API/api";
 import {
   TAuthReducerState,
   TGetCaptchaSuccessAC,
   TSetAuthUserDataAC,
   TActionsAuthReducer,
   TThunkAuthReducer,
-} from './types';
+} from "./types";
+import { EResultCode, EResultCodeCaptcha } from "../../API/types";
 
-export const SET_USER_DATA = 'auth-reducer/SET_USER_DATA';
-export const GET_CAPTCHA = 'auth-reducer/GET_CAPTCHA';
+export const SET_USER_DATA = "auth-reducer/SET_USER_DATA";
+export const GET_CAPTCHA = "auth-reducer/GET_CAPTCHA";
 
 let initialState: TAuthReducerState = {
   id: null,
@@ -51,7 +52,7 @@ export const getCaptchaSuccess = (captcha: string): TGetCaptchaSuccessAC => ({
 export const getAuthUserData = (): TThunkAuthReducer => async (dispatch) => {
   let response = await authAPI.me();
 
-  if (response.resultCode === 0) {
+  if (response.resultCode === EResultCode.Success) {
     let { email, id, login } = response.data;
     dispatch(setAuthUserData(email, id, login, true));
   }
@@ -62,21 +63,21 @@ export const login =
   async (dispatch: any) => {
     let response = await authAPI.login(email, password, rememberMe, captcha);
 
-    if (response.data.resultCode === 0) {
+    if (response.data.resultCode === EResultCode.Success) {
       dispatch(getAuthUserData());
     } else {
-      if (response.data.resultCode === 10) {
+      if (response.data.resultCode === EResultCodeCaptcha.CaptchaIsRequired) {
         dispatch(getCaptcha());
       }
-      let message = response.data.messages.length > 0 ? response.data.messages[0] : 'Some error';
-      dispatch(stopSubmit('login', { _error: message }));
+      let message = response.data.messages.length > 0 ? response.data.messages[0] : "Some error";
+      dispatch(stopSubmit("login", { _error: message }));
     }
   };
 
 export const logout = (): TThunkAuthReducer => async (dispatch: any) => {
   let response = await authAPI.logout();
 
-  if (response.data.resultCode === 0) {
+  if (response.data.resultCode === EResultCode.Success) {
     dispatch(setAuthUserData(null, null, null, false));
   }
 };

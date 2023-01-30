@@ -1,10 +1,19 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 import React, { useEffect } from "react";
-import Profile from "./Profile";
-import { connect } from "react-redux";
-import { getPhoto, getStatus, getUserProfile, saveDataProfile, updateStatus } from "../../redux/profile-reducer";
 import { useMatch } from "react-router-dom";
 import { compose } from "redux";
+import { connect } from "react-redux";
+
+import {
+  getPhoto,
+  getStatus,
+  getUserProfile,
+  saveDataProfile,
+  updateStatus,
+} from "../../redux/profile-reducer";
 import { withAuthNavigate } from "../../hoc/withAuthRedirect";
+
+import Profile from "./Profile";
 
 let ProfileContainer = (props) => {
   let userId = props.match ? props.match.params.userId : props.authorizedUserId;
@@ -42,5 +51,5 @@ let mapStateToProps = (state) => {
 
 export default compose(
   connect(mapStateToProps, { getUserProfile, getStatus, updateStatus, getPhoto, saveDataProfile }),
-  withAuthNavigate
+  withAuthNavigate,
 )(ProfileURLMath);
