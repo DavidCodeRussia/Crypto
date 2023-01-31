@@ -5,7 +5,7 @@ import { connect } from "react-redux";
 import { initializeApp } from "./redux/app-reducer";
 
 import HeaderContainer from "./components/Header/HeaderContainer";
-import Login from "./components/Login/Login";
+import Login from "./components/Login";
 import Preloader from "./components/common/preloader/Preloader";
 import FriendsContainer from "./components/Fiends";
 import NewsContainer from "./components/News";
@@ -38,7 +38,10 @@ let App = (props: any) => {
             <Route path="/Users/*" element={<UsersContainer pageTitle="Hello world123" />} />
             <Route path="/News/*" element={<NewsContainer />} />
             <Route path="/Settings/*" element={<SettingsContainer />} />
-            <Route path="/Login/*" element={<Login />} />
+            <Route
+              path="/Login/*"
+              element={<Login isAuth={props.isAuth} captcha={props.captcha} />}
+            />
             <Route path="*" element={<Navigate to="/Profile" replace />} />
           </Route>
         </Routes>
