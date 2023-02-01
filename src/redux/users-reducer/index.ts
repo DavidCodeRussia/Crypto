@@ -1,7 +1,7 @@
-import { Dispatch } from "redux";
-import { ThunkAction } from "redux-thunk";
-import { usersAPI } from "../../API/api";
-import { AppStateType } from "../redux-store";
+import { Dispatch } from 'redux';
+import { ThunkAction } from 'redux-thunk';
+import { usersAPI } from '../../API/api';
+import { AppStateType } from '../redux-store';
 import {
   TActionsUsersReducers,
   TFollowSuccessAC,
@@ -13,15 +13,15 @@ import {
   TUnFollowSuccessAC,
   TUser,
   TUsersReducerState,
-} from "./types";
+} from './types';
 
-export const FOLLOW = "FOLLOW";
-export const UNFOLLOW = "UNFOLLOW";
-export const SET_USERS = "SET_USERS";
-export const SET_CURRENT_PAGE = "SET_CURRENT_PAGE";
-export const SET_TOTAL_ITEMS_COUNT = "SET_TOTAL_ITEMS_COUNT";
-export const TOGGLE_IS_FETCHING = "TOGGLE_IS_FETCHING";
-export const TOGGLE_IS_FOLLOWING_PROGRESS = "TOGGLE_IS_FOLLOWING_PROGRESS";
+export const FOLLOW = 'FOLLOW';
+export const UNFOLLOW = 'UNFOLLOW';
+export const SET_USERS = 'SET_USERS';
+export const SET_CURRENT_PAGE = 'SET_CURRENT_PAGE';
+export const SET_TOTAL_ITEMS_COUNT = 'SET_TOTAL_ITEMS_COUNT';
+export const TOGGLE_IS_FETCHING = 'TOGGLE_IS_FETCHING';
+export const TOGGLE_IS_FOLLOWING_PROGRESS = 'TOGGLE_IS_FOLLOWING_PROGRESS';
 
 let initialState: TUsersReducerState = {
   users: [],
@@ -89,25 +89,22 @@ const usersReducer = (state = initialState, action: TActionsUsersReducers) => {
   }
 };
 
-export const followSuccess = (userId: number): TFollowSuccessAC => ({ type: FOLLOW, userId });
-export const unfollowSuccess = (userId: number): TUnFollowSuccessAC => ({ type: UNFOLLOW, userId });
-export const setUsers = (users: TUser[]): TSetUsersAC => ({ type: SET_USERS, users: users });
-export const setCurrentPage = (currentPage: number): TSetCurrentPageAC => ({
+export const followSuccess = (userId: number) => ({ type: FOLLOW, userId });
+export const unfollowSuccess = (userId: number) => ({ type: UNFOLLOW, userId });
+export const setUsers = (users: TUser[]) => ({ type: SET_USERS, users: users });
+export const setCurrentPage = (currentPage: number) => ({
   type: SET_CURRENT_PAGE,
   currentPage: currentPage,
 });
-export const setTotalItemsCount = (totalItemsCount: number): TSetTotalItemsCountAC => ({
+export const setTotalItemsCount = (totalItemsCount: number) => ({
   type: SET_TOTAL_ITEMS_COUNT,
   totalItemsCount: totalItemsCount,
 });
-export const toggleIsFetching = (isFetching: boolean): TToggleIsFetchingAC => ({
+export const toggleIsFetching = (isFetching: boolean) => ({
   type: TOGGLE_IS_FETCHING,
   isFetching: isFetching,
 });
-export const toggleFollowingProgress = (
-  isFetching: boolean,
-  userId: number,
-): TToggleFollowingProgressAC => ({
+export const toggleFollowingProgress = (isFetching: boolean, userId: number) => ({
   type: TOGGLE_IS_FOLLOWING_PROGRESS,
   isFetching: isFetching,
   userId,

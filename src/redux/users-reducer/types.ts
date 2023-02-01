@@ -1,4 +1,4 @@
-import { TPhotos } from "../../types";
+import { TPhotos } from '../../types';
 import {
   FOLLOW,
   UNFOLLOW,
@@ -7,7 +7,7 @@ import {
   SET_TOTAL_ITEMS_COUNT,
   TOGGLE_IS_FETCHING,
   TOGGLE_IS_FOLLOWING_PROGRESS,
-} from "./index";
+} from './index';
 
 export type TUser = {
   name: string;
@@ -24,51 +24,6 @@ export type TUsersReducerState = {
   currentPage: number;
   isFetching: boolean;
   followingInProgress: number[];
-};
-
-export type TActionsUsersReducers =
-  | TFollowSuccessAC
-  | TUnFollowSuccessAC
-  | TSetUsersAC
-  | TSetCurrentPageAC
-  | TSetTotalItemsCountAC
-  | TToggleIsFetchingAC
-  | TToggleFollowingProgressAC;
-
-export type TFollowSuccessAC = {
-  type: typeof FOLLOW;
-  userId: number;
-};
-
-export type TUnFollowSuccessAC = {
-  type: typeof UNFOLLOW;
-  userId: number;
-};
-
-export type TSetUsersAC = {
-  type: typeof SET_USERS;
-  users: TUser[];
-};
-
-export type TSetCurrentPageAC = {
-  type: typeof SET_CURRENT_PAGE;
-  currentPage: number;
-};
-
-export type TSetTotalItemsCountAC = {
-  type: typeof SET_TOTAL_ITEMS_COUNT;
-  totalItemsCount: number;
-};
-
-export type TToggleIsFetchingAC = {
-  type: typeof TOGGLE_IS_FETCHING;
-  isFetching: boolean;
-};
-
-export type TToggleFollowingProgressAC = {
-  type: typeof TOGGLE_IS_FOLLOWING_PROGRESS;
-  isFetching: boolean;
-  userId: number;
 };
 
 export type ActionsType = {};

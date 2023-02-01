@@ -1,17 +1,17 @@
-import { stopSubmit } from "redux-form";
+import { stopSubmit } from 'redux-form';
 
-import { authAPI, captchaAPI } from "../../API/api";
+import { authAPI, captchaAPI } from '../../API/api';
 import {
   TAuthReducerState,
   TGetCaptchaSuccessAC,
   TSetAuthUserDataAC,
   TActionsAuthReducer,
   TThunkAuthReducer,
-} from "./types";
-import { EResultCode, EResultCodeCaptcha } from "../../API/types";
+} from './types';
+import { EResultCode, EResultCodeCaptcha } from '../../API/types';
 
-export const SET_USER_DATA = "auth-reducer/SET_USER_DATA";
-export const GET_CAPTCHA = "auth-reducer/GET_CAPTCHA";
+export const SET_USER_DATA = 'auth-reducer/SET_USER_DATA';
+export const GET_CAPTCHA = 'auth-reducer/GET_CAPTCHA';
 
 let initialState: TAuthReducerState = {
   id: null,
@@ -69,8 +69,8 @@ export const login =
       if (response.data.resultCode === EResultCodeCaptcha.CaptchaIsRequired) {
         dispatch(getCaptcha());
       }
-      let message = response.data.messages.length > 0 ? response.data.messages[0] : "Some error";
-      dispatch(stopSubmit("login", { _error: message }));
+      let message = response.data.messages.length > 0 ? response.data.messages[0] : 'Some error';
+      dispatch(stopSubmit('login', { _error: message }));
     }
   };
 

@@ -1,5 +1,6 @@
-import axios from "axios";
-import { TProfile } from "../types";
+import axios from 'axios';
+import { TProfile } from '../types';
+
 import {
   TAuthLogin,
   TAuthLogout,
@@ -11,23 +12,22 @@ import {
   TUploadPhoto,
   TUsers,
   TUsersUnfollowFollow,
-} from "./types";
+} from './types';
 
 const instance = axios.create({
   withCredentials: true,
   baseURL: `https://social-network.samuraijs.com/api/1.0/`,
   headers: {
-    "API-KEY": "cd664a4b-8ae4-4329-af11-adaeaf1df86b",
+    'API-KEY': 'cd664a4b-8ae4-4329-af11-adaeaf1df86b',
   },
 });
 
 export const authAPI = {
-  me() {
-    return instance.get<TAuthMe>(`auth/me`).then((response) => {
-      return response.data;
-    });
+  async me() {
+    const response = await instance.get<TAuthMe>(`auth/me`);
+    return response.data;
   },
-  login(email: string, password: string, rememberMe = false, captcha = "") {
+  login(email: string, password: string, rememberMe = false, captcha = '') {
     return instance.post<TAuthLogin>(`auth/login`, { email, password, rememberMe, captcha });
   },
   logout() {
@@ -65,15 +65,15 @@ export const profileAPI = {
   },
   getPhoto(photo: any) {
     const formData = new FormData();
-    formData.append("image", photo);
+    formData.append('image', photo);
     return instance.put<TUploadPhoto>(`profile/photo`, formData, {
       headers: {
-        "Content-Type": "multipart/form-data",
+        'Content-Type': 'multipart/form-data',
       },
     });
   },
   saveDataProfile(profile: TProfile) {
-    return instance.put<TSaveDataProfile>("profile", profile);
+    return instance.put<TSaveDataProfile>('profile', profile);
   },
 };
 
