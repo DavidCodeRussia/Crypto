@@ -1,11 +1,6 @@
-import { INITIALIZED_SUCCESS } from "./index";
+import { actions, initialState } from '.';
+import { InferActionsTypes } from '../redux-store';
 
-export type TActionsAppReducer = TInitializedSuccesAC; // when some actions creators will appear. Add here them for typizate actions in auth-reducer
+export type InitialStateType = typeof initialState;
 
-export type TAppReducerState = {
-  initialized: boolean;
-};
-
-export type TInitializedSuccesAC = {
-  type: typeof INITIALIZED_SUCCESS;
-};
+export type ActionsTypes = InferActionsTypes<typeof actions>;

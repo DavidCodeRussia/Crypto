@@ -1,6 +1,6 @@
-import { stopSubmit } from "redux-form";
-import { TProfile, TPhotos } from "../../types";
-import { profileAPI } from "../../API/api";
+import { stopSubmit } from 'redux-form';
+import { TProfile, TPhotos } from '../../types';
+import { profileAPI } from '../../API/profile-api';
 
 import {
   TAddPostAC,
@@ -10,13 +10,13 @@ import {
   TSetStatusAC,
   TSetUserProfileAC,
   TThunkProfileReducer,
-} from "./types";
+} from './types';
 
-export const ADD_POST = "profile-reducer/ADD-POST";
-export const SET_USER_PROFILE = "profile-reducer/SET_USER_PROFILE";
-export const SET_STATUS = "profile-reducer/SET_STATUS";
-export const DELETE_POST = "profile-reducer/DELETE_POST";
-export const GETTING_PHOTO = "profile-reducer/GETTING_PHOTO";
+export const ADD_POST = 'profile-reducer/ADD-POST';
+export const SET_USER_PROFILE = 'profile-reducer/SET_USER_PROFILE';
+export const SET_STATUS = 'profile-reducer/SET_STATUS';
+export const DELETE_POST = 'profile-reducer/DELETE_POST';
+export const GETTING_PHOTO = 'profile-reducer/GETTING_PHOTO';
 
 let initialState: TProfileReducerState = {
   posts: [
@@ -24,7 +24,7 @@ let initialState: TProfileReducerState = {
     { id: 2, message: "It's my first post.", likes: 5 },
   ],
   profile: null,
-  status: "",
+  status: '',
 };
 
 const profileReducer = (state = initialState, action: any) => {
@@ -38,7 +38,7 @@ const profileReducer = (state = initialState, action: any) => {
 
       return {
         ...state,
-        newPostText: "",
+        newPostText: '',
         posts: [...state.posts, newPost],
       };
     }
@@ -93,7 +93,7 @@ export const getUserProfile =
   (userId: number): TThunkProfileReducer =>
   async (dispatch) => {
     let response = await profileAPI.getProfile(userId);
-    dispatch(setUserProfile(response.data));
+    dispatch(setUserProfile(response));
   };
 
 export const getStatus =
@@ -113,10 +113,10 @@ export const updateStatus =
     }
   };
 
-export const getPhoto =
-  (file: any): TThunkProfileReducer =>
+export const savePhoto =
+  (file: File): TThunkProfileReducer =>
   async (dispatch) => {
-    let response = await profileAPI.getPhoto(file);
+    let response = await profileAPI.savePhoto(file);
     if (response.data.resultCode === 0) {
       dispatch(setPhotoSuccess(response.data.data.photos));
     }
@@ -129,7 +129,7 @@ export const saveDataProfile = (profile: TProfile) => async (dispatch: any, getS
   if (response.data.resultCode === 0) {
     dispatch(getUserProfile(userId));
   } else {
-    dispatch(stopSubmit("dataEdit", { _error: response.data.messages[0] }));
+    dispatch(stopSubmit('dataEdit', { _error: response.data.messages[0] }));
     return Promise.reject(response.data.messages[0]);
   }
 };

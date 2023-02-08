@@ -1,37 +1,7 @@
-import { ThunkAction } from 'redux-thunk';
-import { AppStateType } from '../redux-store';
-import { SET_USER_DATA, GET_CAPTCHA } from './index';
+import { stopSubmit } from 'redux-form';
+import { BaseThunkType, InferActionsTypes } from '../redux-store';
+import { actions, initialState } from './index';
 
-export type TAuthReducerState = {
-  id: number | null;
-  email: string | null;
-  login: string | null;
-  isAuth: boolean;
-  captcha: string | null;
-};
-
-export type TSetAuthUserDataAC = {
-  type: typeof SET_USER_DATA;
-  payload: TUserDataPayload;
-};
-
-export type TGetCaptchaSuccessAC = {
-  type: typeof GET_CAPTCHA;
-  payload: { captcha: string };
-};
-
-export type TActionsAuthReducer = TSetAuthUserDataAC | TGetCaptchaSuccessAC; // when some actions creators will appear. Add here them for typizate actions in auth-reducer
-
-export type TThunkAuthReducer = ThunkAction<
-  Promise<void>,
-  AppStateType,
-  unknown,
-  TActionsAuthReducer
->;
-
-export type TUserDataPayload = {
-  id: number | null;
-  email: string | null;
-  login: string | null;
-  isAuth: boolean;
-};
+export type TInitialState = typeof initialState;
+export type TActions = InferActionsTypes<typeof actions>;
+export type TThunkAuthReducer = BaseThunkType<TActions | ReturnType<typeof stopSubmit>>;

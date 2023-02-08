@@ -1,21 +1,6 @@
-import { ADD_MESSAGE } from "./index";
+import { BaseThunkType, InferActionsTypes } from '../redux-store';
+import { actions, initialState } from './index';
 
-export type TDialogsConversation = {
-  id: number;
-  name: string;
-};
-
-export type TDialogsData = {
-  id: number;
-  message: string;
-};
-
-export type TDialogsReducerState = {
-  dialogsData: TDialogsConversation[];
-  messages: TDialogsData[];
-};
-
-export type TAddMessageAC = {
-  type: typeof ADD_MESSAGE;
-  newMessageBody: string;
-};
+export type TInitialState = typeof initialState;
+export type TActions = InferActionsTypes<typeof actions>;
+export type TThunkDialogsReducer = BaseThunkType<TActions>;
