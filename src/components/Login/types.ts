@@ -1,8 +1,3 @@
-export type TLoginOwnProps = {
-  isAuth: boolean;
-  captcha: string;
-};
-
 export type TLoginMapStateToProps = {
   isAuth: boolean;
   captcha: string | null;
@@ -16,7 +11,7 @@ export type TLoginProps = TLoginMapStateToProps & TLoginMapDispatchToProps;
 
 export type TLoginReduxFormProps = {
   error: string;
-  handleSubmit: () => void;
+  onSubmit: () => void;
 };
 
 export type TLoginReduxFormOwnProps = {

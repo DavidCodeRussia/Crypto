@@ -1,21 +1,21 @@
-import React, { Suspense, useEffect } from 'react';
-import { Navigate, Route, Routes } from 'react-router-dom';
-import { connect } from 'react-redux';
+import React, { Suspense, useEffect } from "react";
+import { Navigate, Route, Routes } from "react-router-dom";
+import { connect } from "react-redux";
 
-import { initializeApp } from './redux/app-reducer';
+import { initializeApp } from "./redux/app-reducer";
 
-import HeaderContainer from './components/Header/HeaderContainer';
-import Login from './components/Login';
-import Preloader from './components/common/preloader/Preloader';
-import FriendsContainer from './components/Fiends';
-import NewsContainer from './components/News';
-import SettingsContainer from './components/Settings';
+import HeaderContainer from "./components/Header/HeaderContainer";
+import Login from "./components/Login";
+import Preloader from "./components/common/preloader/Preloader";
+import FriendsContainer from "./components/Fiends";
+import NewsContainer from "./components/News";
+import SettingsContainer from "./components/Settings";
 
-import './App.scss';
+import "./App.scss";
 
-const ProfileContainer = React.lazy(() => import('./components/Profile/ProfileContainer.jsx')); // Ленивая загрузка
-const DialogsContainer = React.lazy(() => import('./components/Dialogs/DialogsContainer.tsx')); // Lazy download
-const UsersContainer = React.lazy(() => import('./components/Users/UsersContainer.tsx'));
+const ProfileContainer = React.lazy(() => import("./components/Profile/ProfileContainer.jsx")); // Ленивая загрузка
+const DialogsContainer = React.lazy(() => import("./components/Dialogs/DialogsContainer.tsx")); // Lazy download
+const UsersContainer = React.lazy(() => import("./components/Users/UsersContainer.tsx"));
 
 let App = (props: any) => {
   useEffect(() => {
@@ -38,10 +38,7 @@ let App = (props: any) => {
             <Route path="/Users/*" element={<UsersContainer pageTitle="Hello world123" />} />
             <Route path="/News/*" element={<NewsContainer />} />
             <Route path="/Settings/*" element={<SettingsContainer />} />
-            <Route
-              path="/Login/*"
-              element={<Login isAuth={props.isAuth} captcha={props.captcha} />}
-            />
+            <Route path="/Login/*" element={<Login />} />
             <Route path="*" element={<Navigate to="/Profile" replace />} />
           </Route>
         </Routes>

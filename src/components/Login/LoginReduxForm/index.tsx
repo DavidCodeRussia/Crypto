@@ -6,6 +6,7 @@ import { Input } from "../../common/FormsControls/FormsControls";
 import { required } from "../../../utils/validators/validators";
 import { TFormData, TLoginReduxFormOwnProps } from "../types";
 import s from "./LoginReduxForm.module.scss";
+import { connect } from "react-redux";
 
 const LoginForm: React.FC<
   InjectedFormProps<TFormData, TLoginReduxFormOwnProps> & TLoginReduxFormOwnProps

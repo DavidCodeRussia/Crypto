@@ -1,9 +1,9 @@
-import { stopSubmit } from 'redux-form';
+import { stopSubmit } from "redux-form";
 
-import { authAPI } from '../../API/auth-api';
-import { captchaAPI } from '../../API/captha-api';
-import { TActions, TInitialState, TThunkAuthReducer } from './types';
-import { EResultCode, EResultCodeCaptcha } from '../../API/api';
+import { authAPI } from "../../API/auth-api";
+import { captchaAPI } from "../../API/captha-api";
+import { TActions, TInitialState, TThunkAuthReducer } from "./types";
+import { EResultCode, EResultCodeCaptcha } from "../../API/api";
 
 export let initialState = {
   id: null as number | null,
@@ -15,8 +15,8 @@ export let initialState = {
 
 const authReducer = (state = initialState, action: TActions): TInitialState => {
   switch (action.type) {
-    case 'auth-reducer/SET_USER_DATA':
-    case 'auth-reducer/GET_CAPTCHA':
+    case "auth-reducer/SET_USER_DATA":
+    case "auth-reducer/GET_CAPTCHA":
       return {
         ...state,
         ...action.payload,
@@ -34,13 +34,13 @@ export const actions = {
     isAuth: boolean,
   ) =>
     ({
-      type: 'auth-reducer/SET_USER_DATA',
+      type: "auth-reducer/SET_USER_DATA",
       payload: { email, userId, login, isAuth },
     } as const),
 
   getCaptchaSuccess: (captcha: string) =>
     ({
-      type: 'auth-reducer/GET_CAPTCHA',
+      type: "auth-reducer/GET_CAPTCHA",
       payload: { captcha },
     } as const),
 };
@@ -57,15 +57,15 @@ export const getAuthUserData = (): TThunkAuthReducer => async (dispatch) => {
 export const login =
   (email: string, password: string, rememberMe: boolean, captcha: string): TThunkAuthReducer =>
   async (dispatch) => {
-    console.log('данные приходящие в thunk');
+    console.log("данные приходящие в thunk");
     console.log(
-      'email: ',
+      "email: ",
       email,
-      'password: ',
+      "password: ",
       password,
-      'rememberMe: ',
+      "rememberMe: ",
       rememberMe,
-      'captcha:',
+      "captcha:",
       captcha,
     );
     let response = await authAPI.login(email, password, rememberMe, captcha);
@@ -76,8 +76,8 @@ export const login =
       if (response.data.resultCode === EResultCodeCaptcha.CaptchaIsRequired) {
         dispatch(getCaptcha());
       }
-      let message = response.data.messages.length > 0 ? response.data.messages[0] : 'Some error';
-      dispatch(stopSubmit('login', { _error: message }));
+      let message = response.data.messages.length > 0 ? response.data.messages[0] : "Some error";
+      dispatch(stopSubmit("login", { _error: message }));
     }
   };
 

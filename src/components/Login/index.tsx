@@ -1,25 +1,20 @@
-import { connect } from 'react-redux';
-import { Navigate } from 'react-router-dom';
+import { connect } from "react-redux";
+import { Navigate } from "react-router-dom";
 
-import { login } from '../../redux/auth-reducer';
-import LoginReduxForm from './LoginReduxForm';
-import {
-  TLoginMapStateToProps,
-  TLoginMapDispatchToProps,
-  TFormData,
-  TLoginProps,
-  TLoginOwnProps,
-} from './types';
-import { AppStateType } from '../../redux/redux-store';
-import s from './Login.module.scss';
+import { login } from "../../redux/auth-reducer";
+import LoginReduxForm from "./LoginReduxForm";
+import { TLoginMapStateToProps, TLoginMapDispatchToProps, TFormData, TLoginProps } from "./types";
+import { AppStateType } from "../../redux/redux-store";
+import s from "./Login.module.scss";
 
 const Login: React.FC<TLoginProps> = ({ captcha, isAuth, login }) => {
   const onSubmit = (formData: TFormData) => {
-    login(formData.email, formData.password, formData.rememberMe ?? false, formData.captcha ?? '');
+    console.log(formData);
+    login(formData.email, formData.password, formData.rememberMe ?? false, formData.captcha ?? "");
   };
 
   if (isAuth) {
-    return <Navigate to={'/profile'} />;
+    return <Navigate to={"/profile"} />;
   }
 
   return (
@@ -36,7 +31,7 @@ const Login: React.FC<TLoginProps> = ({ captcha, isAuth, login }) => {
 
         {!captcha && (
           <div>
-            Don't have account yet ? Click here to{' '}
+            Don't have account yet ? Click here to{" "}
             <a href="https://social-network.samuraijs.com/signUp" className={s.link_reg}>
               Sign Up
             </a>
@@ -47,12 +42,7 @@ const Login: React.FC<TLoginProps> = ({ captcha, isAuth, login }) => {
   );
 };
 
-export default connect<
-  TLoginMapStateToProps,
-  TLoginMapDispatchToProps,
-  TLoginOwnProps,
-  AppStateType
->(
+export default connect<TLoginMapStateToProps, TLoginMapDispatchToProps, unknown, AppStateType>(
   (state: AppStateType): TLoginMapStateToProps => ({
     isAuth: state.auth.isAuth,
     captcha: state.auth.captcha,
