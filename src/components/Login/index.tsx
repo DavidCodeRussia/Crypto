@@ -9,8 +9,7 @@ import s from "./Login.module.scss";
 
 const Login: React.FC<TLoginProps> = ({ captcha, isAuth, login }) => {
   const onSubmit = (formData: TFormData) => {
-    console.log(formData);
-    login(formData.email, formData.password, formData.rememberMe ?? false, formData.captcha ?? "");
+    login(formData.email, formData.password, formData.rememberMe, formData.captcha);
   };
 
   if (isAuth) {

@@ -1,8 +1,8 @@
 /* eslint-disable react-hooks/exhaustive-deps */
-import React, { useEffect } from 'react';
-import { useMatch } from 'react-router-dom';
-import { compose } from 'redux';
-import { connect } from 'react-redux';
+import React, { useEffect } from "react";
+import { useMatch } from "react-router-dom";
+import { compose } from "redux";
+import { connect } from "react-redux";
 
 import {
   savePhoto,
@@ -10,10 +10,10 @@ import {
   getUserProfile,
   saveDataProfile,
   updateStatus,
-} from '../../redux/profile-reducer';
-import { withAuthNavigate } from '../../hoc/withAuthRedirect';
+} from "../../redux/profile-reducer";
+import { withAuthNavigate } from "../../hoc/withAuthRedirect.ts";
 
-import Profile from './Profile';
+import Profile from "./Profile";
 
 let ProfileContainer = (props) => {
   let userId = props.match ? props.match.params.userId : props.authorizedUserId;
@@ -37,7 +37,7 @@ let ProfileContainer = (props) => {
 };
 
 const ProfileURLMath = (props) => {
-  const match = useMatch('/profile/:userId');
+  const match = useMatch("/profile/:userId");
   return <ProfileContainer {...props} match={match} />;
 };
 

@@ -1,4 +1,4 @@
-import { withAuthNavigate } from "../../hoc/withAuthRedirect";
+import { withAuthNavigate } from "../../hoc/withAuthRedirect.ts";
 import { ComponentInBuildMode } from "../common/ComponentInBuildMode";
 import WrapperForMain from "@components/common/WrapperForMain";
 

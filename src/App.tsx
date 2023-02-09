@@ -1,6 +1,6 @@
 import React, { Suspense, useEffect } from "react";
 import { Navigate, Route, Routes } from "react-router-dom";
-import { connect } from "react-redux";
+import { connect, MapStateToProps } from "react-redux";
 
 import { initializeApp } from "./redux/app-reducer";
 
@@ -12,12 +12,18 @@ import NewsContainer from "./components/News";
 import SettingsContainer from "./components/Settings";
 
 import "./App.scss";
+import { AppStateType } from "./redux/redux-store";
+
+type TMapProps = ReturnType<typeof mapStateToProps>;
+type TDispatchProps = {
+  initializeApp: () => void;
+};
 
 const ProfileContainer = React.lazy(() => import("./components/Profile/ProfileContainer.jsx")); // Ленивая загрузка
 const DialogsContainer = React.lazy(() => import("./components/Dialogs/DialogsContainer.tsx")); // Lazy download
 const UsersContainer = React.lazy(() => import("./components/Users/UsersContainer.tsx"));
 
-let App = (props: any) => {
+let App: React.FC<TMapProps & TDispatchProps> = (props) => {
   useEffect(() => {
     props.initializeApp();
   });
@@ -47,7 +53,7 @@ let App = (props: any) => {
   );
 };
 
-const mapStateToProps = (state: any) => ({
+const mapStateToProps = (state: AppStateType) => ({
   initialized: state.app.initialized,
 });
 

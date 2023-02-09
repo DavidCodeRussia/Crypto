@@ -57,17 +57,6 @@ export const getAuthUserData = (): TThunkAuthReducer => async (dispatch) => {
 export const login =
   (email: string, password: string, rememberMe: boolean, captcha: string): TThunkAuthReducer =>
   async (dispatch) => {
-    console.log("данные приходящие в thunk");
-    console.log(
-      "email: ",
-      email,
-      "password: ",
-      password,
-      "rememberMe: ",
-      rememberMe,
-      "captcha:",
-      captcha,
-    );
     let response = await authAPI.login(email, password, rememberMe, captcha);
 
     if (response.data.resultCode === EResultCode.Success) {
