@@ -11,7 +11,7 @@ import {
   saveDataProfile,
   updateStatus,
 } from "../../redux/profile-reducer";
-import { withAuthNavigate } from "../../hoc/withAuthRedirect.ts";
+import { withAuthNavigate } from "../../hoc/withAuthRedirect";
 
 import Profile from "./Profile";
 

@@ -1,7 +1,7 @@
 import React from "react";
 
 import { ComponentInBuildMode } from "../common/ComponentInBuildMode";
-import { withAuthNavigate } from "../../hoc/withAuthRedirect.ts";
+import { withAuthNavigate } from "../../hoc/withAuthRedirect";
 
 import WrapperForMain from "@components/common/WrapperForMain";
 

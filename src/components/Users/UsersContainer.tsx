@@ -12,7 +12,7 @@ import {
   getTotalItemsCount,
   getUsers,
 } from "../../redux/users-selectors";
-import { withAuthNavigate } from "../../hoc/withAuthRedirect.ts";
+import { withAuthNavigate } from "../../hoc/withAuthRedirect";
 import { TMapStateToProps, TUsersContainerProps } from "./types";
 import { AppStateType } from "../../redux/redux-store";
 import { somethingNew } from "../../App";
