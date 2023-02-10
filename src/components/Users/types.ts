@@ -42,9 +42,10 @@ export type TUsersProps = {
   totalItemsCount: number;
   pageSize: number;
   currentPage: number;
-  onPageChanged: (pageNumber: number) => void;
   users: Array<TUser>;
   followingInProgress: Array<number>;
+
+  onPageChanged: (pageNumber: number) => void;
   follow: (id: number) => void;
   unfollow: (id: number) => void;
 };

@@ -14,6 +14,7 @@ import {
 import { withAuthNavigate } from "../../hoc/withAuthRedirect";
 
 import Profile from "./Profile";
+import { AppStateType } from "../../redux/redux-store";
 
 let ProfileContainer = (props) => {
   let userId = props.match ? props.match.params.userId : props.authorizedUserId;
@@ -37,11 +38,13 @@ let ProfileContainer = (props) => {
 };
 
 const ProfileURLMath = (props) => {
+  console.log("props", props);
   const match = useMatch("/profile/:userId");
   return <ProfileContainer {...props} match={match} />;
 };
 
 let mapStateToProps = (state) => {
+  //
   return {
     profile: state.profilePage.profile,
     status: state.profilePage.status,
