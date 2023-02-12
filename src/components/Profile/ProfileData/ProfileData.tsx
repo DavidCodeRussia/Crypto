@@ -1,24 +1,18 @@
-import React from "react";
+import React from 'react';
+import Stack from '@mui/material/Stack';
+import Button from '@mui/material/Button';
+import Contact from '../Contact/Contact';
 
-import Stack from "@mui/material/Stack";
-import Button from "@mui/material/Button";
+import { TContacts } from '../../../types';
+import { TProfileData } from '../types';
+import s from './ProfileData.module.scss';
 
-import s from "./ProfileData.module.scss";
-
-const ProfileData = (props) => {
-  let Contact = ({ ContactTitle, ContactValue }) => {
-    return (
-      <div className={s.contacts}>
-        {ContactTitle} {ContactValue}
-      </div>
-    );
-  };
-
+const ProfileData: React.FC<TProfileData> = (props) => {
   return (
     <div className={s.information}>
       <div>
         <div>
-          <b>Looking for a job:</b> {props.profile.lookingForAJob ? "yes" : "no"}
+          <b>Looking for a job:</b> {props.profile.lookingForAJob ? 'yes' : 'no'}
         </div>
         <div>
           <b>Birthday:</b> {props.profile.lookingForAJobDescription}
@@ -31,7 +25,13 @@ const ProfileData = (props) => {
         <div>
           <b>Contacts:</b>
           {Object.keys(props.profile.contacts).map((key) => {
-            return <Contact key={key} ContactTitle={key} ContactValue={props.profile.contacts[key]} />;
+            return (
+              <Contact
+                key={key}
+                ContactTitle={key}
+                ContactValue={props.profile.contacts[key as keyof TContacts]}
+              />
+            );
           })}
         </div>
       </div>
@@ -41,8 +41,7 @@ const ProfileData = (props) => {
             <Stack
               onClick={() => {
                 props.toEditMode(true);
-              }}
-            >
+              }}>
               <Button size="small" variant="contained">
                 Edit
               </Button>

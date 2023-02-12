@@ -1,8 +1,8 @@
 /* eslint-disable react-hooks/exhaustive-deps */
-import React, { useEffect } from "react";
-import { useMatch } from "react-router-dom";
-import { compose } from "redux";
-import { connect } from "react-redux";
+import React, { useEffect } from 'react';
+import { useMatch } from 'react-router-dom';
+import { compose } from 'redux';
+import { connect } from 'react-redux';
 
 import {
   savePhoto,
@@ -10,13 +10,14 @@ import {
   getUserProfile,
   saveDataProfile,
   updateStatus,
-} from "../../redux/profile-reducer";
-import { withAuthNavigate } from "../../hoc/withAuthRedirect";
+} from '../../redux/profile-reducer';
+import { withAuthNavigate } from '../../hoc/withAuthRedirect';
 
-import Profile from "./Profile";
-import { AppStateType } from "../../redux/redux-store";
+import Profile from './Profile';
+import { AppStateType } from '../../redux/redux-store';
+import { TProfileUrl, TPropsProfileContainer } from './types';
 
-let ProfileContainer = (props) => {
+let ProfileContainer: React.FC<TPropsProfileContainer & TProfileUrl> = (props) => {
   let userId = props.match ? props.match.params.userId : props.authorizedUserId;
 
   useEffect(() => {
@@ -37,14 +38,12 @@ let ProfileContainer = (props) => {
   );
 };
 
-const ProfileURLMath = (props) => {
-  console.log("props", props);
-  const match = useMatch("/profile/:userId");
+const ProfileURLMath: React.FC<TPropsProfileContainer> = (props) => {
+  const match = useMatch('/profile/:userId');
   return <ProfileContainer {...props} match={match} />;
 };
 
-let mapStateToProps = (state) => {
-  //
+let mapStateToProps = (state: AppStateType) => {
   return {
     profile: state.profilePage.profile,
     status: state.profilePage.status,

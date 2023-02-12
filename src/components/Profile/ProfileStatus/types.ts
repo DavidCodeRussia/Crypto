@@ -1,7 +1,7 @@
 export type TProfileStatusProps = {
   status: string;
   fullName: string;
-  match: boolean;
+  match: { params: { userId: string | null } };
 
   updateStatus: (status: string) => void;
 };

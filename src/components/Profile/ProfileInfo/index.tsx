@@ -1,29 +1,31 @@
-import React, { useState } from "react";
+import React, { ChangeEvent, useState } from 'react';
 
-import Button from "@mui/material/Button";
-import Stack from "@mui/material/Stack";
+import Button from '@mui/material/Button';
+import Stack from '@mui/material/Stack';
 
-import Preloader from "../../common/preloader/Preloader";
-import ProfileStatus from "../ProfileStatus";
-import ProfileDataEditReduxForm from "../ProfileDataEditReduxForm/ProfileDataEditReduxForm";
-import ProfileData from "../ProfileData/ProfileData";
+import Preloader from '../../common/preloader/Preloader';
+import ProfileStatus from '../ProfileStatus';
+import ProfileDataEditRF from '../ProfileDataEditRF/ProfileDataEditRF';
+import ProfileData from '../ProfileData/ProfileData';
 
-import s from "./ProfileInfo.module.scss";
+import { TProfileDataEditRFFormData, TProfileInfo } from '../types';
+import s from './ProfileInfo.module.scss';
 
-const ProfileInfo = (props) => {
+const ProfileInfo: React.FC<TProfileInfo> = (props) => {
   let [editMode, toEditMode] = useState(false);
 
   if (!props.profile) {
     return <Preloader />;
   }
 
-  let getPhotoFromInput = (e) => {
-    if (e.target.files.length) {
-      props.getPhoto(e.target.files[0]);
+  let getPhotoFromInput = (event: ChangeEvent<HTMLInputElement>) => {
+    if (event.target.files?.length) {
+      props.getPhoto(event.target.files[0]);
     }
   };
 
-  let onSubmit = (formData) => {
+  let onSubmit = (formData: TProfileDataEditRFFormData) => {
+    // remove then ! - _ -
     props.saveDataProfile(formData).then(() => {
       toEditMode(false);
     });
@@ -35,7 +37,7 @@ const ProfileInfo = (props) => {
         <img
           src={
             props.profile.photos.large ||
-            "https://upload.wikimedia.org/wikipedia/commons/thumb/5/59/User-avatar.svg/1024px-User-avatar.svg.png"
+            'https://upload.wikimedia.org/wikipedia/commons/thumb/5/59/User-avatar.svg/1024px-User-avatar.svg.png'
           }
           alt="default user avatar"
         />
@@ -43,7 +45,7 @@ const ProfileInfo = (props) => {
 
       {!props.match && (
         <Stack className={s.uploadBtn} direction="row" alignItems="center" spacing={2}>
-          <Button onChange={getPhotoFromInput} variant="contained" component="label">
+          <Button onChange={() => getPhotoFromInput} variant="contained" component="label">
             Upload
             <input hidden accept="image/*" multiple type="file" />
           </Button>
@@ -60,7 +62,7 @@ const ProfileInfo = (props) => {
       </div>
 
       {editMode ? (
-        <ProfileDataEditReduxForm
+        <ProfileDataEditRF
           onSubmit={onSubmit}
           toEditMode={toEditMode}
           profile={props.profile}

@@ -19,10 +19,10 @@ export type TProfile = {
   photos: TPhotos;
 };
 
-export type TPosts = {
+export type TPost = {
   id: number;
-  message: string;
   likes: number;
+  message: string;
 };
 
 export type TPhotos = {
