@@ -1,28 +1,29 @@
-import React from 'react';
+// @ts-nocheck
+import React from "react";
 
-import Stack from '@mui/material/Stack';
-import Button from '@mui/material/Button';
+import Stack from "@mui/material/Stack";
+import Button from "@mui/material/Button";
 
-import { Field, reduxForm } from 'redux-form';
-import { Input, Textarea } from '../../common/FormsControls/FormsControls';
-import { TProfileDataEditRF, TProfileDataEditRFFormData } from '../types';
+import { Field, reduxForm } from "redux-form";
+import { Input, Textarea } from "../../common/FormsControls/FormsControls";
+import { TProfileDataEditRF, TProfileDataEditRFFormData } from "../types";
 
-import s from './ProfileDataEditRF.module.scss';
+import s from "./ProfileDataEditRF.module.scss";
 
-let ProfileDataEditRF: React.FC<TProfileDataEditRF> = ({ profile, handleSubmit, error }) => {
+let ProfileDataEditRF: React.FC<TProfileDataEditRF> = ({ profile, handleSubmit }) => {
   return (
     <form className={s.information} onSubmit={handleSubmit}>
       <div className={s.block1}>
-        {error && <div className={s.formSummaryError}>{error}</div>}
+        {/* {error && <div className={s.formSummaryError}>{error}</div>} */}
         <div>
           <b>Full name:</b>
-          <Field placeholder={'Your full name'} name={'fullName'} component={Input} />
+          <Field placeholder={"Your full name"} name={"fullName"} component={Input} />
         </div>
         <div>
           <b>Looking for a job:</b>
           <Field
             placeholder="Yes"
-            name={'lookingForAJob'}
+            name={"lookingForAJob"}
             component={Input}
             type="checkbox"
             value="yes"
@@ -31,22 +32,22 @@ let ProfileDataEditRF: React.FC<TProfileDataEditRF> = ({ profile, handleSubmit, 
         <div>
           <b>Birthday:</b>
           <Field
-            placeholder={'Write here your birthday'}
-            name={'lookingForAJobDescription'}
+            placeholder={"Write here your birthday"}
+            name={"lookingForAJobDescription"}
             component={Textarea}
           />
         </div>
         <div>
           <b>About me:</b>
-          <Field placeholder={'Tell something'} name={'aboutMe'} component={Textarea} />
+          <Field placeholder={"Tell something"} name={"aboutMe"} component={Textarea} />
         </div>
         <div>
           <b>Contacts:</b>
           {Object.keys(profile.contacts).map((key) => {
             return (
               <div key={key}>
-                {key}:{' '}
-                <Field key={key} placeholder={key} name={'contacts.' + key} component={Input} />
+                {key}:{" "}
+                <Field key={key} placeholder={key} name={"contacts." + key} component={Input} />
               </div>
             );
           })}
@@ -66,7 +67,7 @@ let ProfileDataEditRF: React.FC<TProfileDataEditRF> = ({ profile, handleSubmit, 
 };
 
 let ProfileDataEditReduxForm = reduxForm<TProfileDataEditRFFormData, TProfileDataEditRF>({
-  form: 'dataEdit',
+  form: "dataEdit",
 })(ProfileDataEditRF);
 
 export default ProfileDataEditReduxForm;

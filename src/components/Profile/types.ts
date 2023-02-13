@@ -1,27 +1,28 @@
-import { SetStateAction } from 'react';
-import { Dispatch } from 'redux';
-import { TContacts, TProfile } from '../../types';
-import { TPost } from '../../types';
+import { SetStateAction } from "react";
+import { PathMatch } from "react-router-dom";
+import { Dispatch } from "redux";
+import { TContacts, TProfile } from "../../types";
+import { TPost } from "../../types";
 
 // Below types for component: ProfileContainer
 
-export type TMapStateToProps = {
+export type TPCMapStateToProps = {
   profile: TProfile;
   status: string;
   authorizedUserId: number;
   isAuth: boolean;
 };
 
-export type TMapDispatchToProps = {
+export type TPCMapDispatchToProps = {
   getUserProfile: (userId: string | number | null) => void;
   getStatus: (serId: string | number | null) => void;
   updateStatus: () => void;
   savePhoto: () => void;
-  saveDataProfile: () => void;
+  saveDataProfile: (formData: TProfileDataEditRFFormData) => Promise<void>;
   getPhoto: () => void;
 };
 
-export type TPropsProfileContainer = TMapStateToProps & TMapDispatchToProps;
+export type TPropsPC = TPCMapStateToProps & TPCMapDispatchToProps;
 
 export type TProfileUrl = {
   match: {
@@ -29,6 +30,38 @@ export type TProfileUrl = {
       userId: string | null;
     };
   };
+};
+
+// Below types for component: Profile
+
+export type TProfileProps = {
+  authorizedUserId: number;
+  match: {
+    params: {
+      userId: string | null;
+    };
+  };
+  profile: TProfile;
+  status: string;
+
+  getPhoto: () => void;
+  saveDataProfile: (formData: TProfileDataEditRFFormData) => Promise<void>;
+  updateStatus: () => void;
+};
+
+// Below types for component: MyPostsContainer
+
+export type TMPCMapState = {
+  posts: TPost[];
+  newPostText: string;
+};
+
+export type TMPCMapDispatch = {
+  addPost: (NewPostBody: string) => void;
+};
+
+export type TContainerDataPost = {
+  profile: TProfile;
 };
 
 // Below types for component: MyPosts
@@ -76,8 +109,8 @@ export type TContact = {
 
 export type TProfileDataEditRF = {
   profile: TProfile;
-  error: string;
-  handleSubmit: () => void;
+  // error: string;
+  handleSubmit: (formData: TProfileDataEditRFFormData) => void;
   toEditMode: (active: boolean) => any;
 };
 

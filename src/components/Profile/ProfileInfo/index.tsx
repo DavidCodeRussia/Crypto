@@ -1,15 +1,15 @@
-import React, { ChangeEvent, useState } from 'react';
+import React, { ChangeEvent, useState } from "react";
 
-import Button from '@mui/material/Button';
-import Stack from '@mui/material/Stack';
+import Button from "@mui/material/Button";
+import Stack from "@mui/material/Stack";
 
-import Preloader from '../../common/preloader/Preloader';
-import ProfileStatus from '../ProfileStatus';
-import ProfileDataEditRF from '../ProfileDataEditRF/ProfileDataEditRF';
-import ProfileData from '../ProfileData/ProfileData';
+import Preloader from "../../common/preloader/Preloader";
+import ProfileStatus from "../ProfileStatus";
+import ProfileDataEditRF from "../ProfileDataEditRF";
+import ProfileData from "../ProfileData/ProfileData";
 
-import { TProfileDataEditRFFormData, TProfileInfo } from '../types';
-import s from './ProfileInfo.module.scss';
+import { TProfileDataEditRFFormData, TProfileInfo } from "../types";
+import s from "./ProfileInfo.module.scss";
 
 const ProfileInfo: React.FC<TProfileInfo> = (props) => {
   let [editMode, toEditMode] = useState(false);
@@ -26,6 +26,7 @@ const ProfileInfo: React.FC<TProfileInfo> = (props) => {
 
   let onSubmit = (formData: TProfileDataEditRFFormData) => {
     // remove then ! - _ -
+
     props.saveDataProfile(formData).then(() => {
       toEditMode(false);
     });
@@ -37,7 +38,7 @@ const ProfileInfo: React.FC<TProfileInfo> = (props) => {
         <img
           src={
             props.profile.photos.large ||
-            'https://upload.wikimedia.org/wikipedia/commons/thumb/5/59/User-avatar.svg/1024px-User-avatar.svg.png'
+            "https://upload.wikimedia.org/wikipedia/commons/thumb/5/59/User-avatar.svg/1024px-User-avatar.svg.png"
           }
           alt="default user avatar"
         />
@@ -63,10 +64,9 @@ const ProfileInfo: React.FC<TProfileInfo> = (props) => {
 
       {editMode ? (
         <ProfileDataEditRF
-          onSubmit={onSubmit}
+          handleSubmit={onSubmit}
           toEditMode={toEditMode}
           profile={props.profile}
-          initialValues={props.profile}
         />
       ) : (
         <ProfileData profile={props.profile} toEditMode={toEditMode} match={props.match} />

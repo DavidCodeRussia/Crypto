@@ -1,8 +1,9 @@
-import MyPostsContainer from './MyPostsContainer';
-import ProfileInfo from './ProfileInfo';
-import WrapperForMain from '@components/common/WrapperForMain';
+import MyPostsContainer from "./MyPostsContainer";
+import ProfileInfo from "./ProfileInfo";
+import WrapperForMain from "../../components/common/WrapperForMain";
+import { TProfileProps } from "./types";
 
-const Profile = (props) => {
+const Profile: React.FC<TProfileProps> = (props) => {
   return (
     <WrapperForMain>
       <ProfileInfo

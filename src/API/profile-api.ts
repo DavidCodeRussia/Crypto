@@ -1,5 +1,5 @@
-import { instance, APIResponseType } from './api';
-import { TPhotos, TProfile } from '../types';
+import { instance, APIResponseType } from "./api";
+import { TPhotos, TProfile } from "../types";
 
 export type TProfileId = {
   userId: number;
@@ -44,14 +44,14 @@ export const profileAPI = {
   },
   savePhoto(photo: File) {
     const formData = new FormData();
-    formData.append('image', photo);
+    formData.append("image", photo);
     return instance.put<APIResponseType<TSavePhotoResponse>>(`profile/photo`, formData, {
       headers: {
-        'Content-Type': 'multipart/form-data',
+        "Content-Type": "multipart/form-data",
       },
     });
   },
   saveDataProfile(profile: TProfile) {
-    return instance.put<TSaveDataProfile>('profile', profile);
+    return instance.put<TSaveDataProfile>("profile", profile);
   },
 };

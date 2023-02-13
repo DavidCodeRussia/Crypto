@@ -3,12 +3,13 @@ import { Outlet, useLocation } from "react-router-dom";
 import Stack from "@mui/material/Stack";
 import Button from "@mui/material/Button";
 
+import { THeader } from "./types";
 import Nav from "../Navbar/Navbar";
 import Footer from "../Footer/Footer";
 
 import s from "./HeaderLayout.module.scss";
 
-const HeaderLayout = (props) => {
+const HeaderLayout: React.FC<THeader> = (props) => {
   const location = useLocation();
   const login = location?.pathname === "/login" ?? null;
 

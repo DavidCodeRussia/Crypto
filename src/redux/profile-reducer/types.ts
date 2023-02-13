@@ -1,12 +1,13 @@
-import { ThunkAction } from 'redux-thunk';
-import { ADD_POST, DELETE_POST, GETTING_PHOTO, SET_STATUS, SET_USER_PROFILE } from './index';
-import { TPost, TPhotos } from '../../types';
-import { AppStateType } from '../redux-store';
+import { ThunkAction } from "redux-thunk";
+import { ADD_POST, DELETE_POST, GETTING_PHOTO, SET_STATUS, SET_USER_PROFILE } from "./index";
+import { TPost, TPhotos } from "../../types";
+import { AppStateType } from "../redux-store";
 
 export type TProfileReducerState = {
   posts: TPost[];
   profile: object | null;
   status: string;
+  newPostText: string;
 };
 
 export type TThunkProfileReducer = ThunkAction<

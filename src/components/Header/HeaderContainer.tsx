@@ -2,6 +2,8 @@ import React from "react";
 import HeaderLayout from "./HeaderLayout";
 import { connect } from "react-redux";
 import { logout } from "../../redux/auth-reducer";
+import { AppStateType } from "../../redux/redux-store";
+import { TMapDispatchToProps, TMapStateToProps } from "./types";
 
 class HeaderContainer extends React.Component {
   render() {
@@ -9,9 +11,11 @@ class HeaderContainer extends React.Component {
   }
 }
 
-const mapStateToProps = (state) => ({
+const mapStateToProps = (state: AppStateType): TMapStateToProps => ({
   isAuth: state.auth.isAuth,
   login: state.auth.login,
 });
 
-export default connect(mapStateToProps, { logout })(HeaderContainer);
+export default connect<TMapStateToProps, TMapDispatchToProps, {}, AppStateType>(mapStateToProps, {
+  logout,
+})(HeaderContainer);

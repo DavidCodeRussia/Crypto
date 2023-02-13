@@ -19,7 +19,7 @@ type TDispatchProps = {
   initializeApp: () => void;
 };
 
-const ProfileContainer = React.lazy(() => import("./components/Profile/ProfileContainer.jsx")); // Ленивая загрузка
+const ProfileContainer = React.lazy(() => import("./components/Profile/ProfileContainer.tsx")); // Ленивая загрузка
 const DialogsContainer = React.lazy(() => import("./components/Dialogs/DialogsContainer.tsx")); // Lazy download
 const UsersContainer = React.lazy(() => import("./components/Users/UsersContainer.tsx"));
 
