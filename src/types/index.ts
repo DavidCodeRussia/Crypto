@@ -26,6 +26,6 @@ export type TPost = {
 };
 
 export type TPhotos = {
-  small: string;
-  large: string;
+  small: string | null;
+  large: string | null;
 };

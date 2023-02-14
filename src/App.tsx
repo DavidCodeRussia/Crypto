@@ -7,7 +7,7 @@ import { AppStateType } from "./redux/redux-store";
 
 import HeaderContainer from "./components/Header/HeaderContainer";
 import Login from "./components/Login";
-import Preloader from "./components/common/preloader/Preloader";
+import Preloader from "./components/common/Preloader";
 import FriendsContainer from "./components/Friends";
 import NewsContainer from "./components/News";
 import SettingsContainer from "./components/Settings";

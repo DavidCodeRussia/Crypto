@@ -1,10 +1,10 @@
-import { TOwnProps } from './types';
-import WrapperForMain from '../common/WrapperForMain';
-import { ComponentInBuildMode } from '../common/ComponentInBuildMode';
+import { TOwnProps } from "./types";
+import WrapperForMain from "../common/WrapperForMain";
+import { ComponentInBuildMode } from "../common/ComponentInBuildMode";
 
-import s from './Dialogs.module.scss';
+import s from "./Dialogs.module.scss";
 
-const Dialogs: React.FC<TOwnProps> = (props) => {
+const Dialogs: React.FC<TOwnProps> = () => {
   return (
     <WrapperForMain>
       <div className={s.dialogs}>

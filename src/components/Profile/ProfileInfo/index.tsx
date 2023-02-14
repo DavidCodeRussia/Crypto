@@ -3,7 +3,7 @@ import React, { ChangeEvent, useState } from "react";
 import Button from "@mui/material/Button";
 import Stack from "@mui/material/Stack";
 
-import Preloader from "../../common/preloader/Preloader";
+import Preloader from "../../common/Preloader";
 import ProfileStatus from "../ProfileStatus";
 import ProfileDataEditRF from "../ProfileDataEditRF";
 import ProfileData from "../ProfileData/ProfileData";

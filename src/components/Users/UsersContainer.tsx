@@ -18,7 +18,7 @@ import { AppStateType } from "../../redux/redux-store";
 import { somethingNew } from "../../App";
 
 import Users from "./Users";
-import Preloader from "../common/preloader/Preloader";
+import Preloader from "../common/Preloader";
 
 let UsersContainer: React.FC<TUsersContainerProps> = (props) => {
   useEffect(() => {
