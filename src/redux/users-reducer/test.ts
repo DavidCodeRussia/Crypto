@@ -8,7 +8,7 @@ beforeEach(() => {
     users: [
       {
         id: 0,
-        name: "Dimych0",
+        name: "Dimych",
         followed: false,
         photos: { small: null, large: null },
         status: "status",

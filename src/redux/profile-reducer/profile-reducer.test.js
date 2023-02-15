@@ -2,7 +2,7 @@ import profileReducer, { addPostActionCreator, deletePost } from ".";
 
 let state = {
   posts: [
-    { id: 1, message: "Hi brosky, how's it going?", likes: 2 },
+    { id: 1, message: "Hi Michaella, how's it going?", likes: 2 },
     { id: 2, message: "It's my first post.", likes: 5 },
   ],
 };
@@ -24,11 +24,11 @@ it("length of posted should be incremented", () => {
   let action = addPostActionCreator("it-kamasutra.com");
 
   // 2. action
-  let newState = profileReducer({ state }, { action });
+  let newState = profileReducer(state, action);
 
   // 3. expectation
 
-  expect(newState.posts.length).toBe(5);
+  expect(newState.posts.length).toBe(3);
 });
 
 it("message of new post should be corrected", () => {
@@ -36,7 +36,7 @@ it("message of new post should be corrected", () => {
   let action = addPostActionCreator("it-kamasutra.com");
 
   // 2. action
-  let newState = profileReducer({ state }, { action });
+  let newState = profileReducer(state, action);
 
   // 3. expectation
 
