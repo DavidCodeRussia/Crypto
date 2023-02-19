@@ -1,4 +1,5 @@
 import { TPhotos } from '../types';
+import { parseQueryParams } from '../utils';
 import { instance, APIResponseType } from './api';
 
 export type TUser = {
@@ -15,9 +16,21 @@ export type TUsers = {
   totalCount: number;
 };
 
+type TGetUsersParameters = {
+  currentPage: number;
+  pageSize: number;
+  term: string;
+};
+
 export const usersAPI = {
-  async getUsers(currentPage = 1, pageSize = 10) {
-    const response = await instance.get<TUsers>(`users?page=${currentPage}&count=${pageSize}`);
+  async getUsers(data: TGetUsersParameters) {
+    const { currentPage = 1, pageSize = 10, ...params } = data;
+    const query = data ? parseQueryParams(params) : '';
+
+    const response = await instance.get<TUsers>(
+      // `users?${query}&page=${currentPage.currentPage}&count=${pageSize}`,
+      `users?page=1&count=5`,
+    );
     return response.data;
   },
   async unfollow(userId: number) {

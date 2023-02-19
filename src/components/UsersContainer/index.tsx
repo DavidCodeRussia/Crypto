@@ -1,9 +1,9 @@
 /* eslint-disable react-hooks/exhaustive-deps */
-import React, { useEffect } from "react";
-import { connect } from "react-redux";
-import { compose } from "redux";
+import React, { useEffect } from 'react';
+import { connect } from 'react-redux';
+import { compose } from 'redux';
 
-import { follow, requestUsers, onPage, unfollow } from "../../redux/users-reducer";
+import { follow, requestUsers, onPage, unfollow } from '../../redux/users-reducer';
 import {
   getCurrentPage,
   getFollowingInProgress,
@@ -11,22 +11,28 @@ import {
   getPageSize,
   getTotalItemsCount,
   getUsers,
-} from "../../redux/users-selectors";
-import { withAuthNavigate } from "../../hoc/withAuthRedirect";
-import { TMapStateToProps, TUsersContainerProps } from "./types";
-import { AppStateType } from "../../redux/redux-store";
-import { somethingNew } from "../../App";
+} from '../../redux/users-selectors';
+import { withAuthNavigate } from '../../hoc/withAuthRedirect';
+import { TMapStateToProps, TUsersContainerProps } from './types';
+import { AppStateType } from '../../redux/redux-store';
+import { somethingNew } from '../../App';
 
-import Users from "./Users";
-import Preloader from "../common/Preloader";
+import Users from './components/Users';
+import Preloader from '../common/Preloader';
+import { TFilter } from '../../redux/users-reducer/types';
 
 let UsersContainer: React.FC<TUsersContainerProps> = (props) => {
   useEffect(() => {
-    props.getUsers(props.currentPage, props.pageSize);
-  }, [props.currentPage, props.pageSize]);
+    props.getUsers({ currentPage: props.currentPage, pageSize: props.pageSize, term: '' });
+  }, []); // props.currentPage, props.pageSize
 
   let onPageChanged = (pageNumber: number) => {
     props.onPage(pageNumber, props.pageSize); // pageNumber - номер текущей страницы, props.pageSize - кол-во юзеров 5 или 10
+  };
+
+  let onFilterChanged = (filter: TFilter) => {
+    const { pageSize, currentPage } = props;
+    props.getUsers({ currentPage, pageSize, term: filter.term });
   };
 
   return (
@@ -39,6 +45,7 @@ let UsersContainer: React.FC<TUsersContainerProps> = (props) => {
         totalItemsCount={props.totalItemsCount}
         currentPage={props.currentPage}
         onPageChanged={onPageChanged}
+        onFilterChanged={onFilterChanged}
         follow={props.follow}
         unfollow={props.unfollow}
         followingInProgress={props.followingInProgress}

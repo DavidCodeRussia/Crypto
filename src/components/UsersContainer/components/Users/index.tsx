@@ -1,31 +1,33 @@
-import React from "react";
+import React from 'react';
 
-import { NavLink } from "react-router-dom";
+import { NavLink } from 'react-router-dom';
 
-import { defaultAvatar } from "../../constants/constants";
-import { TUsersProps } from "./types";
+import { defaultAvatar } from '../../../../constants/constants';
+import { TUsersProps } from '../../types';
 
-import Paginator from "../common/Paginator";
-import WrapperForMain from "../common/WrapperForMain";
-import Stack from "@mui/material/Stack";
-import Button from "@mui/material/Button";
+import Paginator from '../../../common/Paginator';
+import WrapperForMain from '../../../common/WrapperForMain';
+import Stack from '@mui/material/Stack';
+import Button from '@mui/material/Button';
 
-import s from "./Users.module.scss";
+import s from './Users.module.scss';
+import UsersSearchForm from '../UsersSearchForm';
 
 let Users: React.FC<TUsersProps> = (props) => {
   return (
     <WrapperForMain>
-      <div className={s.UsersComponent}>
+      <div className={s.usersComponent}>
         <Paginator
           totalItemsCount={props.totalItemsCount}
           pageSize={props.pageSize}
           currentPage={props.currentPage}
           onPageChanged={props.onPageChanged}
         />
+        <UsersSearchForm onFilterChanged={props.onFilterChanged} />
         {props.users.map((u) => (
           <div key={u.id} className={s.user}>
             <span>
-              <NavLink to={"/profile/" + u.id}>
+              <NavLink to={'/profile/' + u.id}>
                 <img
                   src={u.photos.small != null ? u.photos.small : defaultAvatar}
                   className={s.userPhoto}

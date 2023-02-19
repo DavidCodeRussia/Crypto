@@ -1,4 +1,4 @@
-import { TUser } from "../../redux/users-reducer/types";
+import { TFilter, TUser } from '../../redux/users-reducer/types';
 
 export type TMapStateToProps = {
   currentPage: number;
@@ -22,6 +22,12 @@ export type TOwnProps = {
 
 export type TPropsType = TMapStateToProps & TMapDisptachToProps & TOwnProps;
 
+type TGetUsersParameters = {
+  currentPage: number;
+  pageSize: number;
+  term: string;
+};
+
 export type TUsersContainerProps = {
   pageTitle: string;
   currentPage: number;
@@ -33,7 +39,7 @@ export type TUsersContainerProps = {
 
   follow: () => void;
   unfollow: () => void;
-  getUsers: (currentPage: number, pageSize: number) => void;
+  getUsers: (data: TGetUsersParameters) => void;
   onPage: (pageNumber: number, pageSize: number) => void;
 };
 
@@ -46,6 +52,11 @@ export type TUsersProps = {
   followingInProgress: Array<number>;
 
   onPageChanged: (pageNumber: number) => void;
+  onFilterChanged: (filter: TFilter) => void;
   follow: (id: number) => void;
   unfollow: (id: number) => void;
+};
+
+export type TUsersSearchFormProps = {
+  onFilterChanged: (filter: TFilter) => void;
 };

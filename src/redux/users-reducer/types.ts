@@ -11,5 +11,6 @@ export type TUser = {
 };
 
 export type TInitialState = typeof initialState;
+export type TFilter = typeof initialState.filter;
 export type ActionsTypes = InferActionsTypes<typeof actions>;
 export type ThunkType = BaseThunkType<ActionsTypes>;

@@ -1,11 +1,11 @@
-import React from "react";
+import React from 'react';
 
-import { ComponentInBuildMode } from "../common/ComponentInBuildMode";
-import { withAuthNavigate } from "../../hoc/withAuthRedirect";
+import { ComponentInBuildMode } from '../common/ComponentInBuildMode';
+import { withAuthNavigate } from '../../hoc/withAuthRedirect';
 
-import WrapperForMain from "../common/WrapperForMain";
+import WrapperForMain from '../common/WrapperForMain';
 
-import s from "./Friends.module.scss";
+import s from './Friends.module.scss';
 
 const FriendsContainer = () => {
   return (
