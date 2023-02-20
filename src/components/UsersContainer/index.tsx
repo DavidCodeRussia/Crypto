@@ -1,9 +1,9 @@
 /* eslint-disable react-hooks/exhaustive-deps */
-import React, { useEffect } from 'react';
-import { connect } from 'react-redux';
-import { compose } from 'redux';
+import React, { useEffect } from "react";
+import { connect } from "react-redux";
+import { compose } from "redux";
 
-import { follow, requestUsers, onPage, unfollow } from '../../redux/users-reducer';
+import { follow, requestUsers, onPage, unfollow } from "../../redux/users-reducer";
 import {
   getCurrentPage,
   getFollowingInProgress,
@@ -11,28 +11,27 @@ import {
   getPageSize,
   getTotalItemsCount,
   getUsers,
-} from '../../redux/users-selectors';
-import { withAuthNavigate } from '../../hoc/withAuthRedirect';
-import { TMapStateToProps, TUsersContainerProps } from './types';
-import { AppStateType } from '../../redux/redux-store';
-import { somethingNew } from '../../App';
+} from "../../redux/users-selectors";
+import { withAuthNavigate } from "../../hoc/withAuthRedirect";
+import { TMapStateToProps, TUsersContainerProps } from "./types";
+import { AppStateType } from "../../redux/redux-store";
+import { somethingNew } from "../../App";
 
-import Users from './components/Users';
-import Preloader from '../common/Preloader';
-import { TFilter } from '../../redux/users-reducer/types';
+import Users from "./components/Users";
+import Preloader from "../common/Preloader";
+import { TFilter } from "../../redux/users-reducer/types";
 
 let UsersContainer: React.FC<TUsersContainerProps> = (props) => {
-  useEffect(() => {
-    props.getUsers({ currentPage: props.currentPage, pageSize: props.pageSize, term: '' });
-  }, []); // props.currentPage, props.pageSize
+  // useEffect(() => {
+  //   props.getUsers({ currentPage: props.currentPage, pageSize: props.pageSize, term: "" });
+  // }, [props.currentPage, props.pageSize]);
 
   let onPageChanged = (pageNumber: number) => {
-    props.onPage(pageNumber, props.pageSize); // pageNumber - номер текущей страницы, props.pageSize - кол-во юзеров 5 или 10
+    props.onPage(pageNumber, props.pageSize);
   };
 
   let onFilterChanged = (filter: TFilter) => {
-    const { pageSize, currentPage } = props;
-    props.getUsers({ currentPage, pageSize, term: filter.term });
+    props.getUsers({ currentPage: props.currentPage, pageSize: props.pageSize, term: filter.term });
   };
 
   return (

@@ -1,15 +1,11 @@
-import React from 'react';
-import { Formik } from 'formik';
-import { TFilter } from '../../../../redux/users-reducer/types';
-import { TUsersSearchFormProps } from '../../types';
+import React from "react";
+import { Formik } from "formik";
+import { TFilter } from "../../../../redux/users-reducer/types";
+import { TUsersSearchFormProps } from "../../types";
 
 const formValidate = (values: any) => {
   const errors = {};
-  // if (!values.term) {
-  //   errors.term = 'Required';
-  // } else if (!/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i.test(values.term)) {
-  //   errors.term = 'Invalid term address';
-  // }
+
   return errors;
 };
 
@@ -18,15 +14,12 @@ const UsersSearchForm: React.FC<TUsersSearchFormProps> = ({ onFilterChanged }) =
     values: TFilter,
     { setSubmitting }: { setSubmitting: (isSubmitting: boolean) => void },
   ) => {
-    // setTimeout(() => {
-    //   alert(JSON.stringify(values));
-    //   setSubmitting(false);
-    // }, 400);
+    console.log("values которые приходят в onSubmit", values);
     onFilterChanged(values);
   };
 
   return (
-    <Formik initialValues={{ term: '' }} validate={formValidate} onSubmit={submitForm}>
+    <Formik initialValues={{ term: "" }} validate={formValidate} onSubmit={submitForm}>
       {({
         values,
         errors,
@@ -38,13 +31,7 @@ const UsersSearchForm: React.FC<TUsersSearchFormProps> = ({ onFilterChanged }) =
         /* and other goodies */
       }) => (
         <form onSubmit={handleSubmit}>
-          <input
-            type="email"
-            name="term"
-            onChange={handleChange}
-            onBlur={handleBlur}
-            value={values.term}
-          />
+          <input name="term" onChange={handleChange} onBlur={handleBlur} value={values.term} />
           {errors.term && touched.term && errors.term}
           <button type="submit" disabled={isSubmitting}>
             Submit
