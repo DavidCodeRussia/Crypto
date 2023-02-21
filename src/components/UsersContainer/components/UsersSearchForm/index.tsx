@@ -14,7 +14,6 @@ const UsersSearchForm: React.FC<TUsersSearchFormProps> = ({ onFilterChanged }) =
     values: TFilter,
     { setSubmitting }: { setSubmitting: (isSubmitting: boolean) => void },
   ) => {
-    console.log("values которые приходят в onSubmit", values);
     onFilterChanged(values);
   };
 

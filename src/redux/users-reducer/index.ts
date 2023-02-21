@@ -54,9 +54,10 @@ export const usersReducer = (state = initialState, action: ActionsTypes): TIniti
         filter: action.payload,
       };
     case "SET_CURRENT_PAGE":
+      console.log("action", action);
       return {
         ...state,
-        currentPage: action.currentPage,
+        currentPage: action.currentPage.currentPage,
       };
     case "SET_TOTAL_ITEMS_COUNT":
       return {
@@ -87,7 +88,6 @@ export const actions = {
   setUsers: (users: TUser[]) => ({ type: "SET_USERS", users: users } as const),
   setFriends: (friends: TUser[]) => ({ type: "SET_FRIENDS", friends: friends } as const),
   setCurrentPage: (currentPage: number) => {
-    console.log("currentPage пришедший в AC", currentPage);
     return {
       type: "SET_CURRENT_PAGE",
       currentPage: currentPage,
@@ -118,7 +118,7 @@ export const requestUsers = (currentPage: number, pageSize: number, term: string
     dispatch(actions.setCurrentPage(currentPage));
     dispatch(actions.setFilter(term));
 
-    let data = await usersAPI.getUsers({ currentPage, pageSize, term });
+    let data = await usersAPI.getUsers(currentPage, pageSize, term);
 
     dispatch(actions.toggleIsFetching(false));
     dispatch(actions.setUsers(data.items));
@@ -133,7 +133,7 @@ export const onPage = (currentPage: number, pageSize: number): ThunkType => {
     dispatch(actions.setCurrentPage(currentPage));
     dispatch(actions.toggleIsFetching(true));
 
-    let data = await usersAPI.getUsers({ currentPage, pageSize, term: "" });
+    let data = await usersAPI.getUsers(currentPage, pageSize, "");
 
     dispatch(actions.toggleIsFetching(false));
     dispatch(actions.setUsers(data.items));

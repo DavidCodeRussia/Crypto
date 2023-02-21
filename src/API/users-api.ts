@@ -1,6 +1,5 @@
-import { TPhotos } from '../types';
-import { parseQueryParams } from '../utils';
-import { instance, APIResponseType } from './api';
+import { TPhotos } from "../types";
+import { instance, APIResponseType } from "./api";
 
 export type TUser = {
   followed: boolean;
@@ -16,20 +15,13 @@ export type TUsers = {
   totalCount: number;
 };
 
-type TGetUsersParameters = {
-  currentPage: number;
-  pageSize: number;
-  term: string;
-};
-
 export const usersAPI = {
-  async getUsers(data: TGetUsersParameters) {
-    const { currentPage = 1, pageSize = 10, ...params } = data;
-    const query = data ? parseQueryParams(params) : '';
-
+  async getUsers(currentPage: number, pageSize: number, term: string) {
+    console.log("currentPage", currentPage);
+    console.log("pageSize", pageSize);
+    console.log("term", term);
     const response = await instance.get<TUsers>(
-      // `users?${query}&page=${currentPage.currentPage}&count=${pageSize}`,
-      `users?page=1&count=5`,
+      `users?page=${currentPage}&count=${pageSize}&term=${term}`,
     );
     return response.data;
   },

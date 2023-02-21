@@ -1,17 +1,17 @@
-import React from 'react';
+import React from "react";
 
-import { NavLink } from 'react-router-dom';
+import { NavLink } from "react-router-dom";
 
-import { defaultAvatar } from '../../../../constants/constants';
-import { TUsersProps } from '../../types';
+import { defaultAvatar } from "../../../../constants/constants";
+import { TUsersProps } from "../../types";
 
-import Paginator from '../../../common/Paginator';
-import WrapperForMain from '../../../common/WrapperForMain';
-import Stack from '@mui/material/Stack';
-import Button from '@mui/material/Button';
+import Paginator from "../../../common/Paginator";
+import WrapperForMain from "../../../common/WrapperForMain";
+import Stack from "@mui/material/Stack";
+import Button from "@mui/material/Button";
+import UsersSearchForm from "../UsersSearchForm";
 
-import s from './Users.module.scss';
-import UsersSearchForm from '../UsersSearchForm';
+import s from "./Users.module.scss";
 
 let Users: React.FC<TUsersProps> = (props) => {
   return (
@@ -27,7 +27,7 @@ let Users: React.FC<TUsersProps> = (props) => {
         {props.users.map((u) => (
           <div key={u.id} className={s.user}>
             <span>
-              <NavLink to={'/profile/' + u.id}>
+              <NavLink to={"/profile/" + u.id}>
                 <img
                   src={u.photos.small != null ? u.photos.small : defaultAvatar}
                   className={s.userPhoto}

@@ -29,7 +29,8 @@ let UsersContainer: React.FC<TUsersContainerProps> = (props) => {
   let onPageChanged = (pageNumber: number) => {
     props.onPage(pageNumber, props.pageSize);
   };
-
+  console.log("шо в пропсах лежит: props.currentPage", props.currentPage);
+  console.log("шо в пропсах лежит: props.pageSize", props.pageSize);
   let onFilterChanged = (filter: TFilter) => {
     props.getUsers({ currentPage: props.currentPage, pageSize: props.pageSize, term: filter.term });
   };
