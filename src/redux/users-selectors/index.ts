@@ -18,7 +18,6 @@ export const getTotalItemsCount = (state: AppStateType) => {
 };
 
 export const getCurrentPage = (state: AppStateType) => {
-  console.log("паленые данные в гете", state.usersPage.currentPage);
   return state.usersPage.currentPage;
 };
 

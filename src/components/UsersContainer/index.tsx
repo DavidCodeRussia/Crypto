@@ -22,17 +22,16 @@ import Preloader from "../common/Preloader";
 import { TFilter } from "../../redux/users-reducer/types";
 
 let UsersContainer: React.FC<TUsersContainerProps> = (props) => {
-  // useEffect(() => {
-  //   props.getUsers({ currentPage: props.currentPage, pageSize: props.pageSize, term: "" });
-  // }, [props.currentPage, props.pageSize]);
+  useEffect(() => {
+    props.getUsers(props.currentPage, props.pageSize, "");
+  }, [props.currentPage, props.pageSize]);
 
   let onPageChanged = (pageNumber: number) => {
     props.onPage(pageNumber, props.pageSize);
   };
-  console.log("шо в пропсах лежит: props.currentPage", props.currentPage);
-  console.log("шо в пропсах лежит: props.pageSize", props.pageSize);
+
   let onFilterChanged = (filter: TFilter) => {
-    props.getUsers({ currentPage: props.currentPage, pageSize: props.pageSize, term: filter.term });
+    props.getUsers(props.currentPage, props.pageSize, filter.term);
   };
 
   return (

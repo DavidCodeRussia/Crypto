@@ -54,10 +54,9 @@ export const usersReducer = (state = initialState, action: ActionsTypes): TIniti
         filter: action.payload,
       };
     case "SET_CURRENT_PAGE":
-      console.log("action", action);
       return {
         ...state,
-        currentPage: action.currentPage.currentPage,
+        currentPage: action.currentPage,
       };
     case "SET_TOTAL_ITEMS_COUNT":
       return {

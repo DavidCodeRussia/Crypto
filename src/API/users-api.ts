@@ -17,11 +17,8 @@ export type TUsers = {
 
 export const usersAPI = {
   async getUsers(currentPage: number, pageSize: number, term: string) {
-    console.log("currentPage", currentPage);
-    console.log("pageSize", pageSize);
-    console.log("term", term);
     const response = await instance.get<TUsers>(
-      `users?page=${currentPage}&count=${pageSize}&term=${term}`,
+      `users?page=${currentPage}&count=${pageSize}${term.length > 0 ? `&term=${term}` : ""}`,
     );
     return response.data;
   },
