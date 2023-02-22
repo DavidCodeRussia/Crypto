@@ -1,5 +1,5 @@
 import React from "react";
-import { Formik } from "formik";
+import { Formik, Field } from "formik";
 import { TFilter } from "../../../../redux/users-reducer/types";
 import { TUsersSearchFormProps } from "../../types";
 
@@ -18,7 +18,7 @@ const UsersSearchForm: React.FC<TUsersSearchFormProps> = ({ onFilterChanged }) =
   };
 
   return (
-    <Formik initialValues={{ term: "" }} validate={formValidate} onSubmit={submitForm}>
+    <Formik initialValues={{ term: "", friend: "" }} validate={formValidate} onSubmit={submitForm}>
       {({
         values,
         errors,
@@ -30,8 +30,14 @@ const UsersSearchForm: React.FC<TUsersSearchFormProps> = ({ onFilterChanged }) =
         /* and other goodies */
       }) => (
         <form onSubmit={handleSubmit}>
-          <input name="term" onChange={handleChange} onBlur={handleBlur} value={values.term} />
+          <Field name="term" onChange={handleChange} onBlur={handleBlur} value={values.term} />
+          <Field type="checkbox" name="friend">
+            <option value="null">All</option>
+            <option value="true">Only followed</option>
+            <option value="false">Only unfollowed</option>
+          </Field>
           {errors.term && touched.term && errors.term}
+
           <button type="submit" disabled={isSubmitting}>
             Submit
           </button>

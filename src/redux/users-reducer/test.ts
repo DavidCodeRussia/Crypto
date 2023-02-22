@@ -1,5 +1,5 @@
-import usersReducers, { actions } from '.';
-import { TInitialState } from './types';
+import usersReducers, { actions } from ".";
+import { TInitialState } from "./types";
 
 let state: TInitialState;
 
@@ -8,38 +8,38 @@ beforeEach(() => {
     users: [
       {
         id: 0,
-        name: 'Dimych',
+        name: "Dimych",
         followed: false,
         photos: { small: null, large: null },
-        status: 'status',
+        status: "status",
       },
       {
         id: 1,
-        name: 'Dasha',
+        name: "Dasha",
         followed: false,
         photos: { small: null, large: null },
-        status: 'status1',
+        status: "status1",
       },
       {
         id: 2,
-        name: 'Kolya',
+        name: "Kolya",
         followed: true,
         photos: { small: null, large: null },
-        status: 'status2',
+        status: "status2",
       },
       {
         id: 3,
-        name: 'Alena',
+        name: "Alena",
         followed: true,
         photos: { small: null, large: null },
-        status: 'status3',
+        status: "status3",
       },
       {
         id: 4,
-        name: 'David',
+        name: "David",
         followed: false,
         photos: { small: null, large: null },
-        status: 'status4',
+        status: "status4",
       },
     ],
     friends: [],
@@ -47,21 +47,22 @@ beforeEach(() => {
     totalItemsCount: 0,
     currentPage: 1,
     filter: {
-      term: '',
+      term: "",
+      friend: "",
     },
     isFetching: false,
     followingInProgress: [],
   };
 });
 
-test('follow success', () => {
+test("follow success", () => {
   const newState = usersReducers(state, actions.followSuccess(1));
 
   expect(newState.users[0].followed).toBeFalsy();
   expect(newState.users[1].followed).toBeTruthy();
 });
 
-test('unfollow success', () => {
+test("unfollow success", () => {
   const newState = usersReducers(state, actions.unfollowSuccess(3));
 
   expect(newState.users[2].followed).toBeTruthy();

@@ -33,7 +33,7 @@ export type TUsersContainerProps = {
 
   follow: () => void;
   unfollow: () => void;
-  getUsers: (currentPage: number, pageSize: number, term: string) => void;
+  getUsers: (currentPage: number, pageSize: number, term: string, friend: string | boolean) => void;
   onPage: (pageNumber: number, pageSize: number) => void;
 };
 

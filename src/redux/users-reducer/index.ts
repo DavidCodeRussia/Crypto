@@ -1,5 +1,5 @@
 import { usersAPI } from "../../API/users-api";
-import { TUser, ThunkType, ActionsTypes, TInitialState } from "./types";
+import { TUser, ThunkType, ActionsTypes, TInitialState, TFilter } from "./types";
 
 export let initialState = {
   users: [] as TUser[],
@@ -9,6 +9,7 @@ export let initialState = {
   currentPage: 1,
   filter: {
     term: "",
+    friend: "" as string | boolean,
   },
   isFetching: false,
   followingInProgress: [] as number[],
@@ -92,7 +93,8 @@ export const actions = {
       currentPage: currentPage,
     } as const;
   },
-  setFilter: (term: string) => ({ type: "SET_FILTER", payload: { term: term } } as const),
+  setFilter: (filter: TFilter) =>
+    ({ type: "SET_FILTER", payload: { term: filter.term, friend: filter.friend } } as const),
   setTotalItemsCount: (totalItemsCount: number) =>
     ({
       type: "SET_TOTAL_ITEMS_COUNT",
@@ -111,13 +113,18 @@ export const actions = {
     } as const),
 };
 
-export const requestUsers = (currentPage: number, pageSize: number, term: string): ThunkType => {
+export const requestUsers = (
+  currentPage: number,
+  pageSize: number,
+  term: string,
+  friend: boolean,
+): ThunkType => {
   return async (dispatch) => {
     dispatch(actions.toggleIsFetching(true));
     dispatch(actions.setCurrentPage(currentPage));
-    dispatch(actions.setFilter(term));
+    dispatch(actions.setFilter({ term, friend }));
 
-    let data = await usersAPI.getUsers(currentPage, pageSize, term);
+    let data = await usersAPI.getUsers({ currentPage, pageSize, term, friend });
 
     dispatch(actions.toggleIsFetching(false));
     dispatch(actions.setUsers(data.items));
@@ -132,7 +139,7 @@ export const onPage = (currentPage: number, pageSize: number): ThunkType => {
     dispatch(actions.setCurrentPage(currentPage));
     dispatch(actions.toggleIsFetching(true));
 
-    let data = await usersAPI.getUsers(currentPage, pageSize, "");
+    let data = await usersAPI.getUsers({ currentPage, pageSize, term: "", friend: null });
 
     dispatch(actions.toggleIsFetching(false));
     dispatch(actions.setUsers(data.items));

@@ -1,6 +1,6 @@
-import { actions, initialState } from '.';
-import { TPhotos } from '../../types';
-import { BaseThunkType, InferActionsTypes } from '../redux-store';
+import { actions, initialState } from ".";
+import { TPhotos } from "../../types";
+import { BaseThunkType, InferActionsTypes } from "../redux-store";
 
 export type TUser = {
   name: string;

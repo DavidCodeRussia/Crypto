@@ -60,7 +60,6 @@ let Paginator: React.FC<TProps> = ({
         })}
 
       {portionCount > portionNumber && (
-        // <button onClick={ () => {setPortionNumber(portionNumber + 1)} } className={styles.buttonPagin}>NEXT</button>
         <div className={styles.buttonPagin}>
           <Stack>
             <Button

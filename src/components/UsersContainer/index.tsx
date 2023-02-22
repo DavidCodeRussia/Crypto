@@ -16,14 +16,14 @@ import { withAuthNavigate } from "../../hoc/withAuthRedirect";
 import { TMapStateToProps, TUsersContainerProps } from "./types";
 import { AppStateType } from "../../redux/redux-store";
 import { somethingNew } from "../../App";
+import { TFilter } from "../../redux/users-reducer/types";
 
 import Users from "./components/Users";
 import Preloader from "../common/Preloader";
-import { TFilter } from "../../redux/users-reducer/types";
 
 let UsersContainer: React.FC<TUsersContainerProps> = (props) => {
   useEffect(() => {
-    props.getUsers(props.currentPage, props.pageSize, "");
+    props.getUsers(props.currentPage, props.pageSize, "", "");
   }, [props.currentPage, props.pageSize]);
 
   let onPageChanged = (pageNumber: number) => {
@@ -31,7 +31,7 @@ let UsersContainer: React.FC<TUsersContainerProps> = (props) => {
   };
 
   let onFilterChanged = (filter: TFilter) => {
-    props.getUsers(props.currentPage, props.pageSize, filter.term);
+    props.getUsers(props.currentPage, props.pageSize, filter.term, filter.friend);
   };
 
   return (
