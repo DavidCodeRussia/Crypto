@@ -1,11 +1,13 @@
 import React, { Suspense, useEffect } from 'react';
-import { Navigate, Route, Routes } from 'react-router-dom';
+import { Navigate, NavLink, Route, Routes } from 'react-router-dom';
 import { connect } from 'react-redux';
+import { Breadcrumb, Layout, Menu, theme } from 'antd';
+import type { MenuProps } from 'antd';
 
 import { initializeApp } from './redux/app-reducer';
 import { AppStateType } from './redux/redux-store';
 
-import HeaderContainer from './components/Header/HeaderContainer';
+import HeaderContainer from './components/HeaderContainer';
 import Login from './components/Login';
 import Preloader from './components/common/Preloader';
 import Friends from './components/Friends';
@@ -19,11 +21,29 @@ type TDispatchProps = {
   initializeApp: () => void;
 };
 
-const ProfileContainer = React.lazy(() => import('./components/Profile/ProfileContainer.tsx')); // Ленивая загрузка
-const DialogsContainer = React.lazy(() => import('./components/Dialogs/DialogsContainer.tsx')); // Lazy download
+const ProfileContainer = React.lazy(() => import('./components/ProfileContainer/index.tsx')); // Ленивая загрузка
+const DialogsContainer = React.lazy(() => import('./components/DialogsContainer')); // Lazy download
 const UsersContainer = React.lazy(() => import('./components/UsersContainer/index.tsx'));
 
-let App: React.FC<TMapProps & TDispatchProps> = (props) => {
+const { Content, Sider, Footer } = Layout;
+
+const items2: MenuProps['items'] = ['Profile', 'Dialogs', 'Users'].map((icon, index) => {
+  const key = String(index + 1);
+
+  return {
+    key: `sub${key}`,
+    icon: React.createElement(icon),
+    label: <NavLink to={`/${icon.toLowerCase()}`}>{icon}</NavLink>,
+
+    children: null,
+  };
+});
+
+const App: React.FC<TMapProps & TDispatchProps> = (props) => {
+  const {
+    token: { colorBgContainer },
+  } = theme.useToken();
+
   useEffect(() => {
     props.initializeApp();
   });
@@ -33,23 +53,51 @@ let App: React.FC<TMapProps & TDispatchProps> = (props) => {
   }
 
   return (
-    <>
-      <Suspense fallback={<Preloader />}>
-        <Routes>
-          <Route path="/" element={<HeaderContainer />}>
-            <Route path="/" element={<NewsContainer />} />
-            <Route path="/Profile/*" element={<ProfileContainer />} />
-            <Route path="/Dialogs/*" element={<DialogsContainer />} />
-            <Route path="/Friends/*" element={<Friends />} />
-            <Route path="/Users/*" element={<UsersContainer pageTitle="Hello world123" />} />
-            <Route path="/News/*" element={<NewsContainer />} />
-            <Route path="/Settings/*" element={<SettingsContainer />} />
-            <Route path="/Login/*" element={<Login />} />
-            <Route path="*" element={<Navigate to="/Profile" replace />} />
-          </Route>
-        </Routes>
-      </Suspense>
-    </>
+    <Layout>
+      <HeaderContainer />
+      <Layout>
+        <Sider width={200} style={{ background: colorBgContainer }}>
+          <Menu
+            mode="inline"
+            defaultSelectedKeys={['1']}
+            defaultOpenKeys={['sub1']}
+            style={{ height: '100%', borderRight: 0 }}
+            items={items2}
+          />
+        </Sider>
+        <Layout style={{ padding: '0 24px 24px' }}>
+          <Breadcrumb style={{ margin: '16px 0' }}>
+            <Breadcrumb.Item>Home</Breadcrumb.Item>
+            <Breadcrumb.Item>List</Breadcrumb.Item>
+            <Breadcrumb.Item>App</Breadcrumb.Item>
+          </Breadcrumb>
+          <Content
+            style={{
+              padding: 24,
+              margin: 0,
+              minHeight: 280,
+              background: colorBgContainer,
+            }}>
+            <Suspense fallback={<Preloader />}>
+              <Routes>
+                <Route path="/" element={<NewsContainer />} />
+                <Route path="/profile/*" element={<ProfileContainer />} />
+                <Route path="/dialogs/*" element={<DialogsContainer />} />
+                <Route path="/friends/*" element={<Friends />} />
+                <Route path="/users/*" element={<UsersContainer />} />
+                <Route path="/news/*" element={<NewsContainer />} />
+                <Route path="/settings/*" element={<SettingsContainer />} />
+                <Route path="/login/*" element={<Login />} />
+                <Route path="*" element={<Navigate to="/Profile" replace />} />
+              </Routes>
+            </Suspense>
+          </Content>
+        </Layout>
+      </Layout>
+      <Footer style={{ textAlign: 'center' }}>
+        Samurai Social Network ©2023 Created by samurai David
+      </Footer>
+    </Layout>
   );
 };
 

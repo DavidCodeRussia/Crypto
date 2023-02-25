@@ -1,4 +1,4 @@
-import { TFilter, TUser } from "../../redux/users-reducer/types";
+import { TFilter, TUser } from '../../redux/users-reducer/types';
 
 export type TMapStateToProps = {
   currentPage: number;
@@ -7,38 +7,22 @@ export type TMapStateToProps = {
   totalItemsCount: number;
   users: TUser[];
   followingInProgress: number[];
+  filter: {
+    term: string;
+    friend: string | boolean;
+  };
 };
 
 export type TMapDisptachToProps = {
-  follow: () => void;
-  unfollow: () => void;
-  getUsers: (currentPage: number, pageSize: number) => void;
-  onPage: (pageNumber: number, pageSize: number) => void;
-};
-
-export type TOwnProps = {
-  pageTitle: string;
-};
-
-export type TPropsType = TMapStateToProps & TMapDisptachToProps & TOwnProps;
-
-export type TUsersContainerProps = {
-  pageTitle: string;
-  currentPage: number;
-  pageSize: number;
-  isFetching: boolean;
-  totalItemsCount: number;
-  users: TUser[];
-  followingInProgress: number[];
-
   follow: () => void;
   unfollow: () => void;
   getUsers: (currentPage: number, pageSize: number, term: string, friend: string | boolean) => void;
   onPage: (pageNumber: number, pageSize: number) => void;
 };
 
+export type TUsersContainerProps = TMapStateToProps & TMapDisptachToProps;
+
 export type TUsersProps = {
-  pageTitle: string;
   totalItemsCount: number;
   pageSize: number;
   currentPage: number;
@@ -53,4 +37,10 @@ export type TUsersProps = {
 
 export type TUsersSearchFormProps = {
   onFilterChanged: (filter: TFilter) => void;
+};
+
+export type TParsed = {
+  currentPage?: string;
+  term?: string;
+  friend?: string;
 };

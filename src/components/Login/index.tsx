@@ -1,11 +1,11 @@
-import { connect } from "react-redux";
-import { Navigate } from "react-router-dom";
+import { connect } from 'react-redux';
+import { Navigate } from 'react-router-dom';
 
-import { login } from "../../redux/auth-reducer";
-import LoginReduxForm from "./LoginReduxForm";
-import { TLoginMapStateToProps, TLoginMapDispatchToProps, TFormData, TLoginProps } from "./types";
-import { AppStateType } from "../../redux/redux-store";
-import s from "./Login.module.scss";
+import { login } from '../../redux/auth-reducer';
+import LoginReduxForm from './components/LoginReduxForm';
+import { TLoginMapStateToProps, TLoginMapDispatchToProps, TFormData, TLoginProps } from './types';
+import { AppStateType } from '../../redux/redux-store';
+import s from './Login.module.scss';
 
 const Login: React.FC<TLoginProps> = ({ captcha, isAuth, login }) => {
   const onSubmit = (formData: TFormData) => {
@@ -13,7 +13,7 @@ const Login: React.FC<TLoginProps> = ({ captcha, isAuth, login }) => {
   };
 
   if (isAuth) {
-    return <Navigate to={"/profile"} />;
+    return <Navigate to={'/profile'} />;
   }
 
   return (
@@ -30,7 +30,7 @@ const Login: React.FC<TLoginProps> = ({ captcha, isAuth, login }) => {
 
         {!captcha && (
           <div>
-            Don't have account yet ? Click here to{" "}
+            Don't have account yet ? Click here to{' '}
             <a href="https://social-network.samuraijs.com/signUp" className={s.link_reg}>
               Sign Up
             </a>
