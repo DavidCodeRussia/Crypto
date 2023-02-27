@@ -1,11 +1,11 @@
 /* eslint-disable react-hooks/exhaustive-deps */
-import React, { useEffect } from 'react';
-import { compose } from 'redux';
-import { connect } from 'react-redux';
-import * as queryString from 'querystring';
-import { useNavigate, useLocation } from 'react-router-dom';
+import React, { useEffect } from "react";
+import { compose } from "redux";
+import { connect } from "react-redux";
+import * as queryString from "querystring";
+import { useNavigate, useLocation } from "react-router-dom";
 
-import { follow, requestUsers, onPage, unfollow } from '../../redux/users-reducer';
+import { follow, requestUsers, onPage, unfollow } from "../../redux/users-reducer";
 import {
   getCurrentPage,
   getFollowingInProgress,
@@ -14,15 +14,14 @@ import {
   getTotalItemsCount,
   getUsers,
   getFilter,
-} from '../../redux/users-selectors';
-import { withAuthNavigate } from '../../hoc/withAuthRedirect';
-import { TMapStateToProps, TParsed, TUsersContainerProps } from './types';
-import { AppStateType } from '../../redux/redux-store';
-import { somethingNew } from '../../App';
-import { TFilter } from '../../redux/users-reducer/types';
+} from "../../redux/users-selectors";
+import { withAuthNavigate } from "../../hoc/withAuthRedirect";
+import { TMapStateToProps, TParsed, TUsersContainerProps } from "./types";
+import { AppStateType } from "../../redux/redux-store";
+import { TFilter } from "../../redux/users-reducer/types";
 
-import Users from './components/Users';
-import Preloader from '../common/Preloader';
+import Users from "./components/Users";
+import Preloader from "../common/Preloader";
 
 let UsersContainer: React.FC<TUsersContainerProps> = ({
   currentPage,
@@ -53,7 +52,7 @@ let UsersContainer: React.FC<TUsersContainerProps> = ({
     if (!!parsed.friend)
       actualFilter = {
         ...actualFilter,
-        friend: parsed.friend === 'true' ? true : parsed.friend === 'false' ? false : '',
+        friend: parsed.friend === "true" ? true : parsed.friend === "false" ? false : "",
       };
 
     getUsers(actualPage, pageSize, actualFilter.term, actualFilter.friend);
@@ -113,7 +112,6 @@ export default compose(
     unfollow,
     getUsers: requestUsers,
     onPage,
-    somethingNew,
   }), // в mapDispatchToProps лежат action creator
   withAuthNavigate,
 )(UsersContainer);
