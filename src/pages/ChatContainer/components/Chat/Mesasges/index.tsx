@@ -2,10 +2,8 @@ import React, { useEffect, useState } from "react";
 import { TMessage } from "../../../types";
 import Message from "../Mesasge";
 
-const Messages: React.FC = () => {
+const Messages: React.FC<{ wsChannel: WebSocket }> = ({ wsChannel }) => {
   const [messages, setMessages] = useState<TMessage[]>([]);
-
-  const wsChannel = new WebSocket("wss://social-network.samuraijs.com/handlers/ChatHandler.ashx");
 
   useEffect(() => {
     wsChannel.addEventListener("message", (e: MessageEvent) => {
@@ -17,7 +15,9 @@ const Messages: React.FC = () => {
   return (
     <div style={{ height: "400px", overflowY: "auto" }}>
       {messages !== undefined &&
-        messages.map((item: any, index: number) => <Message key={index} message={item} />)}
+        messages.map((item: any, index: number) => (
+          <Message key={index} message={item} wsChannel={wsChannel} />
+        ))}
     </div>
   );
 };
