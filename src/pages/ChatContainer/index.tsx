@@ -1,5 +1,5 @@
-import React from "react";
-import Chat from "./components/Chat";
+import React from 'react';
+import Chat from './components/Chat';
 
 const ChatContainer: React.FC = () => {
   return (

@@ -1,26 +1,34 @@
-import { Field, Form, Formik } from "formik";
-import React from "react";
+import { Field, Form, Formik } from 'formik';
+import React, { useEffect, useState } from 'react';
+import { TAddMessage } from './types';
 
-type TAddMessage = {
-  message: string;
-};
+let AddMessage: React.FC<{ wsChannel: WebSocket | null }> = ({ wsChannel }) => {
+  const [isWBReady, setWBReady] = useState<'pending' | 'ready'>('pending');
 
-let AddMessage: React.FC<{ wsChannel: WebSocket }> = ({ wsChannel }) => {
+  const onOpenHandler = () => {
+    setWBReady('ready');
+  };
 
-  console.log("wsChannel.readyState",wsChannel.readyState )
-  console.log("", )
+  useEffect(() => {
+    wsChannel?.addEventListener('open', onOpenHandler);
+
+    return () => {
+      wsChannel?.removeEventListener('open', onOpenHandler);
+    };
+  }, [wsChannel]);
 
   return (
     <Formik
-      initialValues={{ message: "" }}
-      onSubmit={(val: TAddMessage) => {
+      initialValues={{ message: '' }}
+      onSubmit={(val: TAddMessage, { resetForm }) => {
         //@ts-ignore
-        wsChannel.send(val.message);
+        wsChannel?.send(val.message);
+        resetForm();
       }}>
       <Form>
-        <Field name={"message"} placeholder={"Write your message here"} />
+        <Field name={'message'} autocomplete={'off'} placeholder={'Write your message here'} />
         <div>
-          <button disabled={wsChannel.readyState !== WebSocket.OPEN} type="submit">
+          <button disabled={wsChannel === null && isWBReady !== 'ready'} type="submit">
             send
           </button>
         </div>
