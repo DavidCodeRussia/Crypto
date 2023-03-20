@@ -1,34 +1,25 @@
-import { Field, Form, Formik } from 'formik';
-import React, { useEffect, useState } from 'react';
-import { TAddMessage } from './types';
+import React from "react";
+import { Field, Form, Formik } from "formik";
+import { useDispatch, useSelector } from "react-redux";
+import { sendMessage } from "../../../../../redux/chat-reducer";
+import { TAddMessage } from "./types";
+import { AppStateType } from "../../../../../redux/redux-store";
 
-let AddMessage: React.FC<{ wsChannel: WebSocket | null }> = ({ wsChannel }) => {
-  const [isWBReady, setWBReady] = useState<'pending' | 'ready'>('pending');
-
-  const onOpenHandler = () => {
-    setWBReady('ready');
-  };
-
-  useEffect(() => {
-    wsChannel?.addEventListener('open', onOpenHandler);
-
-    return () => {
-      wsChannel?.removeEventListener('open', onOpenHandler);
-    };
-  }, [wsChannel]);
+let AddMessage = () => {
+  const dispatch = useDispatch();
+  const status = useSelector((state: AppStateType) => state.chat.status);
 
   return (
     <Formik
-      initialValues={{ message: '' }}
+      initialValues={{ message: "" }}
       onSubmit={(val: TAddMessage, { resetForm }) => {
-        //@ts-ignore
-        wsChannel?.send(val.message);
+        dispatch(sendMessage(val.message));
         resetForm();
       }}>
       <Form>
-        <Field name={'message'} autocomplete={'off'} placeholder={'Write your message here'} />
+        <Field name={"message"} autocomplete={"off"} placeholder={"Write your message here"} />
         <div>
-          <button disabled={wsChannel === null && isWBReady !== 'ready'} type="submit">
+          <button disabled={status !== "ready"} type="submit">
             send
           </button>
         </div>

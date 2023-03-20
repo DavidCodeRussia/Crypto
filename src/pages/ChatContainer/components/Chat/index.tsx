@@ -1,32 +1,24 @@
-import React, { useEffect, useState } from 'react';
-import AddMessage from './AddMessage';
-import Messages from './Mesasges';
+import React, { useEffect } from "react";
+import { useDispatch } from "react-redux";
+import { listenMessages, stopListenMessages } from "../../../../redux/chat-reducer";
+import AddMessage from "./AddMessage";
+import Messages from "./Mesasges";
 
 let Chat = () => {
-  const [wsChannel, setWsChannel] = useState<WebSocket | null>(null);
+  const dispatch = useDispatch();
 
   useEffect(() => {
-    let ws: WebSocket;
-    const closeHandler = () => {
-      setTimeout(createChannel, 3000);
-    };
-    const createChannel = () => {
-      ws = new WebSocket('wss://social-network.samuraijs.com/handlers/ChatHandler.ashx');
-      ws.addEventListener('close', closeHandler);
-      setWsChannel(ws);
-    };
-    createChannel();
+    dispatch(listenMessages());
 
     return () => {
-      ws.removeEventListener('close', closeHandler);
-      ws.close();
+      dispatch(stopListenMessages());
     };
   }, []);
 
   return (
     <div>
-      <Messages wsChannel={wsChannel} />
-      <AddMessage wsChannel={wsChannel} />
+      <Messages />
+      <AddMessage />
     </div>
   );
 };
