@@ -17,7 +17,7 @@ let AddMessage = () => {
         resetForm();
       }}>
       <Form>
-        <Field name={"message"} autocomplete={"off"} placeholder={"Write your message here"} />
+        <Field name={"message"} autoComplete={"off"} placeholder={"Write your message here"} />
         <div>
           <button disabled={status !== "ready"} type="submit">
             send
