@@ -1,13 +1,14 @@
-export type TChatMessage = {
+export type TChatAPIMessage = {
   message: string;
   photo: string;
   userId: number;
   userName: string;
 };
+export type TChatMessage = TChatAPIMessage & { id: string };
 export type TEventsNames = "messages-received" | "status-changed";
 export type TStatus = "pending" | "ready" | "error";
 
-export type TMessagesReceivedSubscriber = (messages: TChatMessage[]) => void;
+export type TMessagesReceivedSubscriber = (messages: TChatAPIMessage[]) => void;
 export type TStatusChangesSubscriber = (status: TStatus) => void;
 
 const subscribers = {
@@ -47,9 +48,9 @@ const createChannel = () => {
   ws?.close();
   ws = new WebSocket("wss://social-network.samuraijs.com/handlers/ChatHandler.ashx");
   notifySubscribersAboutStatus("pending");
-  ws.addEventListener("close", closeHandler);
-  ws.addEventListener("message", onMessageHandler);
   ws.addEventListener("open", openHandler);
+  ws.addEventListener("message", onMessageHandler);
+  ws.addEventListener("close", closeHandler);
   ws.addEventListener("error", errorHandler);
 };
 

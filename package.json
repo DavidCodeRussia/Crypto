@@ -31,6 +31,7 @@
     "reselect": "^4.1.5",
     "sass": "^1.56.2",
     "typescript": "^4.9.4",
+    "uuid": "^9.0.0",
     "video.js": "^7.21.1",
     "web-vitals": "^1.1.2"
   },
@@ -60,6 +61,7 @@
   },
   "devDependencies": {
     "@types/redux-form": "^8.3.5",
+    "@types/uuid": "^9.0.1",
     "@types/video.js": "^7.3.50",
     "react-test-renderer": "^17.0.2"
   }

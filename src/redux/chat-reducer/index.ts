@@ -1,5 +1,6 @@
 import { Dispatch } from "redux";
-import { chatAPI, TChatMessage } from "../../API/chat-api";
+import { v4 as uuidv4 } from "uuid";
+import { chatAPI, TChatAPIMessage, TChatMessage } from "../../API/chat-api";
 import { ThunkType } from "../users-reducer/types";
 import { TActions, TInitialState } from "./types";
 import { TStatus } from "../../API/chat-api";
@@ -16,7 +17,12 @@ const chatReducer = (state = initialState, action: TActions): TInitialState => {
     case "chat-reducer/MESSAGES_RECEIVED":
       return {
         ...state,
-        messages: [...state.messages, ...action.payload.messages],
+        messages: [
+          ...state.messages,
+          ...action.payload.messages.map((item) => ({ ...item, id: uuidv4() })),
+        ].filter(
+          (m, index, arr) => index >= arr.length - 31, // фильтраця для хранения только 31 последнего сообщения, с удалением старых
+        ),
       };
     case "chat-reducer/STATUS_CHANGED":
       return {
@@ -29,7 +35,7 @@ const chatReducer = (state = initialState, action: TActions): TInitialState => {
 };
 
 export const actions = {
-  messagesReceived: (messages: TChatMessage[]) =>
+  messagesReceived: (messages: TChatAPIMessage[]) =>
     ({
       type: "chat-reducer/MESSAGES_RECEIVED",
       payload: { messages },
@@ -41,7 +47,7 @@ export const actions = {
     } as const),
 };
 
-let _newMessagesHandler: ((messages: TChatMessage[]) => void) | null = null;
+let _newMessagesHandler: ((messages: TChatAPIMessage[]) => void) | null = null;
 const newMessagesHandlerCreator = (dispatch: Dispatch) => {
   if (_newMessagesHandler === null) {
     _newMessagesHandler = (messages) => {
